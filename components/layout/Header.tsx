@@ -39,9 +39,9 @@ export default function Header() {
         <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
             <div className="container mx-auto px-4">
                 <div className="flex items-center h-16">
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center flex-shrink-0 group">
-                        <img src="/images/logo.png" alt="Thurmon's Heat & Air" className="h-11 sm:h-12 w-auto" />
+                    {/* Logo - full pinwheel mark, top left */}
+                    <Link href="/" className="flex items-center flex-shrink-0 group mr-auto lg:mr-0">
+                        <img src="/images/logo-mark.png" alt="Thurmon's Heat & Air" className="h-12 sm:h-14 w-auto" />
                     </Link>
 
                     {/* Desktop Navigation */}
