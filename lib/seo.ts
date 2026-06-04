@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import { siteConfig } from './site.config';
 
-export const SITE_URL = 'https://evergrowlandscaping.com';
-export const SITE_NAME = 'Evergrow Landscaping';
-export const DEFAULT_OG_IMAGE = '/api/assets/company-image.png';
+export const SITE_URL = siteConfig.url;
+export const SITE_NAME = siteConfig.name;
+export const DEFAULT_OG_IMAGE = siteConfig.ogImage;
 
 type BuildPageMetadataInput = {
     title: string;

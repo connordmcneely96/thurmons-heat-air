@@ -4,32 +4,36 @@ import LayoutShell from "@/components/layout/LayoutShell";
 import { ToastProvider } from "@/components/ui/Toast";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { siteConfig } from "@/lib/site.config";
+
+const TITLE = `${siteConfig.name} | Heating & Air Conditioning | El Dorado, AR`;
+const DESC = siteConfig.description;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Evergrow Landscaping | Professional Landscaping Services | Residential and Commercial",
+    default: TITLE,
     template: `%s | ${SITE_NAME}`,
   },
-  description: "Professional Landscaping Services in Arkansas and Oklahoma. Lawncare, Landscaping, Seasonal Cleanups, Pressure Washing",
-  keywords: ["landscaping", "lawn care", "Arkansas", "Oklahoma", "landscaping design", "pressure washing", "seasonal cleanup"],
+  description: DESC,
+  keywords: [...siteConfig.seo.keywords],
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Evergrow Landscaping | Professional Landscaping Services | Residential and Commercial",
-    description: "Professional Landscaping Services in Arkansas and Oklahoma. Lawncare, Landscaping, Seasonal Cleanups, Pressure Washing",
-    url: "https://evergrowlandscaping.com",
-    siteName: "Evergrow Landscaping",
+    title: TITLE,
+    description: DESC,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
     images: [{ url: DEFAULT_OG_IMAGE }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Evergrow Landscaping | Professional Landscaping Services | Residential and Commercial",
-    description: "Professional Landscaping Services in Arkansas and Oklahoma. Lawncare, Landscaping, Seasonal Cleanups, Pressure Washing",
+    title: TITLE,
+    description: DESC,
     images: [DEFAULT_OG_IMAGE],
   },
 };
