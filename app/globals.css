@@ -1,35 +1,37 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Brand Colors - Evergrow approved palette */
-  /* Dark Green: #13733A | Light Green: #94C952 | White: #FFFFFF */
-  --color-brand-dark-green: #13733A;
-  --color-brand-light-green: #94C952;
+  /* Brand Colors - Thurmon's Heat & Air (HVAC) palette */
+  /* Primary Blue: #0F5C9E | Heat Accent Orange: #EA7423 | White: #FFFFFF */
+  --color-brand-dark-green: #0F5C9E;
+  --color-brand-light-green: #EA7423;
   --color-brand-white: #FFFFFF;
 
-  --color-forest-green: #13733A;
-  --color-forest-green-50: #E8F5EE;
-  --color-forest-green-100: #C3E4CF;
-  --color-forest-green-200: #9BD3AF;
-  --color-forest-green-300: #73C18F;
-  --color-forest-green-400: #4BAF6F;
-  --color-forest-green-500: #13733A;
-  --color-forest-green-600: #0F5C2E;
-  --color-forest-green-700: #0B4522;
-  --color-forest-green-800: #072E17;
-  --color-forest-green-900: #04170B;
+  /* Primary brand BLUE (token name kept as 'forest-green' to avoid churn) */
+  --color-forest-green: #0F5C9E;
+  --color-forest-green-50: #EAF3FB;
+  --color-forest-green-100: #C8E0F3;
+  --color-forest-green-200: #9FC6E8;
+  --color-forest-green-300: #6FA6D8;
+  --color-forest-green-400: #3D82C2;
+  --color-forest-green-500: #0F5C9E;
+  --color-forest-green-600: #0C4E87;
+  --color-forest-green-700: #0A3F6D;
+  --color-forest-green-800: #072E50;
+  --color-forest-green-900: #041E34;
 
-  --color-vibrant-gold: #94C952;
-  --color-vibrant-gold-50: #F2F8E8;
-  --color-vibrant-gold-100: #DFF0C0;
-  --color-vibrant-gold-200: #C7E397;
-  --color-vibrant-gold-300: #AFDA6D;
-  --color-vibrant-gold-400: #94C952;
-  --color-vibrant-gold-500: #94C952;
-  --color-vibrant-gold-600: #76A141;
-  --color-vibrant-gold-700: #597C32;
-  --color-vibrant-gold-800: #3C5722;
-  --color-vibrant-gold-900: #1F3211;
+  /* Warm HEAT accent ORANGE (token name kept as 'vibrant-gold' to avoid churn) */
+  --color-vibrant-gold: #EA7423;
+  --color-vibrant-gold-50: #FDF3E9;
+  --color-vibrant-gold-100: #FADBBE;
+  --color-vibrant-gold-200: #F6C091;
+  --color-vibrant-gold-300: #F2A463;
+  --color-vibrant-gold-400: #EF8C3F;
+  --color-vibrant-gold-500: #EA7423;
+  --color-vibrant-gold-600: #CB5F18;
+  --color-vibrant-gold-700: #A24A14;
+  --color-vibrant-gold-800: #79370F;
+  --color-vibrant-gold-900: #50250A;
 
   --color-deep-charcoal: #1F1F1F;
   --color-deep-charcoal-50: #F5F5F5;
@@ -42,10 +44,11 @@
   --color-deep-charcoal-700: #262626;
   --color-deep-charcoal-800: #1F1F1F;
   --color-deep-charcoal-900: #171717;
-  /* Murphy USA Bid Colors */
+
+  /* Secondary cool accent */
   --color-ocean-blue: #2E5A8F;
   --color-warm-cream: #F5F1E8;
-  --color-hopeful-teal: #4DB8AC;
+  --color-hopeful-teal: #2E9FC7;
   --color-brand-charcoal: #333333;
 
   /* Semantic Colors */
