@@ -16,7 +16,7 @@ const services = [
   {
     href: '/services/lawn-care',
     title: 'AC Repair & Service',
-    desc: 'Fast diagnosis and repair for any make or model. We get your cooling back fast — often same day.',
+    desc: 'Fast diagnosis and repair for any make or model. We get your cooling back fast, often same day.',
     Icon: Wind,
   },
   {
@@ -28,7 +28,7 @@ const services = [
   {
     href: '/services/seasonal-cleanup',
     title: 'System Installation',
-    desc: 'New high-efficiency AC and heating systems sized right for your home — with financing available.',
+    desc: 'New high-efficiency AC and heating systems sized right for your home, with financing available.',
     Icon: Wrench,
   },
   {
@@ -40,10 +40,10 @@ const services = [
 ];
 
 const whyUs = [
-  { Icon: Clock, title: 'Same-Day Service', desc: 'When your AC or heat goes out, you need it fixed now — not next week. We move fast.' },
-  { Icon: DollarSign, title: 'Upfront Honest Pricing', desc: 'Straight quotes before we start. No pressure, no surprise upsells — just the work you need.' },
-  { Icon: CheckCircle, title: 'Financing Available', desc: 'A new system shouldn\u2019t break the bank. Flexible financing options on installs.' },
-  { Icon: Shield, title: 'Licensed & Insured', desc: `Arkansas licensed HVAC (#${siteConfig.license}) — local, accountable, and dependable.` },
+  { Icon: Clock, title: 'Same-Day Service', desc: 'When your AC or heat goes out, you need it fixed now, not next week. We move fast.' },
+  { Icon: DollarSign, title: 'Upfront Honest Pricing', desc: 'Straight quotes before we start. No pressure, no surprise upsells, just the work you need.' },
+  { Icon: CheckCircle, title: 'Financing Available', desc: 'A new system should not break the bank. Flexible financing options on installs.' },
+  { Icon: Shield, title: 'Licensed & Insured', desc: `Arkansas licensed HVAC (#${siteConfig.license}), local, accountable, and dependable.` },
 ];
 
 export default function HomePage() {
@@ -77,7 +77,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-gray-100 text-lg md:text-xl mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-              Fast, dependable AC and heating service for El Dorado homes and businesses — repairs, installs, and maintenance done right the first time.
+              Fast, dependable AC and heating service for El Dorado homes and businesses. Repairs, installs, and maintenance done right the first time.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
@@ -134,7 +134,7 @@ export default function HomePage() {
                   <div className="mt-1 mr-3 flex-shrink-0 w-6 h-6 rounded-full bg-forest-green/10 flex items-center justify-center">
                     <CheckCircle className="w-4 h-4 text-forest-green" />
                   </div>
-                  <span className="text-gray-700">Upfront pricing — no surprises, no pressure</span>
+                  <span className="text-gray-700">Upfront pricing, no surprises, no pressure</span>
                 </li>
                 <li className="flex items-start">
                   <div className="mt-1 mr-3 flex-shrink-0 w-6 h-6 rounded-full bg-forest-green/10 flex items-center justify-center">
@@ -167,7 +167,7 @@ export default function HomePage() {
             </h2>
             <div className="w-24 h-1 bg-vibrant-gold mx-auto mb-6"></div>
             <p className="text-lg text-gray-600">
-              Complete heating and cooling solutions for El Dorado and the surrounding communities — repair, replace, and maintain.
+              Complete heating and cooling solutions for El Dorado and the surrounding communities. Repair, replace, and maintain.
             </p>
           </div>
 
@@ -231,7 +231,7 @@ export default function HomePage() {
             <h2 className="text-4xl font-heading font-bold text-deep-charcoal mb-4">Proudly Serving El Dorado &amp; South Arkansas</h2>
             <p className="text-lg text-gray-600 mb-4">Fast, reliable heating and cooling service across Union County and the surrounding area.</p>
             <p className="text-base text-gray-500">
-              El Dorado · Magnolia · Camden · Smackover · Norphlet · Junction City · Strong · Huttig — and surrounding communities.
+              El Dorado &middot; Magnolia &middot; Camden &middot; Smackover &middot; Norphlet &middot; Junction City &middot; Strong &middot; Huttig &mdash; and surrounding communities.
             </p>
           </div>
 
@@ -242,7 +242,7 @@ export default function HomePage() {
                 <MapPin className="w-4 h-4 text-forest-green mr-2 flex-shrink-0" />
                 {siteConfig.address.full}
               </p>
-              <p className="text-sm text-gray-500 mb-6">Not sure if we cover your area? Give us a call — if you\u2019re near El Dorado, we\u2019ve got you.</p>
+              <p className="text-sm text-gray-500 mb-6">Not sure if we cover your area? Give us a call. If you are near El Dorado, chances are we serve it.</p>
               <Link
                 href="/quote-request"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-forest-green text-white font-bold text-sm uppercase tracking-wide hover:bg-forest-green-700 transition-colors"
@@ -259,7 +259,7 @@ export default function HomePage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Thurmon's Heat & Air – El Dorado Service Area"
+                  title="Thurmons Heat and Air - El Dorado Service Area"
                 />
               </div>
             </div>
@@ -276,10 +276,10 @@ export default function HomePage() {
         <div className="container relative z-10 text-center">
           <span className="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-sm font-bold tracking-wider uppercase mb-6 backdrop-blur-sm border border-white/20">Get Started</span>
           <h2 className="text-h2 font-heading font-bold text-4xl md:text-5xl text-white mb-6">
-            AC Out? Heat Not Working? Let\u2019s Fix It.
+            AC Out? Heat Not Working? We Can Help.
           </h2>
           <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            From emergency repairs to a brand-new system, {siteConfig.name} makes it easy to get comfortable again — fast.
+            From emergency repairs to a brand-new system, {siteConfig.name} makes it easy to get comfortable again, fast.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -297,7 +297,7 @@ export default function HomePage() {
             </a>
           </div>
           <p className="mt-6 text-white/60 text-sm">
-            Fast, free estimates on installs • Upfront pricing • Financing available
+            Fast, free estimates on installs &bull; Upfront pricing &bull; Financing available
           </p>
         </div>
       </section>
