@@ -16,7 +16,6 @@ const navigation = [
 ];
 
 // NOTE: first four hrefs reuse the original route slugs to avoid 404s.
-// Routes get renamed to HVAC slugs in a later cleanup pass.
 const services = [
     { name: 'AC Repair & Service', href: '/services/lawn-care' },
     { name: 'Heating & Furnace', href: '/services/flower-beds' },
@@ -31,7 +30,6 @@ export default function Header() {
     const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
     const pathname = usePathname();
 
-    // Close mobile menu on route change
     useEffect(() => {
         setIsOpen(false);
         setActiveSubmenu(null);
@@ -41,11 +39,9 @@ export default function Header() {
         <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
             <div className="container mx-auto px-4">
                 <div className="flex items-center h-16">
-                    {/* Logo — text wordmark until a Thurmon's logo asset is delivered */}
+                    {/* Logo */}
                     <Link href="/" className="flex items-center flex-shrink-0 group">
-                        <span className="text-base sm:text-lg font-extrabold uppercase tracking-tight text-forest-green leading-none whitespace-nowrap">
-                            {siteConfig.name}
-                        </span>
+                        <img src="/images/logo.png" alt="Thurmon's Heat & Air" className="h-11 sm:h-12 w-auto" />
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -54,13 +50,13 @@ export default function Header() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold transition-colors"
+                                className="text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold-700 transition-colors"
                             >
                                 {item.name}
                             </Link>
                         ))}
                         <div className="relative group">
-                            <button className="text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold transition-colors flex items-center">
+                            <button className="text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold-700 transition-colors flex items-center">
                                 Services
                             </button>
                             <div className="absolute top-full left-0 pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
@@ -83,26 +79,26 @@ export default function Header() {
                     <div className="hidden lg:flex items-center space-x-6 ml-auto">
                         <a
                             href={`tel:${siteConfig.phoneRaw}`}
-                            className="flex items-center space-x-2 text-forest-green font-semibold hover:text-vibrant-gold transition-colors"
+                            className="flex items-center space-x-2 text-forest-green font-semibold hover:text-vibrant-gold-700 transition-colors"
                         >
                             <Phone className="w-4 h-4" />
                             <span>{siteConfig.phone}</span>
                         </a>
                         <Link
                             href="/pay"
-                            className="text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold transition-colors"
+                            className="text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold-700 transition-colors"
                         >
                             Make a Payment
                         </Link>
                         <Link
                             href="/portal"
-                            className="text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold transition-colors"
+                            className="text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold-700 transition-colors"
                         >
                             Client Login
                         </Link>
                         <Link
                             href="/admin/login"
-                            className="flex items-center space-x-1 text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold transition-colors"
+                            className="flex items-center space-x-1 text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold-700 transition-colors"
                         >
                             <Shield className="w-4 h-4" />
                             <span>Admin</span>
@@ -115,9 +111,8 @@ export default function Header() {
                         </Link>
                     </div>
 
-                    {/* Mobile Actions — Phone, Login, Quote always visible outside hamburger */}
+                    {/* Mobile Actions */}
                     <div className="flex lg:hidden items-center gap-1 ml-auto">
-                        {/* Phone — icon always, number on ≥380px */}
                         <a
                             href={`tel:${siteConfig.phoneRaw}`}
                             className="min-w-[44px] min-h-[44px] flex items-center justify-center text-forest-green"
@@ -129,7 +124,6 @@ export default function Header() {
                             </span>
                         </a>
 
-                        {/* Client Login — shown on ≥380px */}
                         <Link
                             href="/portal"
                             className="hidden min-[380px]:flex min-h-[44px] min-w-[44px] items-center justify-center text-xs font-semibold uppercase tracking-wider text-forest-green px-2 whitespace-nowrap"
@@ -137,7 +131,6 @@ export default function Header() {
                             Login
                         </Link>
 
-                        {/* Get Quote CTA — always visible */}
                         <Link
                             href="/quote-request"
                             className="min-h-[44px] flex items-center justify-center bg-forest-green text-white px-3 py-2 rounded-md font-bold text-xs uppercase tracking-wide whitespace-nowrap"
@@ -145,7 +138,6 @@ export default function Header() {
                             Get Quote
                         </Link>
 
-                        {/* Hamburger */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
                             className="min-w-[44px] min-h-[44px] p-2 rounded-md text-forest-green flex items-center justify-center"
@@ -157,7 +149,7 @@ export default function Header() {
                 </div>
             </div>
 
-            {/* Mobile Menu Overlay — nav links only */}
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
