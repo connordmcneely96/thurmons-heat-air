@@ -13,30 +13,10 @@ export const metadata: Metadata = buildPageMetadata({
 });
 
 const services = [
-  {
-    href: '/services/lawn-care',
-    title: 'AC Repair & Service',
-    desc: 'Fast diagnosis and repair for any make or model. We get your cooling back fast, often same day.',
-    Icon: Wind,
-  },
-  {
-    href: '/services/flower-beds',
-    title: 'Heating & Furnace',
-    desc: 'Furnace and heat pump repair, tune-ups, and replacement to keep you warm through every cold snap.',
-    Icon: Flame,
-  },
-  {
-    href: '/services/seasonal-cleanup',
-    title: 'System Installation',
-    desc: 'New high-efficiency AC and heating systems sized right for your home, with financing available.',
-    Icon: Wrench,
-  },
-  {
-    href: '/services/pressure-washing',
-    title: 'Maintenance & Mini-Splits',
-    desc: 'Seasonal tune-ups and ductless mini-split installs that lower bills and extend equipment life.',
-    Icon: ClipboardCheck,
-  },
+  { href: '/services/lawn-care', title: 'AC Repair & Service', desc: 'Fast diagnosis and repair for any make or model. We get your cooling back fast, often same day.', Icon: Wind },
+  { href: '/services/flower-beds', title: 'Heating & Furnace', desc: 'Furnace and heat pump repair, tune-ups, and replacement to keep you warm through every cold snap.', Icon: Flame },
+  { href: '/services/seasonal-cleanup', title: 'System Installation', desc: 'New high-efficiency AC and heating systems sized right for your home, with financing available.', Icon: Wrench },
+  { href: '/services/pressure-washing', title: 'Maintenance & Mini-Splits', desc: 'Seasonal tune-ups and ductless mini-split installs that lower bills and extend equipment life.', Icon: ClipboardCheck },
 ];
 
 const whyUs = [
@@ -54,6 +34,8 @@ const highlights = [
   'Se habla espa\u00f1ol — service in English & Spanish',
 ];
 
+const gallery = ['gallery-01', 'gallery-02', 'gallery-04', 'gallery-05', 'gallery-06', 'gallery-07'];
+
 export default function HomePage() {
   return (
     <main className="flex-col">
@@ -61,13 +43,13 @@ export default function HomePage() {
       <section
         className="relative flex flex-col overflow-hidden bg-forest-green"
         style={{
-          backgroundImage: "url('/api/assets/home-hero-bg.png')",
+          backgroundImage: "url('/images/gallery-07.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="absolute inset-0 bg-black/55 z-10" />
+        <div className="absolute inset-0 bg-black/60 z-10" />
 
         <div className="container relative z-20 px-4 pt-28 pb-12 lg:pt-32 lg:pb-16">
           <MotionDiv
@@ -107,7 +89,7 @@ export default function HomePage() {
         </div>
 
         {/* Credentials Bar */}
-        <div className="relative z-20 bg-black/30 backdrop-blur-sm border-t border-white/10">
+        <div className="relative z-20 bg-black/40 backdrop-blur-sm border-t border-white/10">
           <div className="container px-4 py-4">
             <div className="flex flex-wrap justify-center lg:justify-start gap-5 md:gap-8 text-white/90 text-sm md:text-base font-medium">
               <div className="flex items-center"><Shield className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> Licensed &amp; Insured</div>
@@ -124,8 +106,8 @@ export default function HomePage() {
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-100 h-[400px] bg-gradient-to-br from-forest-green to-deep-charcoal flex items-center justify-center">
-                <span className="text-white font-heading font-bold text-3xl text-center px-6">{siteConfig.name}</span>
+              <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-gray-100 h-[400px]">
+                <img src="/images/gallery-06.jpg" alt="Thurmon's Heat & Air technician servicing an HVAC system in El Dorado, AR" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-forest-green text-white p-6 rounded-xl shadow-xl hidden md:block">
                 <p className="text-2xl font-bold font-heading">Since</p>
@@ -161,13 +143,9 @@ export default function HomePage() {
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-forest-green font-bold uppercase tracking-wider text-sm mb-2 block">What We Offer</span>
-            <h2 className="text-h2 font-heading font-bold text-4xl text-deep-charcoal mb-4">
-              Our HVAC Services
-            </h2>
+            <h2 className="text-h2 font-heading font-bold text-4xl text-deep-charcoal mb-4">Our HVAC Services</h2>
             <div className="w-24 h-1 bg-vibrant-gold mx-auto mb-6"></div>
-            <p className="text-lg text-gray-600">
-              Complete heating and cooling solutions for El Dorado and the surrounding communities. Repair, replace, and maintain.
-            </p>
+            <p className="text-lg text-gray-600">Complete heating and cooling solutions for El Dorado and the surrounding communities. Repair, replace, and maintain.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -178,12 +156,8 @@ export default function HomePage() {
                     <Icon className="w-14 h-14 text-forest-green" />
                   </div>
                   <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-xl font-bold text-forest-green mb-3 group-hover:text-vibrant-gold transition-colors">
-                      {title}
-                    </h3>
-                    <p className="text-gray-600 mb-6 flex-grow text-sm">
-                      {desc}
-                    </p>
+                    <h3 className="text-xl font-bold text-forest-green mb-3 group-hover:text-vibrant-gold transition-colors">{title}</h3>
+                    <p className="text-gray-600 mb-6 flex-grow text-sm">{desc}</p>
                     <span className="text-forest-green font-bold text-sm uppercase tracking-wide flex items-center group-hover:underline mt-auto">
                       Learn More <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
                     </span>
@@ -200,9 +174,7 @@ export default function HomePage() {
         <div className="container">
           <div className="text-center mb-12">
             <span className="text-forest-green font-bold uppercase tracking-wider text-sm mb-2 block">Why Choose Us</span>
-            <h2 className="text-h2 font-heading font-bold text-4xl text-deep-charcoal">
-              The El Dorado Difference
-            </h2>
+            <h2 className="text-h2 font-heading font-bold text-4xl text-deep-charcoal">The El Dorado Difference</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -219,11 +191,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Recent Projects Gallery */}
+      <section className="section bg-gray-50">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-forest-green font-bold uppercase tracking-wider text-sm mb-2 block">Our Work</span>
+            <h2 className="text-h2 font-heading font-bold text-4xl text-deep-charcoal mb-4">Recent Projects</h2>
+            <div className="w-24 h-1 bg-vibrant-gold mx-auto mb-6"></div>
+            <p className="text-lg text-gray-600">Real installs and service calls across El Dorado and South Arkansas.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {gallery.map((g) => (
+              <div key={g} className="overflow-hidden rounded-xl shadow-sm aspect-[4/3]">
+                <img
+                  src={`/images/${g}.jpg`}
+                  alt="Thurmon's Heat & Air recent HVAC install and service project in El Dorado, AR"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <Testimonials />
 
       {/* Service Area Section */}
-      <section className="section bg-gray-50 border-t border-gray-200">
+      <section className="section bg-white border-t border-gray-200">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-forest-green font-bold uppercase tracking-wider text-sm mb-2 block">Service Area</span>
@@ -235,7 +231,7 @@ export default function HomePage() {
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-sm p-8">
+            <div className="bg-gray-50 rounded-2xl shadow-sm p-8">
               <h3 className="text-2xl font-heading font-bold text-forest-green mb-3">Based in El Dorado, AR</h3>
               <p className="text-gray-600 mb-2 flex items-center">
                 <MapPin className="w-4 h-4 text-forest-green mr-2 flex-shrink-0" />
@@ -274,30 +270,14 @@ export default function HomePage() {
 
         <div className="container relative z-10 text-center">
           <span className="inline-block py-1 px-3 rounded-full bg-white/20 text-white text-sm font-bold tracking-wider uppercase mb-6 backdrop-blur-sm border border-white/20">Get Started</span>
-          <h2 className="text-h2 font-heading font-bold text-4xl md:text-5xl text-white mb-6">
-            AC Out? Heat Not Working? We Can Help.
-          </h2>
-          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            From emergency repairs to a brand-new system, {siteConfig.name} makes it easy to get comfortable again, fast.
-          </p>
+          <h2 className="text-h2 font-heading font-bold text-4xl md:text-5xl text-white mb-6">AC Out? Heat Not Working? We Can Help.</h2>
+          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">From emergency repairs to a brand-new system, {siteConfig.name} makes it easy to get comfortable again, fast.</p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link
-              href="/quote-request"
-              className="inline-flex items-center justify-center px-10 py-5 rounded-lg bg-vibrant-gold text-white font-bold text-xl hover:bg-forest-green-700 transform hover:-translate-y-1 transition-all shadow-lg"
-            >
-              Get Your Free Estimate
-            </Link>
-            <a
-              href={`tel:${siteConfig.phoneRaw}`}
-              className="inline-flex items-center justify-center px-10 py-5 rounded-lg border-2 border-white text-white font-bold text-xl hover:bg-white hover:text-forest-green transform hover:-translate-y-1 transition-all"
-            >
-              <Phone className="w-5 h-5 mr-2" /> Call {siteConfig.phone}
-            </a>
+            <Link href="/quote-request" className="inline-flex items-center justify-center px-10 py-5 rounded-lg bg-vibrant-gold text-white font-bold text-xl hover:bg-forest-green-700 transform hover:-translate-y-1 transition-all shadow-lg">Get Your Free Estimate</Link>
+            <a href={`tel:${siteConfig.phoneRaw}`} className="inline-flex items-center justify-center px-10 py-5 rounded-lg border-2 border-white text-white font-bold text-xl hover:bg-white hover:text-forest-green transform hover:-translate-y-1 transition-all"><Phone className="w-5 h-5 mr-2" /> Call {siteConfig.phone}</a>
           </div>
-          <p className="mt-6 text-white/60 text-sm">
-            Free estimates &bull; {siteConfig.highlights.laborWarranty} &bull; Wells Fargo financing
-          </p>
+          <p className="mt-6 text-white/60 text-sm">Free estimates &bull; {siteConfig.highlights.laborWarranty} &bull; Wells Fargo financing</p>
         </div>
       </section>
     </main>
