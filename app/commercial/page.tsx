@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { ServiceFeatures } from '@/components/services/ServiceFeatures'
@@ -7,141 +6,58 @@ import { ServiceFAQ } from '@/components/services/ServiceFAQ'
 import { ServiceCTA } from '@/components/services/ServiceCTA'
 import { Metadata } from 'next'
 import { buildPageMetadata } from '@/lib/seo'
+import { siteConfig } from '@/lib/site.config'
 
 export const metadata: Metadata = buildPageMetadata({
-    title: 'Commercial Exterior Maintenance | Arkansas and Oklahoma | Licensed and Insured',
-    description: 'Professional Commercial Exterior Maintenance Services for properties small to large. Maintaining millions of square footage across Oklahoma and Arkansas.',
+    title: 'Commercial HVAC in El Dorado, AR | Heating & Cooling for Businesses',
+    description: 'Commercial heating and air conditioning for El Dorado businesses, offices, restaurants, and churches. Maintenance agreements, priority scheduling, and 24/7 emergency service.',
     path: '/commercial/',
 })
 
+const checkIcon = (
+    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+)
+
 const features = [
-    {
-        icon: (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        ),
-        title: '🗺️ Multi-State Coverage',
-        description: 'One vendor for all your locations in Arkansas and Oklahoma. Simplify your procurement process.',
-    },
-    {
-        icon: (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
-            </svg>
-        ),
-        title: '🧾 Unified Billing',
-        description: 'Consolidated invoicing for your entire portfolio. We integrate with major property management platforms.',
-    },
-    {
-        icon: (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-        ),
-        title: '🛡️ Compliance & Safety',
-        description: 'Fully licensed and insured. We meet rigorous corporate procurement requirements including background checks.',
-    },
-    {
-        icon: (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-        ),
-        title: '⚡ Rapid Response',
-        description: '24/7 emergency storm response and prioritized scheduling for commercial clients.',
-    },
-    {
-        icon: (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-        ),
-        title: '👤 Owner-Managed',
-        description: 'Direct accountability. Our leadership team is hands-on and accessible for high-level account reviews.',
-    },
-    {
-        icon: (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-        ),
-        title: '📈 Scalable Solutions',
-        description: 'From single retail pads to large corporate campuses, we have the fleet and workforce to handle it.',
-    },
+    { icon: checkIcon, title: 'Minimize Downtime', description: 'We respond fast and work around your hours so your business stays open and comfortable.' },
+    { icon: checkIcon, title: 'Maintenance Agreements', description: 'Scheduled tune-ups that catch small problems before they shut a system down at the worst time.' },
+    { icon: checkIcon, title: 'Priority Scheduling', description: 'Commercial clients get prioritized scheduling, including 24/7 emergency availability.' },
+    { icon: checkIcon, title: 'Licensed & Insured', description: `Fully licensed Arkansas HVAC (#${siteConfig.license}) and insured. Certificates available on request.` },
+    { icon: checkIcon, title: 'Honest, Upfront Quotes', description: 'Clear pricing before the work starts. No surprise invoices, no pressure to over-replace.' },
+    { icon: checkIcon, title: 'Any System Size', description: 'From a single rooftop unit to multiple systems across a building, we have you covered.' },
 ]
 
 const process = [
-    {
-        number: '1',
-        title: 'Portfolio Audit',
-        description: 'We review your locations to identify service gaps, savings opportunities, and potential risks.',
-    },
-    {
-        number: '2',
-        title: 'Custom Proposal',
-        description: 'You get a unified proposal with transparent pricing and defined SLAs for all your properties.',
-    },
-    {
-        number: '3',
-        title: 'Seamless Onboarding',
-        description: 'We handle the transition logistics, coordinating with your local managers to ensure zero service interruption.',
-    },
-    {
-        number: '4',
-        title: 'Account Review',
-        description: 'Quarterly check-ins with your dedicated account manager to review performance and optimize spend.',
-    },
+    { number: '1', title: 'On-Site Assessment', description: 'We walk your property, evaluate your equipment, and learn how your space is actually used.' },
+    { number: '2', title: 'Custom Proposal', description: 'You get clear, upfront pricing and a plan that fits your building and your budget.' },
+    { number: '3', title: 'Scheduled Service', description: 'We work around your business hours to keep disruption to your staff and customers minimal.' },
+    { number: '4', title: 'Ongoing Support', description: 'Optional maintenance agreements and priority service keep your systems running year-round.' },
 ]
 
 const faqs = [
-    {
-        question: 'What areas do you service?',
-        answer: 'We currently cover the entire states of Arkansas and Oklahoma. We are rapidly expanding our footprint to meet client needs.',
-    },
-    {
-        question: 'Do you self-perform or subcontract?',
-        answer: 'We are a self-performing landscaping company for our core markets. For specialized trades or remote locations, we manage a vetted network of partners to ensure consistent quality.',
-    },
-    {
-        question: 'What are your insurance limits?',
-        answer: 'We carry comprehensive General Liability, Auto, and Workers Compensation policies that meet or exceed standard corporate procurement requirements. Certificates available upon request.',
-    },
-    {
-        question: 'Can you work with our procurement platform?',
-        answer: 'Yes, we are experienced with major procurement and facility management platforms (e.g., Coupa, Ariba, ServiceChannel) for billing and work order management.',
-    },
-    {
-        question: 'Do you offer snow and ice management?',
-        answer: 'Yes, we provide 24/7 snow and ice management services for our commercial clients to ensure business continuity during winter weather events.',
-    },
+    { question: 'What kinds of businesses do you serve?', answer: 'Offices, retail, restaurants, churches, and other light-commercial properties throughout El Dorado and South Arkansas.' },
+    { question: 'Do you offer maintenance agreements?', answer: 'Yes. Scheduled maintenance plans keep your equipment efficient and help prevent the breakdowns that interrupt your business.' },
+    { question: 'How fast can you respond to a commercial emergency?', answer: 'Commercial clients receive priority scheduling, and we offer 24/7 emergency service for no-heat and no-cool situations.' },
+    { question: 'Are you licensed and insured?', answer: 'Yes. We are fully licensed for HVAC in Arkansas and carry insurance. Certificates of insurance are available on request.' },
+    { question: 'What size systems do you service?', answer: 'Everything from a single rooftop unit to multiple systems across a building. We will assess your setup and recommend the right approach.' },
 ]
 
 export default function CommercialPage() {
     return (
         <main>
             {/* Commercial Hero */}
-            <section
-                className="relative bg-forest-green"
-                style={{
-                    backgroundImage: "url('/api/assets/home-hero-bg.png')",
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                }}
-            >
-                <div className="absolute inset-0 bg-black/60" />
-
+            <section className="relative bg-forest-green">
+                <div className="absolute inset-0 bg-black/40" />
                 <div className="container relative z-10 pt-32 pb-20">
                     <div className="max-w-4xl">
                         <span className="inline-block py-1 px-3 rounded-full bg-white/10 text-vibrant-gold border border-white/20 mb-6 font-medium tracking-wide">
-                            Multi-State Commercial Landscaping
+                            Commercial Heating &amp; Cooling
                         </span>
                         <h1 className="text-white font-heading font-bold text-4xl md:text-5xl lg:text-7xl mb-4 leading-tight">
-                            One vendor. Every Property Handled.
+                            Keep Your Business Comfortable and Open
                         </h1>
                         <p className="text-white/90 text-xl md:text-2xl mb-8 max-w-2xl leading-relaxed">
-                            Reliable, Consistent, and Hassle Free!
+                            Reliable commercial HVAC service for El Dorado businesses. Fast response, honest pricing, and maintenance plans that prevent downtime.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4">
@@ -150,13 +66,13 @@ export default function CommercialPage() {
                                     Request Commercial Proposal
                                 </Button>
                             </Link>
-                            <a href="tel:405-479-5794">
+                            <a href={`tel:${siteConfig.phoneRaw}`}>
                                 <Button
                                     variant="outline"
                                     size="lg"
                                     className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-forest-green"
                                 >
-                                    Call (405) 479-5794
+                                    Call {siteConfig.phone}
                                 </Button>
                             </a>
                         </div>
@@ -174,15 +90,15 @@ export default function CommercialPage() {
                         </div>
                         <div className="flex items-center gap-2">
                             <svg className="w-5 h-5 text-vibrant-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                            <span>$2M+ Liability Insurance</span>
+                            <span>24/7 Emergency Service</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <svg className="w-5 h-5 text-vibrant-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                            <span>Consistent, Reliable, &amp; Accountable</span>
+                            <span>Priority Commercial Scheduling</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <svg className="w-5 h-5 text-vibrant-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                            <span>24/7 Emergency Contact</span>
+                            <span>Maintenance Agreements</span>
                         </div>
                     </div>
                 </div>
@@ -194,10 +110,10 @@ export default function CommercialPage() {
                     <div className="max-w-4xl mx-auto">
                         <div className="mb-12 text-center">
                             <h2 className="text-h2 font-heading text-brand-charcoal mb-4">
-                                Are you a property manager or a business owner?
+                                Run a business, office, or church?
                             </h2>
                             <p className="text-lg text-gray-600">
-                                You shouldn't have to chase down vendors, decipher dozens of different invoices, or worry if the lawn was actually mowed at your satellite location.
+                                You cannot afford customers sweating or staff freezing while you wait days for a callback. Comfort problems cost you sales, productivity, and goodwill.
                             </p>
                         </div>
 
@@ -208,22 +124,22 @@ export default function CommercialPage() {
                                     The Current Headache
                                 </h3>
                                 <ul className="space-y-3 text-gray-600">
-                                    <li>• Multiple vendors to vet and manage</li>
-                                    <li>• Inconsistent quality across locations</li>
-                                    <li>• Billing errors and reconciliation nightmares</li>
-                                    <li>• "No-show" crews and safety liabilities</li>
+                                    <li>&bull; Slow callbacks when a system goes down</li>
+                                    <li>&bull; Surprise repair bills you never approved</li>
+                                    <li>&bull; Comfort complaints from staff and customers</li>
+                                    <li>&bull; Aging equipment nobody is keeping an eye on</li>
                                 </ul>
                             </div>
                             <div className="bg-ocean-blue/5 p-8 rounded-xl border border-ocean-blue/10">
                                 <h3 className="text-xl font-bold text-ocean-blue mb-4 flex items-center">
-                                    <svg className="w-6 h-6 mr-2" fill="none" viewBox="0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                                    The Evergrow Solution
+                                    <svg className="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                                    The Thurmon&apos;s Solution
                                 </h3>
                                 <ul className="space-y-3 text-gray-700">
-                                    <li>• Single partner for AR & OK</li>
-                                    <li>• Standardized SOPs and quality checks</li>
-                                    <li>• One consolidated monthly invoice</li>
-                                    <li>• Proactive communication and reporting</li>
+                                    <li>&bull; A local team that answers and responds fast</li>
+                                    <li>&bull; Honest, upfront quotes before any work</li>
+                                    <li>&bull; Maintenance plans that catch problems early</li>
+                                    <li>&bull; Priority scheduling for commercial clients</li>
                                 </ul>
                             </div>
                         </div>
@@ -235,8 +151,8 @@ export default function CommercialPage() {
             <ServiceProcess steps={process} />
             <ServiceFAQ faqs={faqs} />
             <ServiceCTA
-                title="Ready to Streamline Your Landscape Management?"
-                description="Get a comprehensive proposal for your portfolio today. Email us at karson@evergrowlandscaping.com or request a proposal below."
+                title="Keep Your Business Running"
+                description={`Get a commercial proposal for your property today. Call ${siteConfig.phone} or request a proposal below.`}
                 buttonText="Request Commercial Proposal"
                 buttonLink="/quote-request/commercial/"
             />
