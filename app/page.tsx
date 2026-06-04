@@ -73,7 +73,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
               <Link
                 href="/quote-request"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-lg bg-vibrant-gold text-white font-bold text-lg hover:bg-forest-green-700 hover:scale-105 transition-all shadow-xl"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-lg bg-vibrant-gold text-deep-charcoal font-bold text-lg hover:bg-vibrant-gold-600 hover:scale-105 transition-all shadow-xl"
               >
                 Get a Free Estimate
                 <ArrowRight className="w-5 h-5 ml-2" />
@@ -130,7 +130,7 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              <Link href="/quote-request" className="text-forest-green font-bold text-lg hover:text-vibrant-gold transition-colors inline-flex items-center">
+              <Link href="/quote-request" className="text-forest-green font-bold text-lg hover:text-vibrant-gold-700 transition-colors inline-flex items-center">
                 Schedule Service <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </div>
@@ -156,7 +156,7 @@ export default function HomePage() {
                     <Icon className="w-14 h-14 text-forest-green" />
                   </div>
                   <div className="p-6 flex-grow flex flex-col">
-                    <h3 className="text-xl font-bold text-forest-green mb-3 group-hover:text-vibrant-gold transition-colors">{title}</h3>
+                    <h3 className="text-xl font-bold text-forest-green mb-3 group-hover:text-vibrant-gold-700 transition-colors">{title}</h3>
                     <p className="text-gray-600 mb-6 flex-grow text-sm">{desc}</p>
                     <span className="text-forest-green font-bold text-sm uppercase tracking-wide flex items-center group-hover:underline mt-auto">
                       Learn More <ArrowRight className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" />
@@ -274,7 +274,7 @@ export default function HomePage() {
           <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">From emergency repairs to a brand-new system, {siteConfig.name} makes it easy to get comfortable again, fast.</p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link href="/quote-request" className="inline-flex items-center justify-center px-10 py-5 rounded-lg bg-vibrant-gold text-white font-bold text-xl hover:bg-forest-green-700 transform hover:-translate-y-1 transition-all shadow-lg">Get Your Free Estimate</Link>
+            <Link href="/quote-request" className="inline-flex items-center justify-center px-10 py-5 rounded-lg bg-vibrant-gold text-deep-charcoal font-bold text-xl hover:bg-vibrant-gold-600 transform hover:-translate-y-1 transition-all shadow-lg">Get Your Free Estimate</Link>
             <a href={`tel:${siteConfig.phoneRaw}`} className="inline-flex items-center justify-center px-10 py-5 rounded-lg border-2 border-white text-white font-bold text-xl hover:bg-white hover:text-forest-green transform hover:-translate-y-1 transition-all"><Phone className="w-5 h-5 mr-2" /> Call {siteConfig.phone}</a>
           </div>
           <p className="mt-6 text-white/60 text-sm">Free estimates &bull; {siteConfig.highlights.laborWarranty} &bull; Wells Fargo financing</p>
