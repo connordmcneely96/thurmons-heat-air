@@ -1,3 +1,5 @@
+import { siteConfig } from '@/lib/site.config'
+
 export function ContactInfo() {
     const contactMethods = [
         {
@@ -7,9 +9,9 @@ export function ContactInfo() {
                 </svg>
             ),
             title: 'Phone',
-            content: '405-479-5794',
-            link: 'tel:4054795794',
-            description: 'Mon-Fri, 8AM-5PM',
+            content: siteConfig.phone,
+            link: `tel:${siteConfig.phoneRaw}`,
+            description: 'Open 7 days, 8AM-5PM',
         },
         {
             icon: (
@@ -18,8 +20,8 @@ export function ContactInfo() {
                 </svg>
             ),
             title: 'Email',
-            content: 'contact@evergrowlandscaping.com',
-            link: 'mailto:contact@evergrowlandscaping.com',
+            content: siteConfig.email,
+            link: `mailto:${siteConfig.email}`,
             description: '24-hour response time',
         },
         {
@@ -29,9 +31,9 @@ export function ContactInfo() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
             ),
-            title: 'Locations',
-            content: 'El Dorado, AR 71730',
-            description: 'Serving El Dorado & Oklahoma City areas',
+            title: 'Location',
+            content: siteConfig.address.full,
+            description: 'Serving El Dorado & South Arkansas',
         },
     ]
 
@@ -42,7 +44,7 @@ export function ContactInfo() {
                     Contact Information
                 </h2>
                 <p className="text-gray-600 mb-6">
-                    Prefer to reach out directly? Here's how you can get in touch.
+                    Prefer to reach out directly? Here&rsquo;s how you can get in touch.
                 </p>
             </div>
 
@@ -61,7 +63,7 @@ export function ContactInfo() {
                             {method.link ? (
                                 <a
                                     href={method.link}
-                                    className="text-forest-green hover:underline font-semibold"
+                                    className="text-forest-green hover:underline font-semibold break-all"
                                 >
                                     {method.content}
                                 </a>
@@ -74,27 +76,19 @@ export function ContactInfo() {
                 ))}
             </div>
 
-            {/* Business Hours */}
+            {/* Business Hours - TODO: confirm exact hours with Lisa */}
             <div className="bg-vibrant-gold-50 p-6 rounded-lg">
                 <h3 className="font-heading font-bold text-forest-green mb-4">
                     Business Hours
                 </h3>
                 <div className="space-y-2 text-gray-700">
                     <div className="flex justify-between">
-                        <span>Monday - Friday</span>
+                        <span>Monday - Sunday</span>
                         <span className="font-semibold">8:00 AM - 5:00 PM</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span>Saturday</span>
-                        <span className="font-semibold">Closed</span>
-                    </div>
-                    <div className="flex justify-between">
-                        <span>Sunday</span>
-                        <span className="font-semibold">Closed</span>
                     </div>
                 </div>
                 <p className="text-sm text-gray-500 mt-4">
-                    Emergency services available upon request
+                    24/7 emergency service available
                 </p>
             </div>
 
@@ -105,16 +99,13 @@ export function ContactInfo() {
                 </h3>
                 <div className="space-y-2">
                     <a href="/quote-request" className="block text-forest-green hover:underline">
-                        → Request a Free Quote
-                    </a>
-                    <a href="/about" className="block text-forest-green hover:underline">
-                        → View Our Work
+                        &rarr; Request a Free Estimate
                     </a>
                     <a href="/#services" className="block text-forest-green hover:underline">
-                        → See Our Services
+                        &rarr; See Our Services
                     </a>
                     <a href="/about" className="block text-forest-green hover:underline">
-                        → Learn About Us
+                        &rarr; Learn About Us
                     </a>
                 </div>
             </div>

@@ -92,7 +92,7 @@ export function ContactForm() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="(405) XXX-XXXX"
+                placeholder="(870) XXX-XXXX"
                 helperText="Optional - we'll call if you prefer"
             />
 
@@ -111,7 +111,7 @@ export function ContactForm() {
                 required
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Tell us more about your project or question..."
+                placeholder="Tell us about the issue or what you need..."
                 rows={6}
             />
 

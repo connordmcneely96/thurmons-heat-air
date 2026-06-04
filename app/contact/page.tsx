@@ -13,7 +13,7 @@ export default function ContactPage() {
                             Get in Touch
                         </h1>
                         <p className="text-xl">
-                            Have a question? Need a quote? We're here to help.
+                            Have a question? Need a quote? We&rsquo;re here to help.
                         </p>
                     </div>
                 </div>
@@ -29,7 +29,7 @@ export default function ContactPage() {
                                 Send Us a Message
                             </h2>
                             <p className="text-gray-600 mb-6">
-                                Fill out the form below and we'll get back to you within 24 hours.
+                                Fill out the form below and we&rsquo;ll get back to you within 24 hours.
                             </p>
                             <ContactForm />
                         </div>
@@ -42,11 +42,11 @@ export default function ContactPage() {
                 </div>
             </section>
 
-            {/* Map Section (Optional) */}
+            {/* Map Section */}
             <section className="section section-alt">
                 <div className="container">
                     <h2 className="text-h2 font-heading text-forest-green mb-8 text-center">
-                        Our Service Areas
+                        Our Service Area
                     </h2>
                     <div className="max-w-4xl mx-auto">
                         <ServiceAreaMap height={384} showBadge={false} />
@@ -58,6 +58,6 @@ export default function ContactPage() {
 }
 
 export const metadata = {
-    title: 'Contact Us | Evergrow Landscaping',
-    description: 'Contact Evergrow Landscaping for a free quote. Serving El Dorado, AR and Oklahoma City, OK. Phone, email, or contact form available.',
+    title: "Contact Us | Thurmon's Heat & Air",
+    description: 'Contact Thurmon\u2019s Heat & Air for fast HVAC service or a free estimate in El Dorado, AR. Call, email, or use our contact form.',
 }
