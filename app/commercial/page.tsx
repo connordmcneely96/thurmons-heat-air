@@ -62,7 +62,7 @@ export default function CommercialPage() {
 
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link href="/quote-request/commercial/">
-                                <Button className="w-full sm:w-auto bg-vibrant-gold text-white hover:bg-forest-green-700 border-0" size="lg">
+                                <Button className="w-full sm:w-auto bg-vibrant-gold text-deep-charcoal hover:bg-vibrant-gold-600 border-0" size="lg">
                                     Request Commercial Proposal
                                 </Button>
                             </Link>
