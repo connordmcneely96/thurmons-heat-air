@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "rating": 5,
+    "feedback": "Thurmon's was the only company who would come install the mini-split units I bought for my business. While there, they discovered issues with my main unit that could have cost me a lot of money down the road. That discovery saved me a ton. I highly recommend them.",
+    "customerName": "Brian D.",
+    "source": "Google",
+    "date": "2023"
+  },
+  {
+    "id": 2,
+    "rating": 5,
+    "feedback": "Mom and dad's heat went out Christmas Eve and Thurmon's had a new one installed the day after Christmas! They were so pleased with the friendly staff and service.",
+    "customerName": "Liz H.",
+    "source": "Google",
+    "date": "2023"
+  },
+  {
+    "id": 3,
+    "rating": 5,
+    "feedback": "Keith and his team were so quick when we requested a maintenance visit. They maintained our unit and helped us update our entire system, installing the new unit in the attic during the heat of summer. Our energy bill is definitely showing the benefit of the updated system!",
+    "customerName": "Natalie",
+    "source": "Google",
+    "date": "2025"
+  },
+  {
+    "id": 4,
+    "rating": 5,
+    "feedback": "Keith and his crew are top-notch. We switched providers two years ago on a friend's recommendation, and I am so glad we did. The techs are knowledgeable and professional, and I never feel awkward with them in our home.",
+    "customerName": "Sarah",
+    "source": "Google",
+    "date": "2025"
+  },
+  {
+    "id": 5,
+    "rating": 5,
+    "feedback": "Keith and his team are awesome. Their preventative maintenance plan has saved us several times from costly repairs that would have otherwise gone unchecked. Some of the best at what they do.",
+    "customerName": "Kellye O.",
+    "source": "Google",
+    "date": "2025"
+  },
+  {
+    "id": 6,
+    "rating": 5,
+    "feedback": "When my air went out, Keith and his team were amazing. They did not take days to get to me and triple-checked everything to take care of my family. I loved how kind and informative they were. Definitely 5 stars!",
+    "customerName": "Aikenya S.",
+    "source": "Google",
+    "date": "2025"
+  },
+  {
+    "id": 7,
+    "rating": 5,
+    "feedback": "Great service, always willing to be there ASAP, and they do top-quality work at a good price. Highly recommend.",
+    "customerName": "Mitchell C.",
+    "source": "Google",
+    "date": "2024"
+  },
+  {
+    "id": 8,
+    "rating": 5,
+    "feedback": "Keith and his crew are a great group of guys. They did an awesome job fixing the problem, very reasonable on price and dependable. Will definitely use them again.",
+    "customerName": "Christopher M.",
+    "source": "Google",
+    "date": "2021"
+  }
+]
