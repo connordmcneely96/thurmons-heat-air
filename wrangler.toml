@@ -1,0 +1,47 @@
+name = "evergrow-landscaping"
+pages_build_output_dir = "out"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "evergrow-landscaping-db"
+database_id = "7777252d-9fc2-4828-b5eb-16b2ea93ecfe"
+
+# R2 Bucket Binding
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "evergrow-landscaping-assets"
+
+# Environment variables (non-sensitive only)
+# Sensitive keys must be added via: wrangler secret put <KEY_NAME>
+# -----------------------------------------------------------------------
+# Required secrets (set via wrangler secret put or Cloudflare dashboard):
+#   wrangler secret put EVERGROW_STRIPE_SECRET_KEY_TEST         # sk_test_...
+#   wrangler secret put EVERGROW_STRIPE_SECRET_KEY_LIVE         # sk_live_...
+#   wrangler secret put EVERGROW_STRIPE_WEBHOOK_SECRET_TEST     # whsec_... (test endpoint)
+#   wrangler secret put EVERGROW_STRIPE_WEBHOOK_SECRET_LIVE     # whsec_... (live endpoint)
+#   wrangler secret put RESEND_API_KEY                          # re_...
+#   wrangler secret put SESSION_SECRET                          # random 64-char string
+#   wrangler secret put JWT_SECRET                              # random 64-char string
+#   wrangler secret put NOTIFICATION_EMAIL                      # e.g. karson@evergrowlandscaping.com
+#
+# Frontend (set as plain vars in Cloudflare Pages, not secrets):
+#   NEXT_PUBLIC_STRIPE_PUBLISHABLE_EVERGROW_TEST   = pk_test_...
+#   NEXT_PUBLIC_STRIPE_PUBLISHABLE_EVERGROW_LIVE   = pk_live_...
+#
+# Key selection: ENVIRONMENT="production" → live keys, anything else → test keys
+# -----------------------------------------------------------------------
+[vars]
+ENVIRONMENT = "development"
+
+# KV Namespace Bindings
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "2c81924851c24379b97a970d820336ba"
+
+[[kv_namespaces]]
+binding = "CACHE"
+id = "9f958c24ca8c4c7ba8b3096a6e9c582b"
+

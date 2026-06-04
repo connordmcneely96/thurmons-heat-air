@@ -1,0 +1,21 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2E5A8F" />
+      <stop offset="1" stop-color="#4DB8AC" />
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="1600" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F1E8" stop-opacity="0.18" />
+      <stop offset="1" stop-color="#F5F1E8" stop-opacity="0.05" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <path
+    d="M0 640C240 560 420 540 640 600C860 660 1040 720 1280 700C1420 690 1540 640 1600 610V900H0V640Z"
+    fill="url(#wave)"
+  />
+  <path
+    d="M0 520C210 470 430 470 660 520C890 570 1130 640 1600 560V610C1430 680 1260 720 1000 690C740 660 530 600 320 590C180 585 70 600 0 620V520Z"
+    fill="url(#wave)"
+  />
+</svg>
