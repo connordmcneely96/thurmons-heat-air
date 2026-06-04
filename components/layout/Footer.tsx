@@ -12,8 +12,8 @@ const Footer = () => {
                     {/* Brand Column */}
                     <div>
                         <Link href="/" className="inline-block mb-4">
-                            <span className="font-heading font-bold text-2xl tracking-tight text-white uppercase">
-                                {siteConfig.name}
+                            <span className="inline-flex bg-white rounded-xl p-3 shadow-md">
+                                <img src="/images/logo-mark.png" alt="Thurmon's Heat & Air" className="h-24 w-auto" />
                             </span>
                         </Link>
                         <p className="text-gray-300 text-sm leading-relaxed mb-6">
