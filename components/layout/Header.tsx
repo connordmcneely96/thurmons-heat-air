@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Shield } from 'lucide-react';
+import { siteConfig } from '@/lib/site.config';
 
 const navigation = [
     { name: 'Home', href: '/' },
@@ -15,11 +15,13 @@ const navigation = [
     { name: 'Contact', href: '/contact' },
 ];
 
+// NOTE: hrefs reuse the existing route slugs for now to avoid 404s.
+// Routes get renamed to HVAC slugs in the services batch.
 const services = [
-    { name: 'Lawn Care & Maintenance', href: '/services/lawn-care' },
-    { name: 'Landscaping & Design', href: '/services/flower-beds' },
-    { name: 'Seasonal Cleanups', href: '/services/seasonal-cleanup' },
-    { name: 'Pressure Washing & Soft Washing', href: '/services/pressure-washing' },
+    { name: 'AC Repair & Service', href: '/services/lawn-care' },
+    { name: 'Heating & Furnace', href: '/services/flower-beds' },
+    { name: 'System Installation', href: '/services/seasonal-cleanup' },
+    { name: 'Maintenance & Mini-Splits', href: '/services/pressure-washing' },
 ];
 
 export default function Header() {
@@ -37,15 +39,11 @@ export default function Header() {
         <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
             <div className="container mx-auto px-4">
                 <div className="flex items-center h-16">
-                    {/* Logo — icon only (crop to the circular icon portion of the SVG) */}
+                    {/* Logo — text wordmark until a Thurmon's logo asset is delivered */}
                     <Link href="/" className="flex items-center flex-shrink-0 group">
-                        <img
-                            src="/images/logo-icon.svg"
-                            alt="Evergrow Landscaping"
-                            width={52}
-                            height={52}
-                            style={{ width: '52px', height: '52px' }}
-                        />
+                        <span className="text-base sm:text-lg font-extrabold uppercase tracking-tight text-forest-green leading-none whitespace-nowrap">
+                            {siteConfig.name}
+                        </span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -63,7 +61,7 @@ export default function Header() {
                             <button className="text-sm font-semibold uppercase tracking-wider text-forest-green hover:text-vibrant-gold transition-colors flex items-center">
                                 Services
                             </button>
-                            <div className="absolute top-full left-0 pt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <div className="absolute top-full left-0 pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                                 <div className="bg-white rounded-lg shadow-xl py-2 overflow-hidden">
                                     {services.map((service) => (
                                         <Link
@@ -82,11 +80,11 @@ export default function Header() {
                     {/* Desktop CTA Buttons */}
                     <div className="hidden lg:flex items-center space-x-6 ml-auto">
                         <a
-                            href="tel:+14054795794"
+                            href={`tel:${siteConfig.phoneRaw}`}
                             className="flex items-center space-x-2 text-forest-green font-semibold hover:text-vibrant-gold transition-colors"
                         >
                             <Phone className="w-4 h-4" />
-                            <span>405-479-5794</span>
+                            <span>{siteConfig.phone}</span>
                         </a>
                         <Link
                             href="/pay"
@@ -119,13 +117,13 @@ export default function Header() {
                     <div className="flex lg:hidden items-center gap-1 ml-auto">
                         {/* Phone — icon always, number on ≥380px */}
                         <a
-                            href="tel:+14054795794"
+                            href={`tel:${siteConfig.phoneRaw}`}
                             className="min-w-[44px] min-h-[44px] flex items-center justify-center text-forest-green"
-                            aria-label="Call us at 405-479-5794"
+                            aria-label={`Call us at ${siteConfig.phone}`}
                         >
                             <Phone className="w-5 h-5" />
                             <span className="hidden min-[380px]:inline ml-1 text-sm font-semibold whitespace-nowrap">
-                                405-479-5794
+                                {siteConfig.phone}
                             </span>
                         </a>
 

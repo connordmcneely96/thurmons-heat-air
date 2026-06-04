@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from 'lucide-react';
+import { Facebook, MapPin, Phone, Mail, ShieldCheck } from 'lucide-react';
+import { siteConfig } from '@/lib/site.config';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -11,22 +12,16 @@ const Footer = () => {
                     {/* Brand Column */}
                     <div>
                         <Link href="/" className="inline-block mb-4">
-                            <span className="font-heading font-bold text-2xl tracking-tight text-white">
-                                EVERGROW
+                            <span className="font-heading font-bold text-2xl tracking-tight text-white uppercase">
+                                {siteConfig.name}
                             </span>
                         </Link>
                         <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                            Professional landscaping services dedicated to transforming and maintaining spaces across Arkansas &amp; Oklahoma.
+                            Dependable heating &amp; air conditioning service for El Dorado and South Arkansas — repairs, installs, and maintenance done right.
                         </p>
                         <div className="flex space-x-4">
-                            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-vibrant-gold hover:text-deep-charcoal transition-colors">
+                            <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="bg-white/10 p-2 rounded-full hover:bg-vibrant-gold hover:text-deep-charcoal transition-colors" aria-label="Facebook">
                                 <Facebook className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-vibrant-gold hover:text-deep-charcoal transition-colors">
-                                <Instagram className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-vibrant-gold hover:text-deep-charcoal transition-colors">
-                                <Twitter className="w-5 h-5" />
                             </a>
                         </div>
                     </div>
@@ -35,10 +30,10 @@ const Footer = () => {
                     <div>
                         <h3 className="text-lg font-bold mb-4 text-vibrant-gold">Services</h3>
                         <ul className="space-y-3 text-sm text-gray-300">
-                            <li><Link href="/services/lawn-care" className="hover:text-white transition-colors">Lawn Care &amp; Maintenance</Link></li>
-                            <li><Link href="/services/flower-beds" className="hover:text-white transition-colors">Landscaping &amp; Design</Link></li>
-                            <li><Link href="/services/seasonal-cleanup" className="hover:text-white transition-colors">Seasonal Cleanups</Link></li>
-                            <li><Link href="/services/pressure-washing" className="hover:text-white transition-colors">Pressure Washing &amp; Soft Washing</Link></li>
+                            <li><Link href="/services/lawn-care" className="hover:text-white transition-colors">AC Repair &amp; Service</Link></li>
+                            <li><Link href="/services/flower-beds" className="hover:text-white transition-colors">Heating &amp; Furnace</Link></li>
+                            <li><Link href="/services/seasonal-cleanup" className="hover:text-white transition-colors">System Installation</Link></li>
+                            <li><Link href="/services/pressure-washing" className="hover:text-white transition-colors">Maintenance &amp; Mini-Splits</Link></li>
                         </ul>
                     </div>
 
@@ -48,15 +43,19 @@ const Footer = () => {
                         <ul className="space-y-4 text-sm text-gray-300">
                             <li className="flex items-start">
                                 <MapPin className="w-5 h-5 mr-3 text-vibrant-gold flex-shrink-0" />
-                                <span>El Dorado, AR 71730</span>
+                                <span>{siteConfig.address.full}</span>
                             </li>
                             <li className="flex items-center">
                                 <Phone className="w-5 h-5 mr-3 text-vibrant-gold flex-shrink-0" />
-                                <a href="tel:+14054795794" className="hover:text-white transition-colors">405-479-5794</a>
+                                <a href={`tel:${siteConfig.phoneRaw}`} className="hover:text-white transition-colors">{siteConfig.phone}</a>
                             </li>
                             <li className="flex items-center">
                                 <Mail className="w-5 h-5 mr-3 text-vibrant-gold flex-shrink-0" />
-                                <a href="mailto:contact@evergrowlandscaping.com" className="hover:text-white transition-colors">contact@evergrowlandscaping.com</a>
+                                <a href={`mailto:${siteConfig.email}`} className="hover:text-white transition-colors break-all">{siteConfig.email}</a>
+                            </li>
+                            <li className="flex items-center">
+                                <ShieldCheck className="w-5 h-5 mr-3 text-vibrant-gold flex-shrink-0" />
+                                <span>AR License #{siteConfig.license}</span>
                             </li>
                         </ul>
                     </div>
@@ -76,7 +75,7 @@ const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-300">
-                    <p>&copy; {currentYear} Evergrow Landscaping. All rights reserved.</p>
+                    <p>&copy; {currentYear} {siteConfig.name}. All rights reserved.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
                         <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
