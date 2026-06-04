@@ -1,12 +1,13 @@
 // Single source of truth for all client-specific business data.
 // Swapping this file (+ palette + photos) is what turns the template into a new client site.
+// Facts verified from a full crawl of the live site (thurmonsheatandair.com).
 
 export const siteConfig = {
   name: "Thurmon's Heat & Air",
   legalName: "Thurmon's Heat & Air",
   tagline: "Heating & Air Conditioning in El Dorado, AR",
   description:
-    "Trusted heating and air conditioning service in El Dorado, Arkansas. AC repair, furnace and heating service, new system installation, mini-splits, and seasonal maintenance. Licensed, local, and dependable.",
+    "Trusted heating and air conditioning service in El Dorado, Arkansas. AC and heating repair, new system installation, ductwork, ventilation, and mini-splits. Free estimates, financing available, and 24/7 on-call service with no extra after-hours charge.",
   url: "https://thurmonsheatandair.com",
 
   // TODO: move off Yahoo to a domain email (see onboarding intake)
@@ -15,8 +16,9 @@ export const siteConfig = {
   phoneRaw: "+18708665101",
 
   license: "HVAC1625250",
-  // TODO: confirm exact number with Lisa
-  yearsExperience: 15,
+  yearEstablished: 2013,
+  // Home/Heating pages say "over 70 years combined"; A/C page says "over 24". Using 70 (dominant). TODO: confirm with Keith.
+  combinedExperience: "over 70 years of combined experience",
 
   address: {
     street: "1839 Champagnolle Rd",
@@ -26,11 +28,23 @@ export const siteConfig = {
     full: "1839 Champagnolle Rd, El Dorado, AR 71730",
   },
 
-  // Approximate El Dorado, AR coordinates — refine to the exact pin before launch
+  // Approximate El Dorado, AR coordinates - refine to the exact pin before launch
   geo: { lat: 33.2076, lng: -92.6663 },
 
   hours: {
-    display: "Mon\u2013Sun 8:00 AM \u2013 5:00 PM \u00b7 24/7 Emergency On-Call",
+    display: "Mon\u2013Sun 8:00 AM \u2013 5:00 PM \u00b7 24/7 On-Call (no extra after-hours charge)",
+  },
+
+  // Real differentiators pulled from the live site
+  highlights: {
+    freeEstimates: true,
+    laborWarranty: "1-Year Labor Warranty on new equipment installs",
+    seasonalVisits: "Spring & fall visits at no extra charge",
+    afterHours: "24/7 on-call with no extra after-hours charge",
+    financing: "Financing available through Wells Fargo",
+    languages: ["English", "Spanish"],
+    brands: ["York", "Luxaire"],
+    payments: ["Cash", "Check", "Visa", "MasterCard", "Discover", "American Express", "Financing"],
   },
 
   social: {
@@ -40,8 +54,8 @@ export const siteConfig = {
   },
 
   reviews: {
-    // bump this as the Google review count grows
-    aggregate: { rating: 4.6, count: 12, source: "Google" },
+    // Aggregate shown on their site: 4.5 across 37 Google + Facebook reviews
+    aggregate: { rating: 4.5, count: 37, source: "Google & Facebook" },
   },
 
   seo: {
@@ -51,6 +65,7 @@ export const siteConfig = {
       "heating repair El Dorado Arkansas",
       "AC installation El Dorado",
       "furnace repair El Dorado",
+      "ductwork installation El Dorado",
       "mini split installation El Dorado",
       "HVAC contractor El Dorado AR",
     ],
