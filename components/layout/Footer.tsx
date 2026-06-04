@@ -17,7 +17,7 @@ const Footer = () => {
                             </span>
                         </Link>
                         <p className="text-gray-300 text-sm leading-relaxed mb-6">
-                            Dependable heating &amp; air conditioning service for El Dorado and South Arkansas — repairs, installs, and maintenance done right.
+                            Dependable heating &amp; air conditioning service for El Dorado and South Arkansas since {siteConfig.yearEstablished} — repairs, installs, ductwork, and maintenance done right.
                         </p>
                         <div className="flex space-x-4">
                             <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="bg-white/10 p-2 rounded-full hover:bg-vibrant-gold hover:text-deep-charcoal transition-colors" aria-label="Facebook">
@@ -34,6 +34,8 @@ const Footer = () => {
                             <li><Link href="/services/flower-beds" className="hover:text-white transition-colors">Heating &amp; Furnace</Link></li>
                             <li><Link href="/services/seasonal-cleanup" className="hover:text-white transition-colors">System Installation</Link></li>
                             <li><Link href="/services/pressure-washing" className="hover:text-white transition-colors">Maintenance &amp; Mini-Splits</Link></li>
+                            <li><Link href="/services/ductwork" className="hover:text-white transition-colors">Ductwork</Link></li>
+                            <li><Link href="/services/ventilation" className="hover:text-white transition-colors">Ventilation</Link></li>
                         </ul>
                     </div>
 

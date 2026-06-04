@@ -15,13 +15,15 @@ const navigation = [
     { name: 'Contact', href: '/contact' },
 ];
 
-// NOTE: hrefs reuse the existing route slugs for now to avoid 404s.
-// Routes get renamed to HVAC slugs in the services batch.
+// NOTE: first four hrefs reuse the original route slugs to avoid 404s.
+// Routes get renamed to HVAC slugs in a later cleanup pass.
 const services = [
     { name: 'AC Repair & Service', href: '/services/lawn-care' },
     { name: 'Heating & Furnace', href: '/services/flower-beds' },
     { name: 'System Installation', href: '/services/seasonal-cleanup' },
     { name: 'Maintenance & Mini-Splits', href: '/services/pressure-washing' },
+    { name: 'Ductwork', href: '/services/ductwork' },
+    { name: 'Ventilation', href: '/services/ventilation' },
 ];
 
 export default function Header() {
