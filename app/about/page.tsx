@@ -6,7 +6,7 @@ import { siteConfig } from '@/lib/site.config'
 export const metadata: Metadata = {
     title: "About Thurmon's Heat & Air | Local HVAC in El Dorado, AR",
     description:
-        "Meet the team behind Thurmon's Heat & Air. Local, licensed heating and air conditioning service for El Dorado and South Arkansas built on reliability and honest pricing.",
+        "Locally owned HVAC serving El Dorado and South Arkansas since 2013. Licensed, insured, and built on reliability, honest pricing, and work we stand behind.",
 }
 
 export default function AboutPage() {
@@ -23,10 +23,10 @@ export default function AboutPage() {
                             Local HVAC You Can Actually Count On
                         </h1>
                         <p className="text-xl text-gray-700 leading-relaxed">
-                            We started Thurmon&apos;s because too many homeowners get burned by contractors
-                            who don&apos;t show up, don&apos;t communicate, and don&apos;t stand behind their
-                            work. We do it differently &mdash; fast, honest, and dependable, the way it
-                            should be.
+                            Serving El Dorado and South Arkansas since {siteConfig.yearEstablished}, we started
+                            Thurmon&apos;s because too many homeowners get burned by contractors who don&apos;t show
+                            up, don&apos;t communicate, and don&apos;t stand behind their work. We do it differently
+                            &mdash; fast, honest, and dependable, the way it should be.
                         </p>
                     </div>
                 </div>
@@ -40,7 +40,7 @@ export default function AboutPage() {
                             Built on Doing Right by Our Neighbors
                         </h2>
                         <div className="w-16 h-1 bg-vibrant-gold rounded mb-10" />
-                        {/* TODO: Replace with Keith's real founding story / years in business once confirmed with Lisa */}
+                        {/* TODO: Replace with Keith's real founding story once confirmed with Lisa */}
                         <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                             <p>
                                 Heating and cooling problems never happen at a convenient time. When your
@@ -54,9 +54,9 @@ export default function AboutPage() {
                                 to expect it.
                             </p>
                             <p>
-                                We built Thurmon&apos;s Heat &amp; Air to be the opposite of that &mdash; a
-                                local company where showing up on time, quoting honestly, and standing behind
-                                the work is the whole point, not a bonus.
+                                We have built Thurmon&apos;s Heat &amp; Air to be the opposite of that &mdash; a
+                                local company, here since {siteConfig.yearEstablished}, where showing up on time,
+                                quoting honestly, and standing behind the work is the whole point, not a bonus.
                             </p>
                         </div>
                     </div>
@@ -85,7 +85,7 @@ export default function AboutPage() {
                                 { label: 'We give you a quote', result: 'That is the price. No hidden fees, no surprise add-ons.' },
                                 { label: 'We schedule a visit', result: 'We show up when we say, and we keep you posted.' },
                                 { label: 'We finish a repair', result: 'We test the system and leave your home clean.' },
-                                { label: 'You call or text us', result: 'We respond fast, with 24/7 emergency availability.' },
+                                { label: 'You call after hours', result: 'We are on-call 24/7 with no extra after-hours charge.' },
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-4 bg-white rounded-lg p-5 shadow-sm border border-gray-100">
                                     <div className="flex-shrink-0 w-2 rounded-full bg-vibrant-gold self-stretch" />
@@ -121,15 +121,15 @@ export default function AboutPage() {
                             {[
                                 {
                                     title: 'Quality Workmanship',
-                                    body: "We do not cut corners. Every repair and install gets the same attention to detail we would want in our own homes, and we test the system before we leave to make sure it is running right.",
+                                    body: "We do not cut corners. Every repair and install gets the same attention to detail we would want in our own homes, and we test the system before we leave to make sure it is running right. New installs are backed by a 1-year labor warranty.",
                                 },
                                 {
                                     title: 'Customer-First',
-                                    body: "Your comfort is the whole job. We explain the problem in plain language, give you honest options, and never pressure you into a sale you do not need.",
+                                    body: "Your comfort is the whole job. We explain the problem in plain language, give you honest options, and never pressure you into a sale you do not need. Service in English and Spanish.",
                                 },
                                 {
                                     title: 'Honest Pricing',
-                                    body: "The quote we give you is the price you pay. No hidden fees, no surprise charges, and financing is available so a new system fits your budget.",
+                                    body: "The quote we give you is the price you pay. No hidden fees, no surprise charges, and financing through Wells Fargo is available so a new system fits your budget.",
                                 },
                                 {
                                     title: 'Professionalism',
@@ -163,8 +163,8 @@ export default function AboutPage() {
                         <div className="grid md:grid-cols-2 gap-6">
                             {[
                                 {
-                                    title: 'Local and independent',
-                                    body: "Not a national chain. You are working with real people who live in your community and care about their reputation here.",
+                                    title: `Local since ${siteConfig.yearEstablished}`,
+                                    body: "Not a national chain. We have served El Dorado and South Arkansas since 2013, and our reputation here is everything. Se habla espanol.",
                                 },
                                 {
                                     title: 'We know this climate',
@@ -175,12 +175,16 @@ export default function AboutPage() {
                                     body: 'Your home is protected. Fully licensed Arkansas HVAC and insured, with no fine print.',
                                 },
                                 {
-                                    title: 'Same-day service',
-                                    body: "When your AC or heat goes out, we move fast, with 24/7 emergency availability when you need it most.",
+                                    title: '24/7 on-call, no extra charge',
+                                    body: "When your AC or heat goes out, we move fast, with around-the-clock availability and no extra after-hours charge.",
                                 },
                                 {
-                                    title: 'Transparent pricing',
-                                    body: "The quote we give you is the price you pay. No hidden fees, no surprise charges. Financing available on new systems.",
+                                    title: 'Warranty & seasonal care',
+                                    body: "New installs carry a 1-year labor warranty, and we offer spring and fall visits at no extra charge to keep your system running.",
+                                },
+                                {
+                                    title: 'Honest pricing & financing',
+                                    body: "The quote we give you is the price you pay. No surprises, and Wells Fargo financing is available on new systems.",
                                 },
                                 {
                                     title: 'Satisfaction guarantee',
@@ -234,8 +238,8 @@ export default function AboutPage() {
                             </a>
                         </div>
                         <p className="mt-10 text-white/65 text-sm">
-                            Join your neighbors across El Dorado and South Arkansas who trust Thurmon&apos;s
-                            to keep their homes comfortable year-round.
+                            Join your neighbors across El Dorado and South Arkansas who have trusted Thurmon&apos;s
+                            since {siteConfig.yearEstablished} to keep their homes comfortable year-round.
                         </p>
                     </div>
                 </div>

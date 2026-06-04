@@ -8,7 +8,7 @@ import { siteConfig } from '@/lib/site.config';
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Thurmon's Heat & Air | Heating & Air Conditioning | El Dorado, AR",
-  description: 'Trusted HVAC service in El Dorado, AR. AC repair, heating and furnace service, new system installation, mini-splits, and maintenance. Same-day service, upfront pricing, financing available.',
+  description: 'Trusted HVAC service in El Dorado, AR since 2013. AC repair, heating and furnace service, installation, ductwork, ventilation, and mini-splits. Free estimates, Wells Fargo financing, 24/7 on-call.',
   path: '/',
 });
 
@@ -42,8 +42,16 @@ const services = [
 const whyUs = [
   { Icon: Clock, title: 'Same-Day Service', desc: 'When your AC or heat goes out, you need it fixed now, not next week. We move fast.' },
   { Icon: DollarSign, title: 'Upfront Honest Pricing', desc: 'Straight quotes before we start. No pressure, no surprise upsells, just the work you need.' },
-  { Icon: CheckCircle, title: 'Financing Available', desc: 'A new system should not break the bank. Flexible financing options on installs.' },
-  { Icon: Shield, title: 'Licensed & Insured', desc: `Arkansas licensed HVAC (#${siteConfig.license}), local, accountable, and dependable.` },
+  { Icon: CheckCircle, title: 'Wells Fargo Financing', desc: 'Flexible financing through Wells Fargo so a new system fits your budget, not just your need.' },
+  { Icon: Shield, title: 'Licensed & Insured', desc: `Arkansas licensed HVAC (#${siteConfig.license}), serving El Dorado since ${siteConfig.yearEstablished}.` },
+];
+
+const highlights = [
+  `Serving El Dorado since ${siteConfig.yearEstablished} — ${siteConfig.combinedExperience}`,
+  siteConfig.highlights.laborWarranty,
+  siteConfig.highlights.seasonalVisits,
+  siteConfig.highlights.financing,
+  'Se habla espa\u00f1ol — service in English & Spanish',
 ];
 
 export default function HomePage() {
@@ -69,7 +77,7 @@ export default function HomePage() {
             className="max-w-3xl text-center lg:text-left"
           >
             <div className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1 mb-6">
-              <span className="text-white font-bold text-sm tracking-wider uppercase">Serving El Dorado &amp; South Arkansas</span>
+              <span className="text-white font-bold text-sm tracking-wider uppercase">Serving El Dorado &amp; South Arkansas Since {siteConfig.yearEstablished}</span>
             </div>
 
             <h1 className="text-white font-heading font-extrabold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight drop-shadow-lg">
@@ -101,10 +109,11 @@ export default function HomePage() {
         {/* Credentials Bar */}
         <div className="relative z-20 bg-black/30 backdrop-blur-sm border-t border-white/10">
           <div className="container px-4 py-4">
-            <div className="flex flex-wrap justify-center lg:justify-start gap-6 md:gap-10 text-white/90 text-sm md:text-base font-medium">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-5 md:gap-8 text-white/90 text-sm md:text-base font-medium">
               <div className="flex items-center"><Shield className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> Licensed &amp; Insured</div>
-              <div className="flex items-center"><Clock className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> 24/7 Emergency Service</div>
-              <div className="flex items-center"><CheckCircle className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> Free Estimates on Installs</div>
+              <div className="flex items-center"><Clock className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> 24/7 On-Call, No Extra Charge</div>
+              <div className="flex items-center"><CheckCircle className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> Free Estimates</div>
+              <div className="flex items-center"><DollarSign className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> Financing Available</div>
             </div>
           </div>
         </div>
@@ -119,35 +128,25 @@ export default function HomePage() {
                 <span className="text-white font-heading font-bold text-3xl text-center px-6">{siteConfig.name}</span>
               </div>
               <div className="absolute -bottom-6 -right-6 bg-forest-green text-white p-6 rounded-xl shadow-xl hidden md:block">
-                <p className="text-2xl font-bold font-heading">Local &amp;</p>
-                <p className="text-sm opacity-80 uppercase tracking-wider">Licensed</p>
+                <p className="text-2xl font-bold font-heading">Since</p>
+                <p className="text-sm opacity-80 uppercase tracking-wider">{siteConfig.yearEstablished}</p>
               </div>
             </div>
             <div>
               <span className="text-forest-green font-bold uppercase tracking-wider text-sm mb-2 block">About Our Company</span>
               <h2 className="text-4xl font-heading font-bold text-deep-charcoal mb-6">Trusted Comfort for El Dorado Homes &amp; Businesses</h2>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                When your heating or cooling quits, you want someone local who shows up fast and fixes it right. We keep South Arkansas comfortable year-round with honest service, fair pricing, and workmanship we stand behind.
+                When your heating or cooling quits, you want someone local who shows up fast and fixes it right. We have kept South Arkansas comfortable since {siteConfig.yearEstablished} with honest service, fair pricing, and workmanship we stand behind.
               </p>
               <ul className="space-y-4 mb-8">
-                <li className="flex items-start">
-                  <div className="mt-1 mr-3 flex-shrink-0 w-6 h-6 rounded-full bg-forest-green/10 flex items-center justify-center">
-                    <CheckCircle className="w-4 h-4 text-forest-green" />
-                  </div>
-                  <span className="text-gray-700">Upfront pricing, no surprises, no pressure</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="mt-1 mr-3 flex-shrink-0 w-6 h-6 rounded-full bg-forest-green/10 flex items-center justify-center">
-                    <CheckCircle className="w-4 h-4 text-forest-green" />
-                  </div>
-                  <span className="text-gray-700">Same-day service available on repairs</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="mt-1 mr-3 flex-shrink-0 w-6 h-6 rounded-full bg-forest-green/10 flex items-center justify-center">
-                    <CheckCircle className="w-4 h-4 text-forest-green" />
-                  </div>
-                  <span className="text-gray-700">Licensed, insured technicians who respect your home</span>
-                </li>
+                {highlights.map((item) => (
+                  <li key={item} className="flex items-start">
+                    <div className="mt-1 mr-3 flex-shrink-0 w-6 h-6 rounded-full bg-forest-green/10 flex items-center justify-center">
+                      <CheckCircle className="w-4 h-4 text-forest-green" />
+                    </div>
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
               </ul>
               <Link href="/quote-request" className="text-forest-green font-bold text-lg hover:text-vibrant-gold transition-colors inline-flex items-center">
                 Schedule Service <ArrowRight className="ml-2 w-5 h-5" />
@@ -297,7 +296,7 @@ export default function HomePage() {
             </a>
           </div>
           <p className="mt-6 text-white/60 text-sm">
-            Fast, free estimates on installs &bull; Upfront pricing &bull; Financing available
+            Free estimates &bull; {siteConfig.highlights.laborWarranty} &bull; Wells Fargo financing
           </p>
         </div>
       </section>
