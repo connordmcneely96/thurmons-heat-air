@@ -1,0 +1,34 @@
+# One-time / on-demand: pulls the real Thurmon's logo and job photos from the
+# old Hibu site into public/images/ and commits them. Run it from the Actions tab
+# ("Run workflow"). No terminal needed.
+name: Fetch brand assets
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download logo and gallery photos
+        run: |
+          mkdir -p public/images
+          base="https://le-cdn.hibuwebsites.com/7bb4374dcff0406399af0cf5bebba567/dms3rep/multi/opt"
+          curl -fsSL -o public/images/logo.png "$base/thurmons-heat-and-air-logo-1920w.PNG" || echo "logo download failed"
+          for n in 01 02 04 05 06 07 08; do
+            curl -fsSL -o "public/images/gallery-$n.jpg" "$base/thurmons-heat-and-air-gallery-$n-600h.JPG" || echo "gallery-$n download failed (skipping)"
+          done
+          echo "---- downloaded files ----"
+          ls -la public/images
+
+      - name: Commit assets to the repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/images
+          git commit -m "Add real Thurmon's logo and job photos (fetch-assets workflow)" || echo "nothing new to commit"
+          git push
