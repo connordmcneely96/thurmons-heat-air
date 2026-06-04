@@ -1,11 +1,12 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import { CheckCircle2 } from 'lucide-react'
+import { siteConfig } from '@/lib/site.config'
 
 export const metadata: Metadata = {
-    title: 'About Evergrow Landscaping | Family-Owned in El Dorado & OKC',
+    title: "About Thurmon's Heat & Air | Local HVAC in El Dorado, AR",
     description:
-        'Meet the team behind Evergrow Landscaping. Founded in 2023, serving El Dorado and Oklahoma City with reliable, quality landscaping services.',
+        "Meet the team behind Thurmon's Heat & Air. Local, licensed heating and air conditioning service for El Dorado and South Arkansas built on reliability and honest pricing.",
 }
 
 export default function AboutPage() {
@@ -19,13 +20,13 @@ export default function AboutPage() {
                             Our Story
                         </p>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                            More Than Just Landscaping —<br className="hidden md:block" /> It&apos;s Personal
+                            Local HVAC You Can Actually Count On
                         </h1>
                         <p className="text-xl text-gray-700 leading-relaxed">
-                            We started Evergrow because we were tired of seeing homeowners get burned by
-                            contractors who didn&apos;t show up, didn&apos;t communicate, and didn&apos;t care.
-                            We built something different — a company where reliability is the foundation,
-                            not a bonus.
+                            We started Thurmon&apos;s because too many homeowners get burned by contractors
+                            who don&apos;t show up, don&apos;t communicate, and don&apos;t stand behind their
+                            work. We do it differently &mdash; fast, honest, and dependable, the way it
+                            should be.
                         </p>
                     </div>
                 </div>
@@ -36,28 +37,26 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4">
                     <div className="max-w-3xl mx-auto">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                            Why We Started Evergrow
+                            Built on Doing Right by Our Neighbors
                         </h2>
                         <div className="w-16 h-1 bg-vibrant-gold rounded mb-10" />
+                        {/* TODO: Replace with Keith's real founding story / years in business once confirmed with Lisa */}
                         <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                             <p>
-                                When Karson started Evergrow in 2023, he kept hearing the same frustrations
-                                from homeowners: landscapers who didn&apos;t show up when promised, crews who
-                                left properties messy, companies that added surprise charges, and contractors
-                                who stopped answering the phone after getting paid.
+                                Heating and cooling problems never happen at a convenient time. When your
+                                AC quits in July or your heat goes out on the coldest night of the year,
+                                you need someone local who answers the phone and shows up fast.
                             </p>
                             <p>
-                                Homeowners were spending their weekends trying to keep up with yard work
-                                because they couldn&apos;t find someone reliable. When they did hire help,
-                                they&apos;d get burned by poor communication, inconsistent quality, or
-                                flat-out no-shows. &quot;Good enough&quot; seemed to be the industry standard,
-                                and customers had learned to expect disappointment.
+                                Too often, homeowners get the opposite: technicians who run late or never
+                                arrive, surprise charges that were never quoted, and high-pressure pitches
+                                to replace a system that could have been repaired. People had simply learned
+                                to expect it.
                             </p>
                             <p>
-                                Karson saw an opportunity to build something different — a landscaping company
-                                where reliability wasn&apos;t a bonus, it was the foundation. Where clear
-                                communication was part of the service. Where quality work wasn&apos;t luck, it
-                                was guaranteed. That vision became Evergrow Landscaping.
+                                We built Thurmon&apos;s Heat &amp; Air to be the opposite of that &mdash; a
+                                local company where showing up on time, quoting honestly, and standing behind
+                                the work is the whole point, not a bonus.
                             </p>
                         </div>
                     </div>
@@ -74,9 +73,8 @@ export default function AboutPage() {
                         <div className="w-16 h-1 bg-vibrant-gold rounded mb-10" />
                         <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
                             <p>
-                                We built Evergrow on four principles that still guide us today:
-                                craftsmanship, putting customers first, genuine passion for the work,
-                                and unwavering professionalism.
+                                We run on four simple principles: quality workmanship, putting customers
+                                first, genuine care for the job, and straightforward professionalism.
                             </p>
                             <p>
                                 Here&apos;s what that actually looks like in practice:
@@ -84,27 +82,26 @@ export default function AboutPage() {
                         </div>
                         <div className="mt-8 grid gap-4">
                             {[
-                                { label: 'We say Tuesday at 9am', result: 'We\'re there Tuesday at 9am.' },
-                                { label: 'We give you a quote', result: 'That\'s the price. No hidden fees, no add-ons.' },
-                                { label: 'We finish a job', result: 'Your property looks better than when we arrived.' },
-                                { label: 'You call or text us', result: 'We respond within 24 hours. Every time.' },
+                                { label: 'We give you a quote', result: 'That is the price. No hidden fees, no surprise add-ons.' },
+                                { label: 'We schedule a visit', result: 'We show up when we say, and we keep you posted.' },
+                                { label: 'We finish a repair', result: 'We test the system and leave your home clean.' },
+                                { label: 'You call or text us', result: 'We respond fast, with 24/7 emergency availability.' },
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-4 bg-white rounded-lg p-5 shadow-sm border border-gray-100">
                                     <div className="flex-shrink-0 w-2 rounded-full bg-vibrant-gold self-stretch" />
                                     <div>
                                         <span className="text-gray-500">When </span>
                                         <span className="font-semibold text-gray-900">{item.label}</span>
-                                        <span className="text-gray-500"> — </span>
+                                        <span className="text-gray-500"> &mdash; </span>
                                         <span className="text-gray-700">{item.result}</span>
                                     </div>
                                 </div>
                             ))}
                         </div>
                         <p className="mt-8 text-lg text-gray-700 leading-relaxed">
-                            We&apos;re not trying to be the biggest landscaping company in Oklahoma.
-                            We&apos;re trying to be the one you trust, the one you recommend to your
-                            neighbors, the one you call year after year because you know exactly
-                            what you&apos;re going to get.
+                            We&apos;re not trying to be the biggest HVAC company around. We&apos;re trying to
+                            be the one you trust, the one you recommend to your neighbors, and the one you
+                            call year after year because you know exactly what you&apos;re going to get.
                         </p>
                     </div>
                 </div>
@@ -123,20 +120,20 @@ export default function AboutPage() {
                         <div className="grid md:grid-cols-2 gap-8">
                             {[
                                 {
-                                    title: 'Craftsmanship',
-                                    body: "We don't cut corners. Every lawn, every flower bed, every project gets the same attention to detail we'd want for our own homes. Whether it's a weekly mowing or a complete landscape installation, your property gets our best work — guaranteed.",
+                                    title: 'Quality Workmanship',
+                                    body: "We do not cut corners. Every repair and install gets the same attention to detail we would want in our own homes, and we test the system before we leave to make sure it is running right.",
                                 },
                                 {
-                                    title: 'Customer-Centric',
-                                    body: "Your satisfaction isn't just important — it's everything. We listen to your needs, communicate every step of the way, and make adjustments until you're completely happy. Have a concern? We want to hear it. Not satisfied? We'll make it right.",
+                                    title: 'Customer-First',
+                                    body: "Your comfort is the whole job. We explain the problem in plain language, give you honest options, and never pressure you into a sale you do not need.",
                                 },
                                 {
-                                    title: 'Passion',
-                                    body: "We genuinely love what we do. There's something deeply satisfying about transforming an overgrown yard into a beautiful outdoor space, about seeing pride on a homeowner's face when they pull into their driveway. That passion drives us every day.",
+                                    title: 'Honest Pricing',
+                                    body: "The quote we give you is the price you pay. No hidden fees, no surprise charges, and financing is available so a new system fits your budget.",
                                 },
                                 {
                                     title: 'Professionalism',
-                                    body: "Licensed, insured, and accountable — those aren't just checkboxes, they're commitments. We show up on time, do the job right the first time, and respect your property like it's our own. When we make a promise, we keep it. Non-negotiable.",
+                                    body: "Licensed, insured, and accountable. We show up on time, do the job right the first time, and respect your home like it is our own. When we make a promise, we keep it.",
                                 },
                             ].map((value) => (
                                 <div key={value.title} className="bg-vibrant-gold-50 p-8 rounded-xl border border-vibrant-gold/20">
@@ -159,39 +156,35 @@ export default function AboutPage() {
                     <div className="max-w-4xl mx-auto">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                                Why Homeowners Choose Evergrow
+                                Why El Dorado Chooses Thurmon&apos;s
                             </h2>
                             <div className="w-16 h-1 bg-vibrant-gold rounded mx-auto" />
                         </div>
                         <div className="grid md:grid-cols-2 gap-6">
                             {[
                                 {
-                                    title: 'Family-owned and operated',
-                                    body: "We're not a franchise or a national chain. You're working with real people who live in your community and care deeply about their reputation.",
+                                    title: 'Local and independent',
+                                    body: "Not a national chain. You are working with real people who live in your community and care about their reputation here.",
                                 },
                                 {
-                                    title: 'Serving Oklahoma & Arkansas since 2023',
-                                    body: "We know this climate — what plants thrive here, when to fertilize, how to handle unpredictable seasonal weather. That local experience matters.",
+                                    title: 'We know this climate',
+                                    body: "South Arkansas summers are brutal and winters can turn fast. We know what your system goes through and how to keep it running.",
                                 },
                                 {
-                                    title: 'Licensed and insured',
-                                    body: 'Your property is protected. If something goes wrong (it rarely does), you\'re covered. No exceptions, no fine print.',
+                                    title: `Licensed and insured (#${siteConfig.license})`,
+                                    body: 'Your home is protected. Fully licensed Arkansas HVAC and insured, with no fine print.',
                                 },
                                 {
-                                    title: 'Background-checked crew',
-                                    body: "Every person who comes to your property has been thoroughly vetted. Your safety and security are part of the service.",
+                                    title: 'Same-day service',
+                                    body: "When your AC or heat goes out, we move fast, with 24/7 emergency availability when you need it most.",
                                 },
                                 {
                                     title: 'Transparent pricing',
-                                    body: "The quote we give you is the price you pay. No hidden fees, no surprise charges, no 'oh, we forgot to mention' add-ons. Ever.",
+                                    body: "The quote we give you is the price you pay. No hidden fees, no surprise charges. Financing available on new systems.",
                                 },
                                 {
-                                    title: '24-hour response time',
-                                    body: "Call, text, or email us with a question or concern and we'll respond within 24 hours. Usually much faster. We're here when you need us.",
-                                },
-                                {
-                                    title: 'Quality guarantee',
-                                    body: "If you're not happy with our work, we'll make it right. No arguments, no excuses. Your satisfaction is our success.",
+                                    title: 'Satisfaction guarantee',
+                                    body: "If you are not happy with the work, we make it right. Your comfort is how we measure success.",
                                     wide: true,
                                 },
                             ].map((item) => (
@@ -220,30 +213,29 @@ export default function AboutPage() {
                 <div className="container mx-auto px-4">
                     <div className="max-w-3xl mx-auto text-center">
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                            Let&apos;s Work Together
+                            Let&apos;s Get You Comfortable
                         </h2>
                         <p className="text-xl mb-10 text-white/85 leading-relaxed">
-                            Ready to experience landscaping done right? Whether you need weekly lawn
-                            care, a seasonal cleanup, or a complete landscape transformation — we&apos;re
-                            here to help, and we&apos;d love to earn your trust.
+                            Whether you need an emergency repair, a tune-up, or a brand-new system, we&apos;re
+                            here to help &mdash; and we&apos;d love to earn your trust.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                             <Link
                                 href="/quote-request"
                                 className="bg-white text-forest-green px-8 py-4 rounded-lg font-semibold hover:bg-vibrant-gold-50 transition-colors inline-block"
                             >
-                                Get Your Free Quote
+                                Get Your Free Estimate
                             </Link>
                             <a
-                                href="tel:+14054795794"
+                                href={`tel:${siteConfig.phoneRaw}`}
                                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-forest-green transition-colors inline-block"
                             >
-                                Call Us: 405-479-5794
+                                Call Us: {siteConfig.phone}
                             </a>
                         </div>
                         <p className="mt-10 text-white/65 text-sm">
-                            Join homeowners in El Dorado and Oklahoma City who trust Evergrow for
-                            their landscaping needs. We&apos;ve been keeping our promises since day one.
+                            Join your neighbors across El Dorado and South Arkansas who trust Thurmon&apos;s
+                            to keep their homes comfortable year-round.
                         </p>
                     </div>
                 </div>
