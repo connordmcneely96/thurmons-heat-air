@@ -1,9 +1,11 @@
 -- Flexible payments: partial payments toward an invoice + 30-day terms.
 -- Apply via Cloudflare dashboard D1 console (Workers & Pages -> D1 -> thurmons-heat-air-db -> Console).
+--
+-- NOTE: invoices.due_date already exists from an earlier migration, so it is NOT re-added here.
+-- If 'amount_paid' was already added in a partial run, that ALTER will error 'duplicate column' -- safe to skip.
 
--- Running total paid + due date on the invoice itself
+-- Running total paid on the invoice
 ALTER TABLE invoices ADD COLUMN amount_paid REAL NOT NULL DEFAULT 0;
-ALTER TABLE invoices ADD COLUMN due_date TEXT;
 
 -- Ledger: one row per payment attempt (an invoice can have many partial payments)
 CREATE TABLE IF NOT EXISTS invoice_payments (
