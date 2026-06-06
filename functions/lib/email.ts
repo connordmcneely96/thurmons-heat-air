@@ -52,11 +52,11 @@ export async function sendEmail(
         const resend = new Resend(env.RESEND_API_KEY);
 
         const { data, error } = await resend.emails.send({
-            from: params.from || 'Evergrow Landscaping <noreply@evergrowlandscaping.com>',
+            from: params.from || "Thurmon's Heat & Air <noreply@thurmonsheatandair.com>",
             to: params.to,
             subject: params.subject,
             html: params.html,
-            replyTo: params.replyTo || 'contact@evergrowlandscaping.com',
+            replyTo: params.replyTo || 'thurmonshvac@yahoo.com',
             attachments: params.attachments,
         });
 
@@ -172,17 +172,17 @@ export function getNewsletterWelcomeEmail(data: {
     <body>
       <div class="container">
         <div class="header">
-          <h1>Welcome to Evergrow Landscaping Updates</h1>
+          <h1>Welcome to Thurmon's Heat & Air Updates</h1>
           <p style="margin: 8px 0 0 0; font-size: 14px;">Seasonal tips and exclusive offers</p>
         </div>
         <div class="content">
           <p>Hi <strong>${greetingName}</strong>,</p>
-          <p>Thank you for subscribing to Evergrow Landscaping updates! We are excited to share helpful insights and special promotions with you.</p>
+          <p>Thank you for subscribing to Thurmon's Heat & Air updates! We are excited to share helpful insights and special promotions with you.</p>
 
           <div class="highlight">
             <strong>What you can expect:</strong>
             <ul class="list">
-              <li>Seasonal lawn and landscape tips</li>
+              <li>Seasonal heating & cooling tips</li>
               <li>Exclusive discounts and promotions</li>
               <li>Project inspiration and before-and-after highlights</li>
             </ul>
@@ -191,10 +191,10 @@ export function getNewsletterWelcomeEmail(data: {
           <p>We respect your privacy and will never share your email with third parties.</p>
           <p>If you ever want to unsubscribe, you can do so here: <a href="${data.unsubscribeUrl}">Unsubscribe</a>.</p>
 
-          <a href="https://evergrowlandscaping.com" class="cta">Visit Evergrow Landscaping</a>
+          <a href="https://www.thurmonsheatandair.com" class="cta">Visit Thurmon's Heat & Air</a>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
+          <p><strong>Thurmon's Heat & Air</strong></p>
           <p>Thank you for being part of our community.</p>
           <p style="margin-top: 12px;">
             <a href="${data.unsubscribeUrl}">Unsubscribe</a> if you no longer wish to receive updates.
@@ -311,7 +311,7 @@ export function getQuoteRequestNotificationEmail(data: {
           ` : ''}
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
+          <p><strong>Thurmon's Heat & Air</strong></p>
           <p>Quote request submitted at ${new Date().toLocaleString()}</p>
           <p>Respond within 24 hours for best customer experience</p>
         </div>
@@ -358,7 +358,7 @@ export function getQuoteRequestConfirmationEmail(name: string, serviceType: stri
         <div class="content">
           <p>Hi <strong>${name}</strong>,</p>
 
-          <p>Thank you for reaching out to Evergrow Landscaping! We've received your request for <strong>${serviceType}</strong> services and we're excited to help transform your outdoor space.</p>
+          <p>Thank you for reaching out to Thurmon's Heat & Air! We've received your request for <strong>${serviceType}</strong> services and we're excited to help get your home comfortable again.</p>
 
           <div class="checklist">
             <h3>📋 What Happens Next:</h3>
@@ -370,31 +370,31 @@ export function getQuoteRequestConfirmationEmail(name: string, serviceType: stri
             </ul>
           </div>
 
-          <p><strong>Why Choose Evergrow Landscaping?</strong></p>
+          <p><strong>Why Choose Thurmon's Heat & Air?</strong></p>
           <ul>
             <li>🏆 Founded in 2023</li>
             <li>✅ Licensed & fully insured</li>
-            <li>⭐ Highest-rated landscaping service in the area</li>
+            <li>⭐ Trusted local heating & air company</li>
             <li>💯 100% satisfaction guarantee</li>
           </ul>
 
           <div class="contact-box">
             <p>Have questions? We're here to help!</p>
             <strong>📱 Call us: (405) 479-5794</strong>
-            <p>📧 Email: contact@evergrowlandscaping.com</p>
+            <p>📧 Email: thurmonshvac@yahoo.com</p>
           </div>
 
           <p>We look forward to working with you!</p>
 
           <p>Best regards,<br>
-          <strong>The Evergrow Landscaping Team</strong></p>
+          <strong>The Thurmon's Heat & Air Team</strong></p>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
-          <p>Serving El Dorado, AR & Oklahoma City</p>
+          <p><strong>Thurmon's Heat & Air</strong></p>
+          <p>Serving El Dorado & South Arkansas</p>
           <p>Licensed & Insured | Family-Owned</p>
           <p style="margin-top: 15px; font-size: 12px;">
-            This email was sent because you requested a quote at evergrowlandscaping.com
+            This email was sent because you requested a quote at thurmonsheatandair.com
           </p>
         </div>
       </div>
@@ -451,7 +451,7 @@ export function getPaymentReceiptEmail(data: {
           <p>If you have any questions, reply to this email and we will help.</p>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
+          <p><strong>Thurmon's Heat & Air</strong></p>
           <p>Thank you for your business.</p>
         </div>
       </div>
@@ -508,8 +508,8 @@ export function getPaymentFailureEmail(data: {
           <p>If you need help, reply to this email and we will assist you.</p>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
-          <p>contact@evergrowlandscaping.com</p>
+          <p><strong>Thurmon's Heat & Air</strong></p>
+          <p>thurmonshvac@yahoo.com</p>
         </div>
       </div>
     </body>
@@ -614,7 +614,7 @@ export function getRefundConfirmationEmail(data: {
           <p>If you have questions, reply to this email.</p>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
+          <p><strong>Thurmon's Heat & Air</strong></p>
         </div>
       </div>
     </body>
@@ -704,7 +704,7 @@ export function getQuoteEmail(data: {
           </p>
         </div>
         <div class="footer">
-          <p>&copy; ${new Date().getFullYear()} Evergrow Landscaping</p>
+          <p>&copy; ${new Date().getFullYear()} Thurmon's Heat & Air</p>
           <p>Questions? Reply to this email or call us at (405) 479-5794</p>
         </div>
       </div>
@@ -741,7 +741,7 @@ export function getProjectCancellationEmail(data: {
           <p>This email is to confirm that your project for <strong>${escapeHtml(data.serviceType)}</strong> has been cancelled.</p>
           ${data.reason ? `<p><strong>Reason:</strong> ${escapeHtml(data.reason)}</p>` : ''}
           <p>If you have any questions or would like to reschedule, please contact us.</p>
-          <p>Best regards,<br>Evergrow Landscaping</p>
+          <p>Best regards,<br>Thurmon's Heat & Air</p>
         </div>
       </div>
     </body>
@@ -803,13 +803,13 @@ export function getProjectCompletionEmail(data: {
           ${photosBlock}
           ${paymentBlock}
 
-          <p>We hope you love your new outdoor space! If you have a moment, we would appreciate your feedback.</p>
+          <p>We hope you love your new home comfort! If you have a moment, we would appreciate your feedback.</p>
           <p>
             <a href="${data.feedbackUrl}">Share Feedback</a> | 
             <a href="${data.reviewUrl}">Leave a Google Review</a>
           </p>
 
-          <p>Thank you for choosing Evergrow Landscaping!</p>
+          <p>Thank you for choosing Thurmon's Heat & Air!</p>
         </div>
       </div>
     </body>
@@ -882,7 +882,7 @@ export function getDepositInvoiceEmail(data: {
           </p>
         </div>
         <div class="footer">
-          <p>&copy; ${new Date().getFullYear()} Evergrow Landscaping</p>
+          <p>&copy; ${new Date().getFullYear()} Thurmon's Heat & Air</p>
           <p>Questions? Reply to this email or call us at (405) 479-5794</p>
         </div>
       </div>
@@ -918,7 +918,7 @@ export function getProjectFeedbackRequestEmail(data: {
         </div>
         <div class="content">
           <p>Hi ${escapeHtml(data.name)},</p>
-          <p>Thank you again for choosing Evergrow Landscaping for your ${escapeHtml(data.serviceType)}.</p>
+          <p>Thank you again for choosing Thurmon's Heat & Air for your ${escapeHtml(data.serviceType)}.</p>
           <p>Our goal is to provide 5-star service to every customer. We would love to hear about your experience!</p>
           
           <div style="text-center: center;">
@@ -928,7 +928,7 @@ export function getProjectFeedbackRequestEmail(data: {
           <p>Or if you have specific feedback for us directly: <a href="${data.feedbackUrl}">Complete Feedback Form</a></p>
           
           <p>We appreciate your business!</p>
-          <p>The Evergrow Landscaping Team</p>
+          <p>The Thurmon's Heat & Air Team</p>
         </div>
       </div>
     </body>
@@ -991,7 +991,7 @@ export function getProjectScheduledEmail(data: {
           ${depositBlock}
 
           <p>We are looking forward to working on your property!</p>
-          <p>Best regards,<br>Evergrow Landscaping</p>
+          <p>Best regards,<br>Thurmon's Heat & Air</p>
         </div>
       </div>
     </body>
@@ -1023,7 +1023,7 @@ export function getCustomerFeedbackThankYouEmail(name: string): string {
           <p>Thank you so much for taking the time to share your feedback with us.</p>
           <p>We truly value our customers' input as it helps us continue to improve and provide the best possible service.</p>
           <p>If you have any further questions or concerns, please don't hesitate to reach out.</p>
-          <p>Best regards,<br>The Evergrow Landscaping Team</p>
+          <p>Best regards,<br>The Thurmon's Heat & Air Team</p>
         </div>
       </div>
     </body>
@@ -1164,16 +1164,16 @@ export function getProjectPhotoNotificationEmail(data: {
 
           ${isCustomerUpload ? `
           <p style="text-align: center;">
-            <a href="https://evergrowlandscaping.com/portal/projects/${data.projectId}" class="cta">View Project Photos</a>
+            <a href="https://www.thurmonsheatandair.com/portal/projects/${data.projectId}" class="cta">View Project Photos</a>
           </p>
           ` : `
           <p style="text-align: center;">
-            <a href="https://evergrowlandscaping.com/portal/projects/${data.projectId}" class="cta">View All Photos</a>
+            <a href="https://www.thurmonsheatandair.com/portal/projects/${data.projectId}" class="cta">View All Photos</a>
           </p>
           `}
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
+          <p><strong>Thurmon's Heat & Air</strong></p>
           <p>${isCustomerUpload ? 'Review and respond to customer photos in your admin portal' : 'View your project progress photos anytime in your customer portal'}</p>
         </div>
       </div>
@@ -1213,7 +1213,7 @@ export function getJobApplicationNotificationEmail(data: {
 
     const coverLetterSection = data.coverLetter
         ? `<div class="field">
-         <span class="label">✍️ Why Join Evergrow?</span>
+         <span class="label">✍️ Why Join Thurmon's Heat & Air?</span>
          <span class="value">${escapeHtml(data.coverLetter).replace(/\n/g, '<br>')}</span>
        </div>`
         : '';
@@ -1292,7 +1292,7 @@ export function getJobApplicationNotificationEmail(data: {
           </div>
 
           <div class="field">
-            <span class="label">📊 Years Experience in Landscaping</span>
+            <span class="label">📊 Years Experience in Heating & Air</span>
             <span class="value">${data.yearsExperience} years</span>
           </div>
 
@@ -1306,7 +1306,7 @@ export function getJobApplicationNotificationEmail(data: {
           ${availabilitySection}
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
+          <p><strong>Thurmon's Heat & Air</strong></p>
           <p>Application submitted at ${new Date().toLocaleString()}</p>
           <p>Review application in your admin portal or contact applicant directly</p>
         </div>
@@ -1354,7 +1354,7 @@ export function getJobApplicationConfirmationEmail(data: {
         <div class="content">
           <p>Hi <strong>${escapeHtml(data.name)}</strong>,</p>
 
-          <p>Thank you for applying for the <strong>${escapeHtml(data.position)}</strong> position at Evergrow Landscaping! We've successfully received your application and appreciate your interest in joining our team.</p>
+          <p>Thank you for applying for the <strong>${escapeHtml(data.position)}</strong> position at Thurmon's Heat & Air! We've successfully received your application and appreciate your interest in joining our team.</p>
 
           <div class="checklist">
             <h3>📋 What Happens Next:</h3>
@@ -1366,7 +1366,7 @@ export function getJobApplicationConfirmationEmail(data: {
             </ul>
           </div>
 
-          <p><strong>Why Work at Evergrow Landscaping?</strong></p>
+          <p><strong>Why Work at Thurmon's Heat & Air?</strong></p>
           <ul>
             <li>🏆 Family-owned business, owner-managed</li>
             <li>📍 Multi-location opportunities across AR & OK</li>
@@ -1377,20 +1377,20 @@ export function getJobApplicationConfirmationEmail(data: {
           <div class="contact-box">
             <p>Have questions about your application?</p>
             <strong>📱 Call us: (405) 479-5794</strong>
-            <p>📧 Email: contact@evergrowlandscaping.com</p>
+            <p>📧 Email: thurmonshvac@yahoo.com</p>
           </div>
 
           <p>We look forward to reviewing your application!</p>
 
           <p>Best regards,<br>
-          <strong>The Evergrow Landscaping Team</strong></p>
+          <strong>The Thurmon's Heat & Air Team</strong></p>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
-          <p>Serving El Dorado, AR | Oklahoma City, OK</p>
+          <p><strong>Thurmon's Heat & Air</strong></p>
+          <p>Serving El Dorado & South Arkansas</p>
           <p>Licensed & Insured | Family-Owned</p>
           <p style="margin-top: 15px; font-size: 12px;">
-            This email was sent because you applied for a position at evergrowlandscaping.com
+            This email was sent because you applied for a position at thurmonsheatandair.com
           </p>
         </div>
       </div>
