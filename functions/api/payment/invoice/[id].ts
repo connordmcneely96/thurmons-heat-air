@@ -7,8 +7,11 @@ interface InvoiceRow {
     project_id: number;
     customer_id: number;
     amount: number;
+    amount_paid: number;
     invoice_type: string;
     status: string;
+    created_at: string;
+    due_date: string | null;
     service_type: string | null;
 }
 
@@ -19,91 +22,125 @@ const INVOICE_TYPE_DISPLAY: Record<string, string> = {
     additional: 'Additional Charge',
 };
 
+const PAYMENT_TERMS_DAYS = 30;
+const MIN_PAYMENT = 1; // Square minimum charge is $1.00
 const jsonHeaders = { 'Content-Type': 'application/json' };
 
+const round2 = (n: number) => Math.round(n * 100) / 100;
+const json = (body: unknown, status = 200) =>
+    new Response(JSON.stringify(body), { status, headers: jsonHeaders });
+
+function computeDueDate(row: { due_date: string | null; created_at: string }): string | null {
+    if (row.due_date) return row.due_date;
+    const created = new Date(row.created_at);
+    if (Number.isNaN(created.getTime())) return null;
+    created.setUTCDate(created.getUTCDate() + PAYMENT_TERMS_DAYS);
+    return created.toISOString().slice(0, 10);
+}
+
+function invoiceLabel(row: InvoiceRow): string {
+    const service = row.service_type || 'HVAC Service';
+    const type = INVOICE_TYPE_DISPLAY[row.invoice_type] || row.invoice_type;
+    return `${service} - ${type}`;
+}
+
+async function loadInvoice(env: Env, invoiceId: string, customerId: number): Promise<InvoiceRow | null> {
+    return env.DB.prepare(`
+        SELECT i.id, i.project_id, i.customer_id, i.amount, i.amount_paid, i.invoice_type,
+               i.status, i.created_at, i.due_date, p.service_type
+        FROM invoices i
+        JOIN projects p ON i.project_id = p.id
+        WHERE i.id = ? AND i.customer_id = ?
+    `).bind(invoiceId, customerId).first<InvoiceRow>();
+}
+
+// GET: return invoice balance/terms so the portal can show a payment form
+export const onRequestGet: PagesFunction<Env> = async (context) => {
+    const { request, env, params } = context;
+    try {
+        const auth = await requireAuth(request, env);
+        if (auth instanceof Response) return auth;
+        if (auth.role !== 'customer') return json({ success: false, error: 'Customer access required' }, 403);
+
+        const invoice = await loadInvoice(env, params.id as string, auth.userId);
+        if (!invoice) return json({ success: false, error: 'Invoice not found' }, 404);
+
+        const amountPaid = round2(invoice.amount_paid || 0);
+        const balance = round2(invoice.amount - amountPaid);
+
+        return json({
+            success: true,
+            invoice: {
+                id: invoice.id,
+                label: invoiceLabel(invoice),
+                amount: round2(invoice.amount),
+                amountPaid,
+                balance,
+                status: invoice.status,
+                dueDate: computeDueDate(invoice),
+            },
+        });
+    } catch (error) {
+        console.error('Invoice GET error:', error instanceof Error ? error.message : String(error));
+        return json({ success: false, error: 'Failed to load invoice' }, 500);
+    }
+};
+
+// POST: create a Square checkout link for a full or partial payment toward the invoice
 export const onRequestPost: PagesFunction<Env> = async (context) => {
     const { request, env, params } = context;
-
     try {
-        // Authenticate user
-        const authResult = await requireAuth(request, env);
-        if (authResult instanceof Response) {
-            return authResult;
+        const auth = await requireAuth(request, env);
+        if (auth instanceof Response) return auth;
+        if (auth.role !== 'customer') return json({ success: false, error: 'Customer access required' }, 403);
+
+        const invoice = await loadInvoice(env, params.id as string, auth.userId);
+        if (!invoice) return json({ success: false, error: 'Invoice not found' }, 404);
+
+        if (invoice.status === 'paid' || invoice.status === 'cancelled' || invoice.status === 'refunded') {
+            return json({ success: false, error: `Invoice cannot be paid. Status: ${invoice.status}` }, 400);
         }
 
-        if (authResult.role !== 'customer') {
-            return new Response(JSON.stringify({ success: false, error: 'Customer access required' }), {
-                status: 403,
-                headers: jsonHeaders,
-            });
+        const amountPaid = round2(invoice.amount_paid || 0);
+        const balance = round2(invoice.amount - amountPaid);
+        if (balance <= 0) {
+            return json({ success: false, error: 'This invoice is already paid in full' }, 400);
         }
 
-        const customerId = authResult.userId;
-        const invoiceId = params.id as string;
+        const body = await request.json<{ amount?: number }>().catch(() => ({}));
+        let payAmount = typeof body.amount === 'number' ? round2(body.amount) : balance;
 
-        // Get invoice + parent project (ownership-checked)
-        const invoice = await env.DB.prepare(`
-            SELECT i.id, i.project_id, i.customer_id, i.amount, i.invoice_type, i.status, p.service_type
-            FROM invoices i
-            JOIN projects p ON i.project_id = p.id
-            WHERE i.id = ? AND i.customer_id = ?
-        `).bind(invoiceId, customerId).first<InvoiceRow>();
-
-        if (!invoice) {
-            return new Response(JSON.stringify({ success: false, error: 'Invoice not found' }), {
-                status: 404,
-                headers: jsonHeaders,
-            });
+        if (!Number.isFinite(payAmount) || payAmount < MIN_PAYMENT) {
+            return json({ success: false, error: `Minimum payment is $${MIN_PAYMENT.toFixed(2)}` }, 400);
         }
+        // Never let a payment exceed the remaining balance
+        if (payAmount > balance + 0.01) payAmount = balance;
 
-        // Only unpaid invoices can be paid. 'pending' = not yet sent, 'sent' = link already generated.
-        if (invoice.status !== 'pending' && invoice.status !== 'sent') {
-            return new Response(JSON.stringify({
-                success: false,
-                error: `Invoice cannot be paid. Status: ${invoice.status}`,
-            }), {
-                status: 400,
-                headers: jsonHeaders,
-            });
-        }
-
-        // Build a human-readable checkout name
-        const serviceName = invoice.service_type || 'HVAC Service';
-        const typeDisplay = INVOICE_TYPE_DISPLAY[invoice.invoice_type] || invoice.invoice_type;
-        const description = `${serviceName} - ${typeDisplay} (Invoice #${invoice.id})`;
+        const isPartial = payAmount < balance - 0.01;
         const origin = new URL(request.url).origin;
-
-        // Create a Square-hosted checkout link
         const config = squareConfigFromEnv(env);
         const link = await createPaymentLink(config, {
-            amountCents: Math.round(invoice.amount * 100),
-            name: description,
-            note: `Invoice #${invoice.id}`,
+            amountCents: Math.round(payAmount * 100),
+            name: `${invoiceLabel(invoice)} (Invoice #${invoice.id})`,
+            note: `Invoice #${invoice.id}${isPartial ? ' (partial payment)' : ''}`,
             redirectUrl: `${origin}/portal/invoices?paid=${invoice.id}`,
         });
 
-        // Record Square identifiers so the webhook can match the payment back to this invoice
+        // Record this payment attempt in the ledger; the webhook completes it.
         await env.DB.prepare(`
-            UPDATE invoices
-            SET status = 'sent',
-                square_order_id = ?,
-                square_payment_link_id = ?,
-                sent_at = COALESCE(sent_at, datetime('now'))
-            WHERE id = ?
-        `).bind(link.orderId ?? null, link.paymentLinkId, invoice.id).run();
+            INSERT INTO invoice_payments (invoice_id, amount, status, square_order_id, square_payment_link_id)
+            VALUES (?, ?, 'pending', ?, ?)
+        `).bind(invoice.id, payAmount, link.orderId ?? null, link.paymentLinkId).run();
 
-        return new Response(JSON.stringify({ success: true, url: link.url }), {
-            status: 200,
-            headers: jsonHeaders,
-        });
+        // Mark invoice as sent + persist the 30-day due date on first payment attempt
+        await env.DB.prepare(`UPDATE invoices SET status = 'sent' WHERE id = ? AND status = 'pending'`)
+            .bind(invoice.id).run();
+        await env.DB.prepare(`UPDATE invoices SET due_date = ? WHERE id = ? AND due_date IS NULL`)
+            .bind(computeDueDate(invoice), invoice.id).run();
+
+        return json({ success: true, url: link.url });
     } catch (error) {
         console.error('Square payment link error:', error instanceof Error ? error.message : String(error));
-        return new Response(JSON.stringify({
-            success: false,
-            error: 'Failed to create payment link',
-        }), {
-            status: 500,
-            headers: jsonHeaders,
-        });
+        return json({ success: false, error: 'Failed to create payment link' }, 500);
     }
 };
