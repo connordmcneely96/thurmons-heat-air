@@ -4,13 +4,14 @@ import { ServiceFeatures } from '@/components/services/ServiceFeatures'
 import { ServiceProcess } from '@/components/services/ServiceProcess'
 import { ServiceFAQ } from '@/components/services/ServiceFAQ'
 import { ServiceCTA } from '@/components/services/ServiceCTA'
+import { ServiceShowcase } from '@/components/services/ServiceShowcase'
 import { Metadata } from 'next'
 import { buildPageMetadata } from '@/lib/seo'
 import { siteConfig } from '@/lib/site.config'
 
 export const metadata: Metadata = buildPageMetadata({
     title: 'Commercial HVAC in El Dorado, AR | Heating & Cooling for Businesses',
-    description: 'Commercial heating and air conditioning for El Dorado businesses, offices, restaurants, and churches. Maintenance agreements, priority scheduling, and 24/7 emergency service.',
+    description: 'Commercial heating and air conditioning for El Dorado businesses, offices, restaurants, and churches. Rooftop unit replacement, maintenance agreements, priority scheduling, and 24/7 emergency service.',
     path: '/commercial/',
 })
 
@@ -27,6 +28,23 @@ const features = [
     { icon: checkIcon, title: 'Any System Size', description: 'From a single rooftop unit to multiple systems across a building, we have you covered.' },
 ]
 
+const showcaseItems = [
+    {
+        eyebrow: 'Commercial install',
+        title: 'Equipped for Rooftop Units',
+        body: 'When a commercial system has to go on the roof, we bring the right equipment and crew to do it safely. Here a new packaged rooftop unit is staged and rigged on site, ready for the lift, while the team coordinates the swap with as little disruption to the building as possible.',
+        image: '/api/assets/services/commercial/rooftop-crane-stage.jpg',
+        alt: 'A new packaged rooftop HVAC unit staged on a trailer with a crane set up on a commercial site',
+    },
+    {
+        eyebrow: 'Whatever the job takes',
+        title: 'Lifted, Set, and Tied In',
+        body: 'The new unit goes up by crane, gets set in place, and is connected and tested before we leave. From a single rooftop unit to multiple systems across a building, we handle the heavy commercial work that keeps your doors open.',
+        image: '/api/assets/services/commercial/rooftop-crane-lift.jpg',
+        alt: 'A packaged rooftop HVAC unit hoisted in the air by a crane during a commercial installation',
+    },
+]
+
 const process = [
     { number: '1', title: 'On-Site Assessment', description: 'We walk your property, evaluate your equipment, and learn how your space is actually used.' },
     { number: '2', title: 'Custom Proposal', description: 'You get clear, upfront pricing and a plan that fits your building and your budget.' },
@@ -36,6 +54,7 @@ const process = [
 
 const faqs = [
     { question: 'What kinds of businesses do you serve?', answer: 'Offices, retail, restaurants, churches, and other light-commercial properties throughout El Dorado and South Arkansas.' },
+    { question: 'Do you replace rooftop units?', answer: 'Yes. We handle commercial rooftop package units, including crane-set replacements, and coordinate the work to minimize downtime for your business.' },
     { question: 'Do you offer maintenance agreements?', answer: 'Yes. Scheduled maintenance plans keep your equipment efficient and help prevent the breakdowns that interrupt your business.' },
     { question: 'How fast can you respond to a commercial emergency?', answer: 'Commercial clients receive priority scheduling, and we offer 24/7 emergency service for no-heat and no-cool situations.' },
     { question: 'Are you licensed and insured?', answer: 'Yes. We are fully licensed for HVAC in Arkansas and carry insurance. Certificates of insurance are available on request.' },
@@ -146,6 +165,12 @@ export default function CommercialPage() {
                     </div>
                 </div>
             </section>
+
+            <ServiceShowcase
+                heading="Built for Bigger Jobs"
+                intro="From a single rooftop unit to a full crane-set replacement, we bring the equipment and crew to handle the heavy commercial work."
+                items={showcaseItems}
+            />
 
             <ServiceFeatures features={features} />
             <ServiceProcess steps={process} />
