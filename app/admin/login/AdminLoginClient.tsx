@@ -65,7 +65,7 @@ export default function AdminLoginPage() {
                         </svg>
                     </div>
                     <h1 className="text-2xl font-bold text-white">
-                        EVER<span className="text-vibrant-gold">GROW</span>
+                        THURMON&apos;S <span className="text-vibrant-gold">HEAT &amp; AIR</span>
                     </h1>
                     <p className="text-gray-400 text-sm mt-1">Administration Portal</p>
                 </div>
@@ -89,7 +89,7 @@ export default function AdminLoginPage() {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="admin@evergrowlandscaping.com"
+                                placeholder="admin@thurmonsheatandair.com"
                                 required
                                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent transition-colors"
                             />

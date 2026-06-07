@@ -61,10 +61,10 @@ export function AdminSidebar({ userName, onLogout }: AdminSidebarProps) {
                 <div className="p-5 border-b border-gray-800">
                     <Link href="/admin" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
                         <div className="w-8 h-8 bg-forest-green rounded-lg flex items-center justify-center">
-                            <span className="text-white font-bold text-sm">EG</span>
+                            <span className="text-white font-bold text-sm">TH</span>
                         </div>
                         <div>
-                            <p className="font-bold text-white text-sm leading-tight">Evergrow</p>
+                            <p className="font-bold text-white text-sm leading-tight">Thurmon&apos;s Heat &amp; Air</p>
                             <p className="text-[10px] text-gray-500 leading-tight">Admin Panel</p>
                         </div>
                     </Link>

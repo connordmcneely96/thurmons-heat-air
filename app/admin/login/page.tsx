@@ -3,7 +3,7 @@ import AdminLoginClient from './AdminLoginClient'
 
 export const metadata: Metadata = {
     title: 'Admin Login',
-    description: 'Secure admin login for Evergrow Landscaping.',
+    description: "Secure admin login for Thurmon's Heat & Air.",
     robots: {
         index: false,
         follow: false,
