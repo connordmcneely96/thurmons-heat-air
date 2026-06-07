@@ -28,6 +28,20 @@ const showcaseItems = [
     alt: 'A clean HVAC evaporator coil next to a coil caked in dirt, side by side',
   },
   {
+    eyebrow: 'A real service call',
+    title: 'This Is What We Find in the Field',
+    body: 'Those are our gauges sitting on top. This is an actual system we serviced, and the coil was packed solid with a season of dirt, grass, and debris. A unit in this shape is working overtime just to move air, and the homeowner feels it in both comfort and the power bill.',
+    image: '/api/assets/services/maintenance/coil-dirty-unit.jpg',
+    alt: 'A dirt-caked HVAC condenser coil during a service call, with refrigerant gauges and a drill resting on top of the unit',
+  },
+  {
+    eyebrow: 'Up close',
+    title: 'The Problem Is Hard to Unsee',
+    body: 'Up close, the buildup packs into the fins like felt. Air simply cannot pass through it, so your system runs longer and hotter to do the same job. Multiply that over a hot Arkansas summer and the wasted energy adds up fast.',
+    image: '/api/assets/services/maintenance/coil-dirty-closeup.jpg',
+    alt: 'Extreme close-up of an HVAC coil completely matted with caked-on dirt and debris',
+  },
+  {
     eyebrow: 'The result',
     title: 'Cleaned, Inspected, and Running Right',
     body: 'This is a coil right after a Service Efficiency Agreement visit. With the SEA, we clean and inspect your system twice a year, in spring and fall, at no extra charge, so it never gets to the state you saw above. You stay comfortable, your bills stay lower, and small problems get caught before they become expensive ones.',
