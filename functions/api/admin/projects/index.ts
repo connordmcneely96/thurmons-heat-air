@@ -49,15 +49,14 @@ type ProjectRow = {
 };
 
 const SERVICE_NAME_DISPLAY: Record<string, string> = {
-    lawn_care: 'Lawn Care & Maintenance',
-    'lawn-care': 'Lawn Care & Maintenance',
-    flower_beds: 'Flower Bed Installation',
-    'flower-beds': 'Flower Bed Installation',
-    seasonal_cleanup: 'Seasonal Cleanup',
-    'seasonal-cleanup': 'Seasonal Cleanup',
-    pressure_washing: 'Pressure Washing',
-    'pressure-washing': 'Pressure Washing',
-    other: 'Other Services',
+    ac_repair: 'AC Repair & Service',
+    heating: 'Heating & Furnace',
+    installation: 'New System Installation',
+    maintenance: 'Maintenance & Tune-Up',
+    ductwork: 'Ductwork',
+    ventilation: 'Ventilation',
+    multiple: 'Multiple Services',
+    other: 'Other',
 };
 
 const STATUS_LABELS: Record<string, string> = {
@@ -74,9 +73,9 @@ const STATUS_FILTERS: Record<string, string> = {
     cancelled: 'cancelled',
 };
 
+// Legacy services that always took a 50% deposit. HVAC services default to no
+// deposit (a single full invoice) unless the admin explicitly requests one.
 const DEPOSIT_REQUIRED_SERVICES = new Set(['flower_beds', 'pressure_washing']);
-const NO_DEPOSIT_SERVICES = new Set(['lawn_care', 'seasonal_cleanup', 'other']);
-const PAYMENT_PORTAL_BASE_URL = 'https://evergrowlandscaping.com';
 const REMINDER_KEY_PREFIX = 'project_reminder:';
 const DEPOSIT_DUE_DAYS_BEFORE = 4;
 
@@ -159,44 +158,20 @@ function roundCurrency(value: number): number {
     return Math.round(value * 100) / 100;
 }
 
+// HVAC: deposit is optional. A 50% deposit is taken only for legacy deposit
+// services or when the admin explicitly requests one; otherwise the full amount
+// is invoiced as a single invoice.
 function resolveDepositRequirement(
     serviceType: string,
     depositRequiredInput: boolean | null,
     totalAmount: number
-): { depositRequired: boolean; depositAmount: number | null; error?: string } {
-    if (DEPOSIT_REQUIRED_SERVICES.has(serviceType)) {
-        if (depositRequiredInput !== true) {
-            return {
-                depositRequired: true,
-                depositAmount: null,
-                error: 'Deposit is required for this service type',
-            };
-        }
+): { depositRequired: boolean; depositAmount: number | null } {
+    if (DEPOSIT_REQUIRED_SERVICES.has(serviceType) || depositRequiredInput === true) {
         return {
             depositRequired: true,
             depositAmount: roundCurrency(totalAmount * 0.5),
         };
     }
-
-    if (NO_DEPOSIT_SERVICES.has(serviceType)) {
-        if (depositRequiredInput === true) {
-            return {
-                depositRequired: false,
-                depositAmount: null,
-                error: 'Deposit is not required for this service type',
-            };
-        }
-        return { depositRequired: false, depositAmount: null };
-    }
-
-    if (depositRequiredInput === true) {
-        return {
-            depositRequired: false,
-            depositAmount: null,
-            error: 'Deposit configuration not supported for this service type',
-        };
-    }
-
     return { depositRequired: false, depositAmount: null };
 }
 
@@ -597,6 +572,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             );
         }
 
+        const customerId = quote.customer_id;
         const normalizedServiceType =
             normalizeServiceType(quote.service_type) ?? quote.service_type;
         const depositValidation = resolveDepositRequirement(
@@ -604,13 +580,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             depositRequiredResult.value,
             totalAmount
         );
-
-        if (depositValidation.error) {
-            return new Response(
-                JSON.stringify({ success: false, error: depositValidation.error }),
-                { status: 400, headers: { 'Content-Type': 'application/json' } }
-            );
-        }
 
         const projectDescription = notesResult.value ?? null;
         const projectInsert = await env.DB.prepare(
@@ -631,7 +600,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         `
         )
             .bind(
-                quote.customer_id,
+                customerId,
                 quoteId,
                 normalizedServiceType,
                 projectDescription,
@@ -661,7 +630,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                         await env.DB.prepare(
                             `INSERT INTO project_photos (project_id, photo_url, uploader_type, uploader_id, caption, phase)
                              VALUES (?, ?, 'customer', ?, 'Submitted with quote request', 'before')`
-                        ).bind(projectId, url, quote.customer_id).run();
+                        ).bind(projectId, url, customerId).run();
                     }
                 }
             } catch (photoErr) {
@@ -670,51 +639,103 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             }
         }
 
-        let depositInvoice: {
+        // Always create at least one payable invoice for the project.
+        const origin = new URL(request.url).origin;
+        const totalRounded = roundCurrency(totalAmount);
+        const createdInvoices: Array<{
             id: number;
             amount: number;
-            dueDate: string;
+            type: string;
+            dueDate: string | null;
             paymentUrl: string;
-        } | null = null;
+        }> = [];
+
         if (depositValidation.depositAmount !== null) {
+            // Deposit invoice
             const depositDueDate = calculateDepositDueDate(scheduledDate);
-            const invoiceResult = await env.DB.prepare(
+            const depositResult = await env.DB.prepare(
                 `
             INSERT INTO invoices (
-              project_id,
-              customer_id,
-              amount,
-              invoice_type,
-              status,
-              due_date,
-              created_at
+              project_id, customer_id, amount, invoice_type, status, due_date, created_at
             ) VALUES (?, ?, ?, 'deposit', 'pending', ?, datetime('now'))
           `
             )
-                .bind(
-                    projectId,
-                    quote.customer_id,
-                    depositValidation.depositAmount,
-                    depositDueDate
-                )
+                .bind(projectId, customerId, depositValidation.depositAmount, depositDueDate)
                 .run();
 
-            if (!invoiceResult.success) {
-                console.error('Admin deposit invoice creation failed:', invoiceResult);
+            if (!depositResult.success) {
+                console.error('Admin deposit invoice creation failed:', depositResult);
                 return new Response(
                     JSON.stringify({ success: false, error: 'Failed to create deposit invoice' }),
                     { status: 500, headers: { 'Content-Type': 'application/json' } }
                 );
             }
-
-            const invoiceId = Number(invoiceResult.meta.last_row_id);
-            depositInvoice = {
-                id: invoiceId,
+            const depositId = Number(depositResult.meta.last_row_id);
+            createdInvoices.push({
+                id: depositId,
                 amount: Number(depositValidation.depositAmount.toFixed(2)),
+                type: 'deposit',
                 dueDate: depositDueDate,
-                paymentUrl: `/portal/invoices/pay?id=${invoiceId}`,
-            };
+                paymentUrl: `/portal/invoices/pay?id=${depositId}`,
+            });
+
+            // Balance invoice for the remainder
+            const balanceAmount = roundCurrency(totalRounded - depositValidation.depositAmount);
+            if (balanceAmount > 0) {
+                const balanceResult = await env.DB.prepare(
+                    `
+              INSERT INTO invoices (
+                project_id, customer_id, amount, invoice_type, status, due_date, created_at
+              ) VALUES (?, ?, ?, 'balance', 'pending', ?, datetime('now'))
+            `
+                )
+                    .bind(projectId, customerId, balanceAmount, scheduledDate)
+                    .run();
+
+                if (balanceResult.success) {
+                    const balanceId = Number(balanceResult.meta.last_row_id);
+                    createdInvoices.push({
+                        id: balanceId,
+                        amount: Number(balanceAmount.toFixed(2)),
+                        type: 'balance',
+                        dueDate: scheduledDate,
+                        paymentUrl: `/portal/invoices/pay?id=${balanceId}`,
+                    });
+                } else {
+                    console.error('Admin balance invoice creation failed:', balanceResult);
+                }
+            }
+        } else {
+            // No deposit: a single full invoice for the total
+            const fullResult = await env.DB.prepare(
+                `
+            INSERT INTO invoices (
+              project_id, customer_id, amount, invoice_type, status, due_date, created_at
+            ) VALUES (?, ?, ?, 'full', 'pending', ?, datetime('now'))
+          `
+            )
+                .bind(projectId, customerId, totalRounded, scheduledDate)
+                .run();
+
+            if (!fullResult.success) {
+                console.error('Admin full invoice creation failed:', fullResult);
+                return new Response(
+                    JSON.stringify({ success: false, error: 'Failed to create invoice' }),
+                    { status: 500, headers: { 'Content-Type': 'application/json' } }
+                );
+            }
+            const fullId = Number(fullResult.meta.last_row_id);
+            createdInvoices.push({
+                id: fullId,
+                amount: Number(totalRounded.toFixed(2)),
+                type: 'full',
+                dueDate: scheduledDate,
+                paymentUrl: `/portal/invoices/pay?id=${fullId}`,
+            });
         }
+
+        const depositInvoice = createdInvoices.find((inv) => inv.type === 'deposit') ?? null;
+        const primaryInvoice = createdInvoices[0] ?? null;
 
         const customerEmail = normalizeEmail(quote.contact_email || quote.customer_email);
         const customerName = normalizeName(quote.contact_name || quote.customer_name);
@@ -722,9 +743,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             SERVICE_NAME_DISPLAY[normalizedServiceType] || formatTitle(normalizedServiceType);
 
         if (customerEmail) {
-            const paymentLink = depositInvoice
-                ? `${PAYMENT_PORTAL_BASE_URL}${depositInvoice.paymentUrl}`
-                : undefined;
+            const paymentLink = primaryInvoice ? `${origin}${primaryInvoice.paymentUrl}` : undefined;
             const emailHtml = getProjectScheduledEmail({
                 name: customerName,
                 serviceType: serviceName,
@@ -732,13 +751,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                 scheduledTime: scheduledTimeResult.value ?? undefined,
                 serviceDetails: quote.description ?? undefined,
                 depositAmount: depositValidation.depositAmount ?? undefined,
-                depositDueDate: depositInvoice?.dueDate,
+                depositDueDate: depositInvoice?.dueDate ?? undefined,
                 paymentLink,
             });
 
             const emailResult = await sendEmail(env, {
                 to: customerEmail,
-                subject: 'Project Scheduled - Evergrow Landscaping',
+                subject: "Project Scheduled - Thurmon's Heat & Air",
                 html: emailHtml,
             });
 
@@ -749,7 +768,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         await queueProjectReminder(env, {
             projectId,
-            customerId: quote.customer_id,
+            customerId,
             customerEmail,
             customerName,
             scheduledDate,
@@ -763,7 +782,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             project: {
                 id: projectId,
                 quoteId,
-                customerId: quote.customer_id,
+                customerId,
                 serviceType: normalizedServiceType,
                 totalAmount: Number(roundCurrency(totalAmount).toFixed(2)),
                 depositAmount:
@@ -774,6 +793,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                 scheduledDate,
                 status: 'scheduled',
             },
+            invoices: createdInvoices,
         };
 
         if (depositInvoice) {
