@@ -1,5 +1,6 @@
 import { Env } from '../../types';
 import { verifySquareWebhook } from '../../lib/square';
+import { completeLedgerPayment } from '../../lib/payments';
 
 const jsonHeaders = { 'Content-Type': 'application/json' };
 
@@ -9,8 +10,8 @@ const jsonHeaders = { 'Content-Type': 'application/json' };
  *   URL    = https://thurmons-heat-air.pages.dev/api/webhooks/square
  *   events = payment.created, payment.updated
  *
- * On a COMPLETED payment, the matching ledger row is marked complete, the invoice's
- * amount_paid is recomputed, and the invoice flips to 'partial' or 'paid'.
+ * On a COMPLETED payment, the matching ledger row is completed and the invoice
+ * balance/status is recomputed (see completeLedgerPayment).
  */
 export const onRequestPost: PagesFunction<Env> = async (context) => {
     const { request, env } = context;
@@ -40,57 +41,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         if (event.type === 'payment.created' || event.type === 'payment.updated') {
             const payment = event.data?.object?.payment;
-            const status = payment?.status;
-            const orderId = payment?.order_id;
-            const paymentId = payment?.id;
+            if (payment?.status === 'COMPLETED' && payment.order_id) {
+                const ledger = await env.DB.prepare(
+                    `SELECT id FROM invoice_payments WHERE square_order_id = ?`
+                ).bind(payment.order_id).first<{ id: number }>();
 
-            if (status === 'COMPLETED' && orderId) {
-                const ledger = await env.DB.prepare(`
-                    SELECT id, invoice_id, status FROM invoice_payments WHERE square_order_id = ?
-                `).bind(orderId).first<{ id: number; invoice_id: number; status: string }>();
-
-                if (ledger && ledger.status !== 'completed') {
-                    // 1) complete this ledger entry
-                    await env.DB.prepare(`
-                        UPDATE invoice_payments
-                        SET status = 'completed', square_payment_id = ?, paid_at = datetime('now')
-                        WHERE id = ?
-                    `).bind(paymentId ?? null, ledger.id).run();
-
-                    // 2) recompute the invoice's running total from completed payments
-                    const sumRow = await env.DB.prepare(`
-                        SELECT COALESCE(SUM(amount), 0) AS paid
-                        FROM invoice_payments
-                        WHERE invoice_id = ? AND status = 'completed'
-                    `).bind(ledger.invoice_id).first<{ paid: number }>();
-
-                    const invoice = await env.DB.prepare(`
-                        SELECT amount, invoice_type, project_id FROM invoices WHERE id = ?
-                    `).bind(ledger.invoice_id).first<{ amount: number; invoice_type: string; project_id: number }>();
-
-                    if (invoice) {
-                        const paidTotal = Number(sumRow?.paid) || 0;
-                        const fullyPaid = paidTotal + 0.005 >= invoice.amount;
-
-                        await env.DB.prepare(`
-                            UPDATE invoices
-                            SET amount_paid = ?,
-                                status = ?,
-                                paid_at = CASE WHEN ? = 1 THEN datetime('now') ELSE paid_at END
-                            WHERE id = ?
-                        `).bind(paidTotal, fullyPaid ? 'paid' : 'partial', fullyPaid ? 1 : 0, ledger.invoice_id).run();
-
-                        // 3) flip project flags only once the invoice is fully paid
-                        if (fullyPaid) {
-                            if (invoice.invoice_type === 'deposit') {
-                                await env.DB.prepare(`UPDATE projects SET deposit_paid = 1 WHERE id = ?`)
-                                    .bind(invoice.project_id).run();
-                            } else if (invoice.invoice_type === 'balance' || invoice.invoice_type === 'full') {
-                                await env.DB.prepare(`UPDATE projects SET balance_paid = 1 WHERE id = ?`)
-                                    .bind(invoice.project_id).run();
-                            }
-                        }
-                    }
+                if (ledger) {
+                    await completeLedgerPayment(env, ledger.id, payment.id ?? null);
                 }
             }
         }

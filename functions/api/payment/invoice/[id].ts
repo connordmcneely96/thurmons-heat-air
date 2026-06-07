@@ -1,6 +1,7 @@
 import { requireAuth } from '../../../lib/session';
 import { Env } from '../../../types';
 import { squareConfigFromEnv, createPaymentLink } from '../../../lib/square';
+import { completeLedgerPayment } from '../../../lib/payments';
 
 interface InvoiceRow {
     id: number;
@@ -86,7 +87,9 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     }
 };
 
-// POST: create a Square checkout link for a full or partial payment toward the invoice
+// POST: create a Square checkout link for a full or partial payment toward the invoice.
+// When PAYMENTS_TEST_MODE is 'true', the payment is simulated (no Square call) so the
+// full flow can be tested without live/sandbox credentials.
 export const onRequestPost: PagesFunction<Env> = async (context) => {
     const { request, env, params } = context;
     try {
@@ -109,15 +112,34 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         const body = await request.json<{ amount?: number }>().catch(() => ({}));
         let payAmount = typeof body.amount === 'number' ? round2(body.amount) : balance;
-
         if (!Number.isFinite(payAmount) || payAmount < MIN_PAYMENT) {
             return json({ success: false, error: `Minimum payment is $${MIN_PAYMENT.toFixed(2)}` }, 400);
         }
-        // Never let a payment exceed the remaining balance
         if (payAmount > balance + 0.01) payAmount = balance;
 
-        const isPartial = payAmount < balance - 0.01;
         const origin = new URL(request.url).origin;
+        const testMode = (env as unknown as { PAYMENTS_TEST_MODE?: string }).PAYMENTS_TEST_MODE === 'true';
+
+        // --- TEST MODE: simulate a completed payment, no Square call ---
+        if (testMode) {
+            const insert = await env.DB.prepare(`
+                INSERT INTO invoice_payments (invoice_id, amount, status, square_order_id, square_payment_link_id)
+                VALUES (?, ?, 'pending', ?, 'TEST')
+            `).bind(invoice.id, payAmount, `TEST-${crypto.randomUUID()}`).run();
+
+            await env.DB.prepare(`UPDATE invoices SET status = 'sent' WHERE id = ? AND status = 'pending'`)
+                .bind(invoice.id).run();
+            await env.DB.prepare(`UPDATE invoices SET due_date = ? WHERE id = ? AND due_date IS NULL`)
+                .bind(computeDueDate(invoice), invoice.id).run();
+
+            const ledgerId = Number(insert.meta?.last_row_id);
+            await completeLedgerPayment(env, ledgerId, `TEST-${crypto.randomUUID()}`);
+
+            return json({ success: true, test: true, url: `${origin}/portal/invoices?paid=${invoice.id}&test=1` });
+        }
+
+        // --- LIVE: Square hosted checkout link ---
+        const isPartial = payAmount < balance - 0.01;
         const config = squareConfigFromEnv(env);
         const link = await createPaymentLink(config, {
             amountCents: Math.round(payAmount * 100),
@@ -126,13 +148,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             redirectUrl: `${origin}/portal/invoices?paid=${invoice.id}`,
         });
 
-        // Record this payment attempt in the ledger; the webhook completes it.
         await env.DB.prepare(`
             INSERT INTO invoice_payments (invoice_id, amount, status, square_order_id, square_payment_link_id)
             VALUES (?, ?, 'pending', ?, ?)
         `).bind(invoice.id, payAmount, link.orderId ?? null, link.paymentLinkId).run();
 
-        // Mark invoice as sent + persist the 30-day due date on first payment attempt
         await env.DB.prepare(`UPDATE invoices SET status = 'sent' WHERE id = ? AND status = 'pending'`)
             .bind(invoice.id).run();
         await env.DB.prepare(`UPDATE invoices SET due_date = ? WHERE id = ? AND due_date IS NULL`)
@@ -140,7 +160,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         return json({ success: true, url: link.url });
     } catch (error) {
-        console.error('Square payment link error:', error instanceof Error ? error.message : String(error));
-        return json({ success: false, error: 'Failed to create payment link' }, 500);
+        console.error('Payment link error:', error instanceof Error ? error.message : String(error));
+        return json({ success: false, error: 'Failed to create payment' }, 500);
     }
 };
