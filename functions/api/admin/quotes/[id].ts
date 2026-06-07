@@ -4,18 +4,22 @@ import { Env } from '../../../types';
 
 const QUOTE_TOKEN_TTL_SECONDS = 60 * 60 * 24 * 30;
 const QUOTE_TOKEN_PREFIX = 'quote_token:';
-const ACCEPT_QUOTE_URL = 'https://evergrowlandscaping.com/portal/quotes/accept';
-const TERMS_URL = 'https://evergrowlandscaping.com/terms';
+const ACCEPT_QUOTE_PATH = '/portal/quotes/accept';
+const TERMS_PATH = '/terms';
 
 const SERVICE_TYPE_LABELS: Record<string, string> = {
-    'lawn-care': 'Lawn Care & Maintenance',
-    'flower-beds': 'Flower Bed Installation',
-    'seasonal-cleanup': 'Seasonal Cleanup',
-    'pressure-washing': 'Pressure Washing',
-    other: 'Other Services',
+    'ac-repair': 'AC Repair & Service',
+    heating: 'Heating & Furnace',
+    installation: 'New System Installation',
+    maintenance: 'Maintenance & Tune-Up',
+    ductwork: 'Ductwork',
+    ventilation: 'Ventilation',
+    multiple: 'Multiple Services',
+    other: 'Other',
 };
 
-const DEPOSIT_REQUIRED_SERVICES = new Set(['flower-beds', 'pressure-washing']);
+// HVAC quotes do not carry a forced deposit; deposits are decided at project time.
+const DEPOSIT_REQUIRED_SERVICES = new Set<string>();
 
 interface QuoteRow {
     id: number;
@@ -201,16 +205,14 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         }
 
         const SERVICE_NAME_DISPLAY: Record<string, string> = {
-            lawn_care: 'Lawn Care & Maintenance',
-            'lawn-care': 'Lawn Care & Maintenance',
-            flower_beds: 'Flower Bed Installation',
-            'flower-beds': 'Flower Bed Installation',
-            seasonal_cleanup: 'Seasonal Cleanup',
-            'seasonal-cleanup': 'Seasonal Cleanup',
-            pressure_washing: 'Pressure Washing',
-            'pressure-washing': 'Pressure Washing',
-            landscaping: 'Landscaping & Design',
-            other: 'Other Services',
+            ac_repair: 'AC Repair & Service',
+            heating: 'Heating & Furnace',
+            installation: 'New System Installation',
+            maintenance: 'Maintenance & Tune-Up',
+            ductwork: 'Ductwork',
+            ventilation: 'Ventilation',
+            multiple: 'Multiple Services',
+            other: 'Other',
         };
         const STATUS_DISPLAY: Record<string, string> = {
             pending: 'Awaiting Quote',
@@ -516,7 +518,8 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
             throw new Error('Failed to update quote');
         }
 
-        const acceptanceUrl = `${ACCEPT_QUOTE_URL}?token=${encodeURIComponent(acceptanceToken)}`;
+        const origin = new URL(request.url).origin;
+        const acceptanceUrl = `${origin}${ACCEPT_QUOTE_PATH}?token=${encodeURIComponent(acceptanceToken)}`;
 
         const customerName = normalizeName(quote.contact_name || quote.customer_name);
         const serviceTypeLabel = getServiceTypeLabel(quote.service_type);
@@ -537,12 +540,12 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
             acceptanceUrl,
             validUntilDisplay,
             requiresDeposit: DEPOSIT_REQUIRED_SERVICES.has(quote.service_type),
-            termsUrl: TERMS_URL,
+            termsUrl: `${origin}${TERMS_PATH}`,
         });
 
         const emailResult = await sendEmail(env, {
             to: customerEmail,
-            subject: 'Your Landscaping Quote from Evergrow',
+            subject: "Your Quote from Thurmon's Heat & Air",
             html: emailHtml,
         });
 
