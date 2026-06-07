@@ -5,6 +5,7 @@ import { ServiceProcess } from '@/components/services/ServiceProcess'
 import { ServiceFAQ } from '@/components/services/ServiceFAQ'
 import { ServiceCTA } from '@/components/services/ServiceCTA'
 import { ServiceShowcase } from '@/components/services/ServiceShowcase'
+import { ServiceGallery } from '@/components/services/ServiceGallery'
 import type { Metadata } from 'next'
 import { buildPageMetadata } from '@/lib/seo'
 import { siteConfig } from '@/lib/site.config'
@@ -49,6 +50,24 @@ const showcaseItems = [
   //   image: '/api/assets/services/ductwork/finished-job.jpg',
   //   alt: '...',
   // },
+]
+
+const galleryImages = [
+  {
+    src: '/api/assets/services/ductwork/vent-mold-2.jpg',
+    alt: 'A second ceiling supply vent with mold and a corroded register',
+    caption: 'Another home, same story: mold and a corroded register fed by leaky duct.',
+  },
+  {
+    src: '/api/assets/services/ductwork/attic-duct-2.jpg',
+    alt: 'Aging attic flex ductwork connected to a metal plenum box',
+    caption: 'Aging attic ducts and plenum, leaking conditioned air at the seams.',
+  },
+  {
+    src: '/api/assets/services/ductwork/duct-bare-rusted.jpg',
+    alt: 'A duct run with insulation fallen away, exposing bare, rusting metal',
+    caption: 'Insulation slid off this run, leaving bare metal and rust at the joints.',
+  },
 ]
 
 const process = [
@@ -98,6 +117,12 @@ export default function DuctworkPage() {
         heading="Why Ductwork Matters"
         intro="Uneven rooms and high power bills usually start in the ducts. Here is what failing ductwork actually looks like, and why sealing and sizing it correctly changes everything."
         items={showcaseItems}
+      />
+
+      <ServiceGallery
+        heading="More From the Field"
+        intro="A few more inspections around El Dorado. Different homes, same story: ductwork quietly costing comfort and money."
+        images={galleryImages}
       />
 
       <ServiceFeatures features={features} />
