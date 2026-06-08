@@ -45,14 +45,25 @@ function invoiceLabel(row: InvoiceRow): string {
     return `${service} - ${type}`;
 }
 
-async function loadInvoice(env: Env, invoiceId: string, customerId: number): Promise<InvoiceRow | null> {
+// An invoice is loadable/payable by the account that owns it: matched by customer id
+// OR by the account's email matching the invoice customer's email. Admins therefore
+// can only ever touch their own invoices.
+async function loadInvoice(env: Env, invoiceId: string, customerId: number, email: string): Promise<InvoiceRow | null> {
     return env.DB.prepare(`
         SELECT i.id, i.project_id, i.customer_id, i.amount, i.amount_paid, i.invoice_type,
                i.status, i.created_at, i.due_date, p.service_type
         FROM invoices i
         JOIN projects p ON i.project_id = p.id
-        WHERE i.id = ? AND i.customer_id = ?
-    `).bind(invoiceId, customerId).first<InvoiceRow>();
+        WHERE i.id = ?
+          AND (
+            i.customer_id = ?
+            OR EXISTS (
+                SELECT 1 FROM customers c2
+                WHERE c2.id = i.customer_id
+                  AND LOWER(c2.email) = ?
+            )
+          )
+    `).bind(invoiceId, customerId, email.trim().toLowerCase()).first<InvoiceRow>();
 }
 
 // GET: return invoice balance/terms so the portal can show a payment form
@@ -61,9 +72,9 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     try {
         const auth = await requireAuth(request, env);
         if (auth instanceof Response) return auth;
-        if (auth.role !== 'customer') return json({ success: false, error: 'Customer access required' }, 403);
+        if (auth.role !== 'customer' && auth.role !== 'admin') return json({ success: false, error: 'Authentication required' }, 403);
 
-        const invoice = await loadInvoice(env, params.id as string, auth.userId);
+        const invoice = await loadInvoice(env, params.id as string, auth.userId, auth.email);
         if (!invoice) return json({ success: false, error: 'Invoice not found' }, 404);
 
         const amountPaid = round2(invoice.amount_paid || 0);
@@ -95,9 +106,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     try {
         const auth = await requireAuth(request, env);
         if (auth instanceof Response) return auth;
-        if (auth.role !== 'customer') return json({ success: false, error: 'Customer access required' }, 403);
+        if (auth.role !== 'customer' && auth.role !== 'admin') return json({ success: false, error: 'Authentication required' }, 403);
 
-        const invoice = await loadInvoice(env, params.id as string, auth.userId);
+        const invoice = await loadInvoice(env, params.id as string, auth.userId, auth.email);
         if (!invoice) return json({ success: false, error: 'Invoice not found' }, 404);
 
         if (invoice.status === 'paid' || invoice.status === 'cancelled' || invoice.status === 'refunded') {
