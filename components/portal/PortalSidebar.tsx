@@ -26,7 +26,7 @@ export function PortalSidebar({ onClose }: PortalSidebarProps) {
     return (
         <div className="flex h-full w-64 flex-col bg-white border-r border-gray-200">
             <div className="flex h-16 items-center justify-between px-6 border-b border-gray-100">
-                <span className="text-xl font-heading font-bold text-forest-green">Evergrow</span>
+                <span className="text-lg font-heading font-bold text-forest-green leading-tight">Thurmon&apos;s Heat &amp; Air</span>
                 {/* Close button — mobile only */}
                 {onClose && (
                     <button

@@ -65,7 +65,7 @@ export default function AuthenticatedLayout({
                     >
                         <Menu className="w-6 h-6" />
                     </button>
-                    <span className="ml-3 font-heading font-bold text-forest-green text-lg">Evergrow Portal</span>
+                    <span className="ml-3 font-heading font-bold text-forest-green text-lg">Thurmon&apos;s Heat &amp; Air</span>
                 </div>
 
                 <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
