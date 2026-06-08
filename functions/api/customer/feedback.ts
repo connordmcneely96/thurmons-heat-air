@@ -21,7 +21,7 @@ interface CustomerRow {
 }
 
 const MAX_FEEDBACK_LENGTH = 1000;
-const OWNER_EMAIL_FALLBACK = 'karson@evergrowlandscaping.com';
+const OWNER_EMAIL_FALLBACK = 'thurmonshvac@yahoo.com';
 
 function parsePositiveInt(value: unknown): number | null {
     if (typeof value === 'number' && Number.isInteger(value) && value > 0) {
@@ -177,8 +177,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         return authResult;
     }
 
-    if (authResult.role !== 'customer') {
-        return new Response(JSON.stringify({ success: false, error: 'Customer access required' }), {
+    // Any authenticated account may submit feedback on its OWN completed project
+    // (ownership is enforced below via project.customer_id === userId).
+    if (authResult.role !== 'customer' && authResult.role !== 'admin') {
+        return new Response(JSON.stringify({ success: false, error: 'Authentication required' }), {
             status: 403,
             headers: { 'Content-Type': 'application/json' },
         });
