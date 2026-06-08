@@ -23,15 +23,15 @@ const STATUS_DISPLAY: Record<string, string> = {
 };
 
 const SERVICE_TYPE_LABELS: Record<string, string> = {
-    lawn_care: 'Lawn Care & Maintenance',
-    'lawn-care': 'Lawn Care & Maintenance',
-    flower_beds: 'Flower Bed Installation',
-    'flower-beds': 'Flower Bed Installation',
-    seasonal_cleanup: 'Seasonal Cleanup',
-    'seasonal-cleanup': 'Seasonal Cleanup',
-    pressure_washing: 'Pressure Washing',
-    'pressure-washing': 'Pressure Washing',
-    other: 'Other Services',
+    'ac-repair': 'AC Repair & Service',
+    ac_repair: 'AC Repair & Service',
+    heating: 'Heating & Furnace',
+    installation: 'New System Installation',
+    maintenance: 'Maintenance & Tune-Up',
+    ductwork: 'Ductwork',
+    ventilation: 'Ventilation',
+    multiple: 'Multiple Services',
+    other: 'Other',
 };
 
 function normalize(value: string): string {
@@ -53,8 +53,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         const authResult = await requireAuth(request, env);
         if (authResult instanceof Response) return authResult;
 
-        if (authResult.role !== 'customer') {
-            return new Response(JSON.stringify({ success: false, error: 'Customer access required' }), {
+        // Any authenticated account may view its OWN quotes. The query below is scoped
+        // to this account's customer id / email, so admins only see their own quotes.
+        if (authResult.role !== 'customer' && authResult.role !== 'admin') {
+            return new Response(JSON.stringify({ success: false, error: 'Authentication required' }), {
                 status: 403,
                 headers: { 'Content-Type': 'application/json' },
             });
