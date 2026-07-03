@@ -380,7 +380,7 @@ export function getQuoteRequestConfirmationEmail(name: string, serviceType: stri
 
           <div class="contact-box">
             <p>Have questions? We're here to help!</p>
-            <strong>📱 Call us: (405) 479-5794</strong>
+            <strong>📱 Call us: (870) 866-5101</strong>
             <p>📧 Email: thurmonshvac@yahoo.com</p>
           </div>
 
@@ -705,7 +705,7 @@ export function getQuoteEmail(data: {
         </div>
         <div class="footer">
           <p>&copy; ${new Date().getFullYear()} Thurmon's Heat & Air</p>
-          <p>Questions? Reply to this email or call us at (405) 479-5794</p>
+          <p>Questions? Reply to this email or call us at (870) 866-5101</p>
         </div>
       </div>
     </body>
@@ -883,7 +883,7 @@ export function getDepositInvoiceEmail(data: {
         </div>
         <div class="footer">
           <p>&copy; ${new Date().getFullYear()} Thurmon's Heat & Air</p>
-          <p>Questions? Reply to this email or call us at (405) 479-5794</p>
+          <p>Questions? Reply to this email or call us at (870) 866-5101</p>
         </div>
       </div>
     </body>
@@ -1376,7 +1376,7 @@ export function getJobApplicationConfirmationEmail(data: {
 
           <div class="contact-box">
             <p>Have questions about your application?</p>
-            <strong>📱 Call us: (405) 479-5794</strong>
+            <strong>📱 Call us: (870) 866-5101</strong>
             <p>📧 Email: thurmonshvac@yahoo.com</p>
           </div>
 

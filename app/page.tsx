@@ -8,7 +8,7 @@ import { siteConfig } from '@/lib/site.config';
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Thurmon's Heat & Air | Heating & Air Conditioning | El Dorado, AR",
-  description: 'Trusted HVAC service in El Dorado, AR since 2013. AC repair, heating and furnace service, installation, ductwork, ventilation, and mini-splits. Free estimates, Wells Fargo financing, 24/7 on-call.',
+  description: 'Trusted HVAC service in El Dorado, AR since 2013. AC repair, heating and furnace service, installation, ductwork, ventilation, and mini-splits. Free estimates, Synchrony financing, 24/7 on-call.',
   path: '/',
 });
 
@@ -22,7 +22,7 @@ const services = [
 const whyUs = [
   { Icon: Clock, title: 'Same-Day Service', desc: 'When your AC or heat goes out, you need it fixed now, not next week. We move fast.' },
   { Icon: DollarSign, title: 'Upfront Honest Pricing', desc: 'Straight quotes before we start. No pressure, no surprise upsells, just the work you need.' },
-  { Icon: CheckCircle, title: 'Wells Fargo Financing', desc: 'Flexible financing through Wells Fargo so a new system fits your budget, not just your need.' },
+  { Icon: CheckCircle, title: 'Synchrony Financing', desc: 'Flexible financing through Synchrony so a new system fits your budget, not just your need.' },
   { Icon: Shield, title: 'Licensed & Insured', desc: `Arkansas licensed HVAC (#${siteConfig.license}), serving El Dorado since ${siteConfig.yearEstablished}.` },
 ];
 
@@ -93,7 +93,7 @@ export default function HomePage() {
           <div className="container px-4 py-4">
             <div className="flex flex-wrap justify-center lg:justify-start gap-5 md:gap-8 text-white/90 text-sm md:text-base font-medium">
               <div className="flex items-center"><Shield className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> Licensed &amp; Insured</div>
-              <div className="flex items-center"><Clock className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> 24/7 On-Call, No Extra Charge</div>
+              <div className="flex items-center"><Clock className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> 24/7 On-Call</div>
               <div className="flex items-center"><CheckCircle className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> Free Estimates</div>
               <div className="flex items-center"><DollarSign className="w-5 h-5 text-vibrant-gold mr-2 flex-shrink-0" /> Financing Available</div>
             </div>
@@ -277,7 +277,7 @@ export default function HomePage() {
             <Link href="/quote-request" className="inline-flex items-center justify-center px-10 py-5 rounded-lg bg-vibrant-gold text-deep-charcoal font-bold text-xl hover:bg-vibrant-gold-600 transform hover:-translate-y-1 transition-all shadow-lg">Get Your Free Estimate</Link>
             <a href={`tel:${siteConfig.phoneRaw}`} className="inline-flex items-center justify-center px-10 py-5 rounded-lg border-2 border-white text-white font-bold text-xl hover:bg-white hover:text-forest-green transform hover:-translate-y-1 transition-all"><Phone className="w-5 h-5 mr-2" /> Call {siteConfig.phone}</a>
           </div>
-          <p className="mt-6 text-white/60 text-sm">Free estimates &bull; {siteConfig.highlights.laborWarranty} &bull; Wells Fargo financing</p>
+          <p className="mt-6 text-white/60 text-sm">Free estimates &bull; {siteConfig.highlights.laborWarranty} &bull; Synchrony financing</p>
         </div>
       </section>
     </main>

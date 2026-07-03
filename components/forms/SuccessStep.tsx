@@ -64,7 +64,7 @@ export function SuccessStep() {
             <div className="text-gray-600 mb-8">
                 <p className="mb-2">Have questions in the meantime?</p>
                 <p className="font-semibold">
-                    Call us at <a href="tel:4054795794" className="text-forest-green hover:underline">(405) 479-5794</a>
+                    Call us at <a href="tel:8708665101" className="text-forest-green hover:underline">(870) 866-5101</a>
                 </p>
                 <p className="text-sm text-gray-500 mt-1">
                     Monday-Saturday, 7AM-6PM

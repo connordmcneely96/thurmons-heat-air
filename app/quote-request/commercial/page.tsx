@@ -184,12 +184,11 @@ export default function CommercialQuotePage() {
                                 <div className="mt-6 p-4 bg-gray-50 rounded-lg text-sm text-gray-600">
                                     <p className="font-semibold text-forest-green mb-1">Commercial Coverage:</p>
                                     <ul className="space-y-1">
-                                        <li>• OKC metro and surrounding Oklahoma counties</li>
-                                        <li>• El Dorado, AR and surrounding Arkansas areas</li>
+                                        <li>• El Dorado, AR and surrounding South Arkansas areas (50-mile radius)</li>
                                     </ul>
                                     <p className="mt-3 text-gray-500">
                                         Outside our area?{' '}
-                                        <a href="tel:405-479-5794" className="text-forest-green hover:underline font-medium">(405) 479-5794</a>
+                                        <a href="tel:8708665101" className="text-forest-green hover:underline font-medium">(870) 866-5101</a>
                                     </p>
                                 </div>
                             </div>
@@ -433,12 +432,12 @@ export default function CommercialQuotePage() {
 
                         <p className="mt-6 text-center text-sm text-gray-500">
                             Prefer email?{' '}
-                            <a href="mailto:karson@evergrowlandscaping.com" className="text-forest-green hover:underline font-medium">
-                                karson@evergrowlandscaping.com
+                            <a href="mailto:thurmonshvac@yahoo.com" className="text-forest-green hover:underline font-medium">
+                                thurmonshvac@yahoo.com
                             </a>
                             {' '}or call{' '}
-                            <a href="tel:405-479-5794" className="text-forest-green hover:underline font-medium">
-                                (405) 479-5794
+                            <a href="tel:8708665101" className="text-forest-green hover:underline font-medium">
+                                (870) 866-5101
                             </a>
                         </p>
                     </div>

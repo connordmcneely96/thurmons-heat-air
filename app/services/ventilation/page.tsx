@@ -28,7 +28,7 @@ const faqs = [
   { question: 'Do you ventilate warehouses and shops?', answer: 'Yes. We handle large-scale ventilation including fans for big warehouses, manufacturing facilities, and shops.' },
   { question: 'Is ventilation only for commercial buildings?', answer: 'No. We design ventilation for residential, commercial, and industrial spaces alike.' },
   { question: 'Why does ventilation matter?', answer: 'Good ventilation removes stale air, controls moisture, and keeps indoor air healthier and more comfortable year-round.' },
-  { question: 'Do you offer financing on ventilation work?', answer: 'Yes. Financing through Wells Fargo is available. Just ask us about options when we quote your project.' },
+  { question: 'Do you offer financing on ventilation work?', answer: 'Yes. Financing through Synchrony is available. Just ask us about options when we quote your project.' },
 ]
 
 export default function VentilationPage() {

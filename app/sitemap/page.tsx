@@ -113,10 +113,10 @@ export default function SitemapPage() {
                             Contact Us
                         </Link>
                         <a
-                            href="tel:4054795794"
+                            href="tel:8708665101"
                             className="border-2 border-forest-green text-forest-green px-6 py-3 rounded-lg font-semibold hover:bg-forest-green hover:text-white transition-colors"
                         >
-                            Call 405-479-5794
+                            Call (870) 866-5101
                         </a>
                     </div>
                 </div>

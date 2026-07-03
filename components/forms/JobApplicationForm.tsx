@@ -19,20 +19,20 @@ interface FormData {
 }
 
 const POSITIONS = [
-    'Landscaping Crew - El Dorado, AR',
-    'Landscaping Crew - Oklahoma City, OK',
-    'Multi-Location Landscaper (Travel Required)',
-    'Commercial Property Specialist',
+    'HVAC Technician - El Dorado, AR',
+    'HVAC Installer - South Arkansas',
+    'HVAC Service Technician (Multi-Area)',
+    'Commercial HVAC Specialist',
     'Seasonal Worker (All Locations)',
     'Other'
 ]
 
 const EQUIPMENT_OPTIONS = [
-    'Commercial Mower',
-    'Edger/Trimmer',
-    'Leaf Blower',
-    'Pressure Washer',
-    'Heavy Equipment'
+    'Refrigerant Handling',
+    'Electrical Diagnostics',
+    'Ductwork Fabrication',
+    'Mini-Split Installation',
+    'Commercial HVAC Systems'
 ]
 
 export default function JobApplicationForm() {
@@ -148,7 +148,7 @@ export default function JobApplicationForm() {
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Application Submitted!</h2>
                 <p className="text-lg text-gray-600 mb-4">
-                    Thank you for applying to join the Evergrow team. We've received your application and will review it shortly.
+                    Thank you for applying to join the Thurmon&apos;s Heat &amp; Air team. We&apos;ve received your application and will review it shortly.
                 </p>
                 <p className="text-gray-600">
                     You'll receive a confirmation email at <strong>{formData.email}</strong> with next steps.
@@ -408,7 +408,7 @@ export default function JobApplicationForm() {
                 <div className="space-y-4">
                     <div>
                         <label htmlFor="coverLetter" className="block text-sm font-medium text-gray-700 mb-1">
-                            Why do you want to join Evergrow?
+                            Why do you want to join Thurmon&apos;s Heat &amp; Air?
                         </label>
                         <textarea
                             id="coverLetter"

@@ -41,13 +41,13 @@ export function ServiceHero({ title, description, imageSrc, imageAlt }: ServiceH
                 Get Free Quote
               </Button>
             </Link>
-            <a href="tel:405-479-5794">
+            <a href="tel:8708665101">
               <Button
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto bg-white/10 border-white text-white hover:bg-white hover:text-forest-green"
               >
-                Call (405) 479-5794
+                Call (870) 866-5101
               </Button>
             </a>
           </div>

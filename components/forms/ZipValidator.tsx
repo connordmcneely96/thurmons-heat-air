@@ -48,8 +48,7 @@ export function ZipValidator({ onValidZip }: ZipValidatorProps) {
                 First, Let's Check Your Service Area
             </h2>
             <p className="text-gray-600 mb-6">
-                We serve El Dorado, AR (15-mile radius) and Oklahoma City, OK (40-mile
-                radius).
+                We serve El Dorado, AR (50-mile radius).
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -87,11 +86,10 @@ export function ZipValidator({ onValidZip }: ZipValidatorProps) {
                     Our Service Areas:
                 </h3>
                 <ul className="text-sm text-gray-600 space-y-1">
-                    <li>• El Dorado, Arkansas (15-mile radius)</li>
-                    <li>• Oklahoma City, Oklahoma (40-mile radius)</li>
+                    <li>• El Dorado, Arkansas (50-mile radius)</li>
                 </ul>
                 <p className="text-sm text-gray-500 mt-3">
-                    Outside our service area? Call us at (405) 479-5794 to discuss
+                    Outside our service area? Call us at (870) 866-5101 to discuss
                     options.
                 </p>
             </div>
