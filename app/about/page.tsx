@@ -85,7 +85,7 @@ export default function AboutPage() {
                                 { label: 'We give you a quote', result: 'That is the price. No hidden fees, no surprise add-ons.' },
                                 { label: 'We schedule a visit', result: 'We show up when we say, and we keep you posted.' },
                                 { label: 'We finish a repair', result: 'We test the system and leave your home clean.' },
-                                { label: 'You call after hours', result: 'We are on-call 24/7 with no extra after-hours charge.' },
+                                { label: 'You call after hours', result: 'We are on-call 24/7.' },
                             ].map((item, i) => (
                                 <div key={i} className="flex gap-4 bg-white rounded-lg p-5 shadow-sm border border-gray-100">
                                     <div className="flex-shrink-0 w-2 rounded-full bg-vibrant-gold self-stretch" />
@@ -129,7 +129,7 @@ export default function AboutPage() {
                                 },
                                 {
                                     title: 'Honest Pricing',
-                                    body: "The quote we give you is the price you pay. No hidden fees, no surprise charges, and financing through Wells Fargo is available so a new system fits your budget.",
+                                    body: "The quote we give you is the price you pay. No hidden fees, no surprise charges, and financing through Synchrony is available so a new system fits your budget.",
                                 },
                                 {
                                     title: 'Professionalism',
@@ -175,16 +175,16 @@ export default function AboutPage() {
                                     body: 'Your home is protected. Fully licensed Arkansas HVAC and insured, with no fine print.',
                                 },
                                 {
-                                    title: '24/7 on-call, no extra charge',
-                                    body: "When your AC or heat goes out, we move fast, with around-the-clock availability and no extra after-hours charge.",
+                                    title: '24/7 on-call',
+                                    body: "When your AC or heat goes out, we move fast, with around-the-clock availability.",
                                 },
                                 {
                                     title: 'Warranty & seasonal care',
-                                    body: "New installs carry a 1-year labor warranty, and we offer spring and fall visits at no extra charge to keep your system running.",
+                                    body: "New installs carry a 1-year labor warranty. We offer Yearly Service Efficiency Agreements. Call for details.",
                                 },
                                 {
                                     title: 'Honest pricing & financing',
-                                    body: "The quote we give you is the price you pay. No surprises, and Wells Fargo financing is available on new systems.",
+                                    body: "The quote we give you is the price you pay. No surprises, and Synchrony financing is available on new systems.",
                                 },
                                 {
                                     title: 'Satisfaction guarantee',

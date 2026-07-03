@@ -91,10 +91,10 @@ export default function PrivacyPolicyPage() {
                         <h2 className="text-2xl font-heading font-bold text-gray-900 mt-10 mb-4">9. Contact Us</h2>
                         <p>If you have any questions about this Privacy Policy or how we handle your information, please contact us:</p>
                         <div className="bg-gray-50 p-6 rounded-lg mt-4">
-                            <p className="font-semibold text-gray-900 m-0">Evergrow Landscaping</p>
+                            <p className="font-semibold text-gray-900 m-0">Thurmon&apos;s Heat &amp; Air</p>
                             <p className="m-0">El Dorado, AR 71730</p>
-                            <p className="m-0">Phone: <a href="tel:+14054795794" className="text-forest-green underline">405-479-5794</a></p>
-                            <p className="m-0">Email: <a href="mailto:contact@evergrowlandscaping.com" className="text-forest-green underline">contact@evergrowlandscaping.com</a></p>
+                            <p className="m-0">Phone: <a href="tel:+18708665101" className="text-forest-green underline">(870) 866-5101</a></p>
+                            <p className="m-0">Email: <a href="mailto:thurmonshvac@yahoo.com" className="text-forest-green underline">thurmonshvac@yahoo.com</a></p>
                         </div>
                     </div>
                 </div>

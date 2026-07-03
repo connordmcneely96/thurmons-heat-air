@@ -7,10 +7,7 @@ interface ServiceAreaMapProps {
 }
 
 /**
- * Embeds a Google Maps iframe that surfaces the Evergrow Landscaping
- * GMB listing for El Dorado, AR. Clicking "View larger map" inside the
- * iframe opens the full Google Business Profile.
- *
+ * Embeds a Google Maps iframe centered on Thurmon's Heat & Air in El Dorado, AR.
  * No API key required – uses the free Maps search embed endpoint.
  */
 export function ServiceAreaMap({
@@ -26,15 +23,15 @@ export function ServiceAreaMap({
       style={{ height: heightStyle }}
     >
       <iframe
-        src="https://maps.google.com/maps?q=Evergrow+Landscaping+El+Dorado+AR&output=embed&hl=en&z=9"
+        src="https://maps.google.com/maps?q=1839+Champagnolle+Rd+El+Dorado+AR+71730&output=embed&hl=en&z=13"
         width="100%"
         height="100%"
         style={{ border: 0, display: 'block' }}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        title="Evergrow Landscaping – Service Area Map"
-        aria-label="Google Maps showing Evergrow Landscaping service area"
+        title="Thurmon's Heat &amp; Air – Service Area Map"
+        aria-label="Google Maps showing Thurmon's Heat &amp; Air location in El Dorado, AR"
       />
 
       {showBadge && (

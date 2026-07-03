@@ -133,15 +133,15 @@ export default function TermsPage() {
                                 <h2 className="text-2xl font-bold text-gray-900 mb-4">12. Contact Us</h2>
                                 <p>If you have questions about these Terms, please contact us:</p>
                                 <div className="mt-4 bg-gray-50 rounded-lg p-6 not-prose">
-                                    <p className="font-bold text-gray-900 mb-2">Evergrow Landscaping</p>
+                                    <p className="font-bold text-gray-900 mb-2">Thurmon&apos;s Heat &amp; Air</p>
                                     <p className="text-gray-700">El Dorado, AR 71730</p>
                                     <p className="text-gray-700">
                                         Phone:{' '}
-                                        <a href="tel:4054795794" className="text-forest-green hover:underline">405-479-5794</a>
+                                        <a href="tel:8708665101" className="text-forest-green hover:underline">(870) 866-5101</a>
                                     </p>
                                     <p className="text-gray-700">
                                         Email:{' '}
-                                        <a href="mailto:contact@evergrowlandscaping.com" className="text-forest-green hover:underline">contact@evergrowlandscaping.com</a>
+                                        <a href="mailto:thurmonshvac@yahoo.com" className="text-forest-green hover:underline">thurmonshvac@yahoo.com</a>
                                     </p>
                                 </div>
                             </section>

@@ -59,12 +59,10 @@ class ApiClient {
         message?: string
     }>> {
         // Service area validation logic
-        // El Dorado: 71730, 71731, 71764 (15-mile radius)
-        // OKC: 73101-73179, 73189-73199 (40-mile radius)
+        // El Dorado: 71730, 71731, 71740, 71743, 71753, 71759, 71762, 71764, 71770 (50-mile radius)
 
         // Note: In a real app this should be server-side to avoid exposing logic/lists, but requested here.
-        const elDoradoZips = ['71730', '71731', '71764']
-        const okcZipPattern = /^73(1[0-7][0-9]|18[0-9]|19[0-9])$/
+        const elDoradoZips = ['71730', '71731', '71740', '71743', '71753', '71759', '71762', '71764', '71770']
 
         if (elDoradoZips.includes(zipCode)) {
             return {
@@ -77,22 +75,11 @@ class ApiClient {
             }
         }
 
-        if (okcZipPattern.test(zipCode)) {
-            return {
-                success: true,
-                data: {
-                    valid: true,
-                    location: 'Oklahoma City, OK',
-                    message: 'Great! We serve your area.',
-                },
-            }
-        }
-
         return {
             success: true,
             data: {
                 valid: false,
-                message: 'Sorry, we don\'t currently serve this area. Please call us at (405) 479-5794 to discuss options.',
+                message: 'Sorry, we don\'t currently serve this area. Please call us at (870) 866-5101 to discuss options.',
             },
         }
     }

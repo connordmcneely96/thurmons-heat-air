@@ -7,7 +7,7 @@ export const siteConfig = {
   legalName: "Thurmon's Heat & Air",
   tagline: "Heating & Air Conditioning in El Dorado, AR",
   description:
-    "Trusted heating and air conditioning service in El Dorado, Arkansas. AC and heating repair, new system installation, ductwork, ventilation, and mini-splits. Free estimates, financing available, and 24/7 on-call service with no extra after-hours charge.",
+    "Trusted heating and air conditioning service in El Dorado, Arkansas. AC and heating repair, new system installation, ductwork, ventilation, and mini-splits. Free estimates, financing available, and 24/7 on-call service.",
   url: "https://thurmonsheatandair.com",
 
   // TODO: move off Yahoo to a domain email (see onboarding intake)
@@ -32,16 +32,16 @@ export const siteConfig = {
   geo: { lat: 33.2076, lng: -92.6663 },
 
   hours: {
-    display: "Mon\u2013Sun 8:00 AM \u2013 5:00 PM \u00b7 24/7 On-Call (no extra after-hours charge)",
+    display: "Mon\u2013Sun 8:00 AM \u2013 5:00 PM \u00b7 24/7 On-Call",
   },
 
   // Real differentiators pulled from the live site
   highlights: {
     freeEstimates: true,
     laborWarranty: "1-Year Labor Warranty on new equipment installs",
-    seasonalVisits: "Spring & fall visits at no extra charge",
-    afterHours: "24/7 on-call with no extra after-hours charge",
-    financing: "Financing available through Wells Fargo",
+    seasonalVisits: "Yearly Service Efficiency Agreements Available",
+    afterHours: "24/7 on-call service",
+    financing: "Financing available through Synchrony",
     languages: ["English", "Spanish"],
     brands: ["York", "Luxaire"],
     payments: ["Cash", "Check", "Visa", "MasterCard", "Discover", "American Express", "Financing"],
