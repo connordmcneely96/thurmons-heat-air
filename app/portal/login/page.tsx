@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useAuth } from '@/components/portal/AuthContext'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 
@@ -45,9 +44,8 @@ export default function LoginPage() {
         <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-warm-cream/30">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <Link href="/" className="flex justify-center mb-6">
-                    {/* Placeholder for Logo, using text for now or existing standard logo if available */}
-                    <h1 className="text-3xl font-heading font-bold text-forest-green tracking-tight">
-                        Evergrow
+                    <h1 className="text-3xl font-heading font-bold text-forest-green tracking-tight text-center">
+                        Thurmon&apos;s Heat &amp; Air
                     </h1>
                 </Link>
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">

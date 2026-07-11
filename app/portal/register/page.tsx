@@ -58,8 +58,8 @@ export default function RegisterPage() {
         <div className="flex min-h-screen flex-col justify-center py-12 sm:px-6 lg:px-8 bg-warm-cream/30">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 <Link href="/" className="flex justify-center mb-6">
-                    <h1 className="text-3xl font-heading font-bold text-forest-green tracking-tight">
-                        Evergrow
+                    <h1 className="text-3xl font-heading font-bold text-forest-green tracking-tight text-center">
+                        Thurmon&apos;s Heat &amp; Air
                     </h1>
                 </Link>
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
