@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'evergrowlandscaping.com',
+        hostname: 'thurmonshvac.com',
       },
       {
         protocol: 'https',
@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'evergrowlandscaping.pages.dev',
+        hostname: 'thurmons-heat-air.pages.dev',
       },
       {
         protocol: 'http',

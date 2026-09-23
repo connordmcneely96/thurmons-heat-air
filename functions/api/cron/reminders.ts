@@ -69,13 +69,13 @@ function buildReminderEmail(params: {
             <p style="margin: 8px 0 0; color: #666; font-size: 14px;">Due by ${formatDateDisplay(params.dueDate)}</p>
           </div>
           <p style="text-align: center; margin: 24px 0;">
-            <a href="https://evergrowlandscaping.com/portal/invoices" class="btn">Pay Now →</a>
+            <a href="https://thurmonshvac.com/portal/invoices" class="btn">Pay Now →</a>
           </p>
-          <p>If you have any questions, please contact us at <a href="mailto:contact@evergrowlandscaping.com">contact@evergrowlandscaping.com</a>.</p>
-          <p>Thank you,<br><strong>The Evergrow Landscaping Team</strong></p>
+          <p>If you have any questions, please contact us at <a href="mailto:thurmonshvac@yahoo.com">thurmonshvac@yahoo.com</a>.</p>
+          <p>Thank you,<br><strong>The Thurmon's Heat &amp; Air Team</strong></p>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong> &bull; contact@evergrowlandscaping.com</p>
+          <p><strong>Thurmon's Heat &amp; Air</strong> &bull; thurmonshvac@yahoo.com</p>
         </div>
       </div>
     </body>
@@ -106,7 +106,7 @@ async function sendBalanceDueReminders(env: Env): Promise<{ sent: number; errors
     for (const row of rows.results || []) {
         try {
             await sendEmail(env, {
-                from: 'Evergrow Landscaping <support@evergrowlandscaping.com>',
+                from: "Thurmon's Heat & Air <noreply@thurmonshvac.com>",
                 to: row.customer_email,
                 subject: '⏰ Payment Reminder – Balance Due in 2 Days',
                 html: buildReminderEmail({

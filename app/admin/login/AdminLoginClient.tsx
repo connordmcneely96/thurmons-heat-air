@@ -89,7 +89,7 @@ export default function AdminLoginPage() {
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                placeholder="admin@thurmonsheatandair.com"
+                                placeholder="thurmonshvac@yahoo.com"
                                 required
                                 className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-forest-green focus:border-transparent transition-colors"
                             />

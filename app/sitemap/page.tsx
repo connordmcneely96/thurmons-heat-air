@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-    title: 'Sitemap | Evergrow Landscaping',
-    description: 'Sitemap for Evergrow Landscaping. Find all pages on our website including services, about, contact, and more.',
+    title: "Sitemap | Thurmon's Heat & Air",
+    description: "Sitemap for Thurmon's Heat & Air. Find all pages on our website including services, about, contact, and more.",
 }
 
 interface SitemapSection {
@@ -15,11 +15,11 @@ const sections: SitemapSection[] = [
     {
         title: 'Main Pages',
         links: [
-            { label: 'Home', href: '/', description: 'Welcome to Evergrow Landscaping' },
+            { label: 'Home', href: '/', description: "Welcome to Thurmon's Heat & Air" },
             { label: 'About Us', href: '/about', description: 'Our story, values, and team' },
             { label: 'Contact', href: '/contact', description: 'Get in touch with us' },
             { label: 'Get a Free Quote', href: '/quote-request', description: 'Request a free estimate' },
-            { label: 'Careers', href: '/careers', description: 'Join the Evergrow team' },
+            { label: 'Careers', href: '/careers', description: "Join the Thurmon's Heat & Air team" },
         ],
     },
     {

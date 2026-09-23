@@ -11,7 +11,7 @@ export default function FeedbackPage() {
                     Share Your Feedback
                 </h1>
                 <p className="text-gray-600">
-                    We'd love to hear about your experience with Evergrow Landscaping.
+                    We'd love to hear about your experience with Thurmon's Heat &amp; Air.
                 </p>
             </div>
 

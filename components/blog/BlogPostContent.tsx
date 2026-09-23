@@ -64,7 +64,7 @@ export function BlogPostContent({ slug }: BlogPostContentProps) {
 
     useEffect(() => {
         if (post) {
-            document.title = post.meta_title || `${post.title} | Evergrow Landscaping Blog`
+            document.title = post.meta_title || `${post.title} | Thurmon's Heat & Air Blog`
         }
     }, [post])
 

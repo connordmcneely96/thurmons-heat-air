@@ -7,7 +7,7 @@ const jsonHeaders = { 'Content-Type': 'application/json' };
 /**
  * Square webhook receiver.
  * Configure in Square dashboard:
- *   URL    = https://thurmons-heat-air.pages.dev/api/webhooks/square
+ *   URL    = https://thurmonshvac.com/api/webhooks/square
  *   events = payment.created, payment.updated
  *
  * On a COMPLETED payment, the matching ledger row is completed and the invoice

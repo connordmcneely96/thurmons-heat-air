@@ -145,7 +145,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         // Send notification emails (don't fail the request if emails fail)
         try {
-            const notificationEmail = env.NOTIFICATION_EMAIL || 'karson@evergrowlandscaping.com';
+            const notificationEmail = env.NOTIFICATION_EMAIL || 'thurmonshvac@yahoo.com';
 
             // Send notification email to business owner
             await sendEmail(env, {
@@ -168,7 +168,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             // Send confirmation email to customer
             await sendEmail(env, {
                 to: email,
-                subject: 'Quote Request Received - Evergrow Landscaping',
+                subject: "Quote Request Received - Thurmon's Heat & Air",
                 html: getQuoteRequestConfirmationEmail(name, serviceTypeDisplay),
             });
         } catch (emailError) {

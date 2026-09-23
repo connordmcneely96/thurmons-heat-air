@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-    title: 'Privacy Policy | Evergrow Landscaping',
-    description: 'Privacy Policy for Evergrow Landscaping. Learn how we collect, use, and protect your personal information.',
+    title: "Privacy Policy | Thurmon's Heat & Air",
+    description: "Privacy Policy for Thurmon's Heat & Air. Learn how we collect, use, and protect your personal information.",
 }
 
 export default function PrivacyPolicyPage() {
@@ -62,7 +62,7 @@ export default function PrivacyPolicyPage() {
                             <li><strong>Cloud storage providers</strong> to store project files and photos</li>
                         </ul>
                         <p>These third parties are contractually obligated to keep your information confidential and use it only for the specific services they provide to us.</p>
-                        <p>We may also disclose your information if required by law, court order, or to protect the rights and safety of Evergrow Landscaping or others.</p>
+                        <p>We may also disclose your information if required by law, court order, or to protect the rights and safety of Thurmon's Heat &amp; Air or others.</p>
 
                         <h2 className="text-2xl font-heading font-bold text-gray-900 mt-10 mb-4">4. Cookies</h2>
                         <p>Our website uses cookies — small text files stored on your device — to improve your browsing experience. Cookies help us remember your preferences and understand how visitors use our site.</p>
@@ -80,7 +80,7 @@ export default function PrivacyPolicyPage() {
                             <li>Request deletion of your account and associated data</li>
                             <li>Opt out of marketing emails at any time</li>
                         </ul>
-                        <p>To exercise any of these rights, contact us at <a href="mailto:contact@evergrowlandscaping.com" className="text-forest-green underline">contact@evergrowlandscaping.com</a>.</p>
+                        <p>To exercise any of these rights, contact us at <a href="mailto:thurmonshvac@yahoo.com" className="text-forest-green underline">thurmonshvac@yahoo.com</a>.</p>
 
                         <h2 className="text-2xl font-heading font-bold text-gray-900 mt-10 mb-4">7. Children's Privacy</h2>
                         <p>Our website and services are not directed to children under 13. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us immediately.</p>

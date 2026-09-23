@@ -110,7 +110,7 @@ export function PhotoGallery({ photos }: PhotoGalleryProps) {
                             </div>
                         )}
                         <div className="mt-2 text-center text-sm text-gray-300">
-                            Uploaded by {selectedPhoto.uploader_type === 'customer' ? 'Customer' : 'Evergrow Landscaping'}
+                            Uploaded by {selectedPhoto.uploader_type === 'customer' ? 'Customer' : "Thurmon's Heat & Air"}
                             {' • '}
                             {new Date(selectedPhoto.uploaded_at).toLocaleDateString()}
                         </div>

@@ -33,8 +33,8 @@ export async function generateMetadata({ params }: PageProps) {
         .join(' ')
 
     return buildPageMetadata({
-        title: `${title} | Evergrow Landscaping Blog`,
-        description: 'Read landscaping tips and advice from the Evergrow Landscaping team.',
+        title: `${title} | Thurmon's Heat & Air Blog`,
+        description: "Read HVAC tips and advice from the Thurmon's Heat & Air team.",
         path: `/blog/${slug}/`,
     })
 }

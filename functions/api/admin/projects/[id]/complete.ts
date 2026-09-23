@@ -2,7 +2,7 @@ import { sendEmail } from '../../../../lib/email';
 import { requireAdmin } from '../../../../lib/session';
 import { Env } from '../../../../types';
 
-const SITE_BASE_URL = 'https://evergrowlandscaping.com';
+const SITE_BASE_URL = 'https://thurmonshvac.com';
 const PORTAL_INVOICES_URL = `${SITE_BASE_URL}/portal/invoices`;
 
 const SERVICE_TYPE_LABELS: Record<string, string> = {
@@ -78,12 +78,12 @@ function buildCompletionEmail(params: {
           <p style="text-align: center;">
             <a href="${params.portalUrl}" class="btn">Pay Now →</a>
           </p>
-          <p>If you have any questions about your invoice or the work completed, please don't hesitate to reach out at <a href="mailto:contact@evergrowlandscaping.com">contact@evergrowlandscaping.com</a>.</p>
-          <p>Thank you for choosing Evergrow Landscaping!</p>
-          <p>Warm regards,<br><strong>The Evergrow Landscaping Team</strong></p>
+          <p>If you have any questions about your invoice or the work completed, please don't hesitate to reach out at <a href="mailto:thurmonshvac@yahoo.com">thurmonshvac@yahoo.com</a>.</p>
+          <p>Thank you for choosing Thurmon's Heat &amp; Air!</p>
+          <p>Warm regards,<br><strong>The Thurmon's Heat &amp; Air Team</strong></p>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong> &bull; contact@evergrowlandscaping.com</p>
+          <p><strong>Thurmon's Heat &amp; Air</strong> &bull; thurmonshvac@yahoo.com</p>
         </div>
       </div>
     </body>
@@ -200,7 +200,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         if (project.customer_email && invoiceId && balanceAmount > 0) {
             try {
                 await sendEmail(env, {
-                    from: 'Evergrow Landscaping <support@evergrowlandscaping.com>',
+                    from: "Thurmon's Heat & Air <noreply@thurmonshvac.com>",
                     to: project.customer_email,
                     subject: '✅ Project Complete – Your Final Invoice Is Ready',
                     html: buildCompletionEmail({

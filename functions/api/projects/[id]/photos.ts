@@ -177,7 +177,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         try {
             if (uploaderType === 'customer') {
                 // Notify business when customer uploads
-                const notificationEmail = env.NOTIFICATION_EMAIL || 'karson@evergrowlandscaping.com';
+                const notificationEmail = env.NOTIFICATION_EMAIL || 'thurmonshvac@yahoo.com';
                 await sendEmail(env, {
                     to: notificationEmail,
                     subject: `New Photos Added - Project #${projectId}`,
@@ -197,7 +197,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                         subject: `New Photos Added to Your Project`,
                         html: getProjectPhotoNotificationEmail({
                             projectId: Number(projectId),
-                            uploaderName: 'Evergrow Landscaping',
+                            uploaderName: "Thurmon's Heat & Air",
                             uploaderType: 'business',
                             photoUrl: uploadResult.url!,
                             caption: caption || undefined,

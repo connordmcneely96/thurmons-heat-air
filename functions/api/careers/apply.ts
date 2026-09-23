@@ -95,8 +95,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         // Send notification email to business
         try {
             await sendEmail(env, {
-                from: 'Evergrow Landscaping <support@evergrowlandscaping.com>',
-                to: 'Karson@evergrowlandscaping.com',
+                from: "Thurmon's Heat & Air <noreply@thurmonshvac.com>",
+                to: env.NOTIFICATION_EMAIL || 'thurmonshvac@yahoo.com',
                 subject: `New Job Application – ${data.position} – ${data.name}`,
                 html: getJobApplicationNotificationEmail({
                     applicationId: applicationId as number,
@@ -122,9 +122,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         // Send confirmation email to applicant
         try {
             await sendEmail(env, {
-                from: 'Evergrow Landscaping <support@evergrowlandscaping.com>',
+                from: "Thurmon's Heat & Air <noreply@thurmonshvac.com>",
                 to: data.email,
-                subject: 'Application received – Evergrow Landscaping',
+                subject: "Application received – Thurmon's Heat & Air",
                 html: getJobApplicationConfirmationEmail({
                     name: data.name,
                     position: data.position

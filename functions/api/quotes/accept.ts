@@ -383,7 +383,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         // 4. Send Deposit Invoice Email
         const guestEmail = encodeURIComponent(resolvedCustomerEmail || '');
-        const invoiceUrl = `https://evergrowlandscaping.com/pay?invoice=${invoiceId}&email=${guestEmail}`;
+        const invoiceUrl = `https://thurmonshvac.com/pay?invoice=${invoiceId}&email=${guestEmail}`;
         const customerEmail = resolvedCustomerEmail;
         const customerName = resolvedCustomerName;
 
@@ -407,7 +407,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                 console.error('Failed to send customer deposit invoice email:', customerEmailResult.error);
             }
 
-            const ownerEmail = normalizeEmail(env.NOTIFICATION_EMAIL || 'karson@evergrowlandscaping.com');
+            const ownerEmail = normalizeEmail(env.NOTIFICATION_EMAIL || 'thurmonshvac@yahoo.com');
             if (ownerEmail) {
                 const ownerEmailHtml = `
                     <h2>Quote Accepted</h2>
