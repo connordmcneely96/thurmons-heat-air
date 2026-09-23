@@ -6,7 +6,7 @@ import { validateNewsletterSubscribePayload } from '../../lib/validation';
 const SUBSCRIBE_LIMIT = 3;
 const SUBSCRIBE_WINDOW_SECONDS = 60 * 60;
 const DEFAULT_SOURCE = 'website';
-const UNSUBSCRIBE_BASE_URL = 'https://evergrowlandscaping.pages.dev/unsubscribe'; // Method to be updated with real domain
+const UNSUBSCRIBE_BASE_URL = 'https://thurmonshvac.com/unsubscribe';
 
 interface NewsletterRecord {
     id: number;
@@ -107,7 +107,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
         const emailResult = await sendEmail(env, {
             to: email,
-            subject: 'Welcome to Evergrow Landscaping Updates',
+            subject: "Welcome to Thurmon's Heat & Air Updates",
             html: emailHtml,
         });
 

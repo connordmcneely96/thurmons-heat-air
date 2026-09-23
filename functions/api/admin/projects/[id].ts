@@ -7,8 +7,8 @@ import {
 import { requireAdmin } from '../../../lib/session';
 import { Env } from '../../../types';
 
-const OWNER_EMAIL_FALLBACK = 'karson@evergrowlandscaping.com';
-const SITE_BASE_URL = 'https://evergrowlandscaping.com';
+const OWNER_EMAIL_FALLBACK = 'thurmonshvac@yahoo.com';
+const SITE_BASE_URL = 'https://thurmonshvac.com';
 const PORTAL_BASE_URL = `${SITE_BASE_URL}/portal`;
 const FEEDBACK_FORM_URL = `${PORTAL_BASE_URL}/feedback`;
 const GOOGLE_REVIEW_URL = 'https://g.page/r/evergrow-landscaping/review';
@@ -793,7 +793,7 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
 
                 const completionResult = await sendEmail(env, {
                     to: customerEmail,
-                    subject: 'Project Completed - Evergrow Landscaping',
+                    subject: "Project Completed - Thurmon's Heat & Air",
                     html: completionEmailHtml,
                 });
 
@@ -827,7 +827,7 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
 
                 const feedbackResult = await sendEmail(env, {
                     to: customerEmail,
-                    subject: 'How did we do? - Evergrow Landscaping',
+                    subject: "How did we do? - Thurmon's Heat & Air",
                     html: feedbackEmailHtml,
                 });
 
@@ -870,7 +870,7 @@ export const onRequestPut: PagesFunction<Env> = async (context) => {
 
                 const cancelEmailResult = await sendEmail(env, {
                     to: customerEmail,
-                    subject: 'Project Update - Evergrow Landscaping',
+                    subject: "Project Update - Thurmon's Heat & Air",
                     html: cancellationHtml,
                 });
 

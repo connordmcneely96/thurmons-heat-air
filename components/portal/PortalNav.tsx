@@ -22,9 +22,8 @@ export function PortalNav() {
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2">
-                        <span className="text-2xl">🌳</span>
                         <span className="font-heading font-bold text-forest-green">
-                            Evergrow
+                            Thurmon&apos;s Heat &amp; Air
                         </span>
                     </Link>
 

@@ -118,6 +118,6 @@ export default function QuoteRequestPage() {
 }
 
 export const metadata = {
-    title: 'Get a Free Quote | Evergrow Landscaping',
+    title: "Get a Free Quote | Thurmon's Heat & Air",
     description: 'Request a free landscaping quote for El Dorado or Oklahoma City. No obligation, 24-hour response guaranteed.',
 }

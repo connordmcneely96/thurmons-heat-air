@@ -52,7 +52,7 @@ export async function sendEmail(
         const resend = new Resend(env.RESEND_API_KEY);
 
         const { data, error } = await resend.emails.send({
-            from: params.from || "Thurmon's Heat & Air <noreply@thurmonsheatandair.com>",
+            from: params.from || "Thurmon's Heat & Air <noreply@thurmonshvac.com>",
             to: params.to,
             subject: params.subject,
             html: params.html,
@@ -191,7 +191,7 @@ export function getNewsletterWelcomeEmail(data: {
           <p>We respect your privacy and will never share your email with third parties.</p>
           <p>If you ever want to unsubscribe, you can do so here: <a href="${data.unsubscribeUrl}">Unsubscribe</a>.</p>
 
-          <a href="https://www.thurmonsheatandair.com" class="cta">Visit Thurmon's Heat & Air</a>
+          <a href="https://thurmonshvac.com" class="cta">Visit Thurmon's Heat & Air</a>
         </div>
         <div class="footer">
           <p><strong>Thurmon's Heat & Air</strong></p>
@@ -394,7 +394,7 @@ export function getQuoteRequestConfirmationEmail(name: string, serviceType: stri
           <p>Serving El Dorado & South Arkansas</p>
           <p>Licensed & Insured | Family-Owned</p>
           <p style="margin-top: 15px; font-size: 12px;">
-            This email was sent because you requested a quote at thurmonsheatandair.com
+            This email was sent because you requested a quote at thurmonshvac.com
           </p>
         </div>
       </div>
@@ -1164,11 +1164,11 @@ export function getProjectPhotoNotificationEmail(data: {
 
           ${isCustomerUpload ? `
           <p style="text-align: center;">
-            <a href="https://www.thurmonsheatandair.com/portal/projects/${data.projectId}" class="cta">View Project Photos</a>
+            <a href="https://thurmonshvac.com/portal/projects/${data.projectId}" class="cta">View Project Photos</a>
           </p>
           ` : `
           <p style="text-align: center;">
-            <a href="https://www.thurmonsheatandair.com/portal/projects/${data.projectId}" class="cta">View All Photos</a>
+            <a href="https://thurmonshvac.com/portal/projects/${data.projectId}" class="cta">View All Photos</a>
           </p>
           `}
         </div>
@@ -1390,7 +1390,7 @@ export function getJobApplicationConfirmationEmail(data: {
           <p>Serving El Dorado & South Arkansas</p>
           <p>Licensed & Insured | Family-Owned</p>
           <p style="margin-top: 15px; font-size: 12px;">
-            This email was sent because you applied for a position at thurmonsheatandair.com
+            This email was sent because you applied for a position at thurmonshvac.com
           </p>
         </div>
       </div>

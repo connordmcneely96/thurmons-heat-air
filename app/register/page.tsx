@@ -69,7 +69,7 @@ export default function RegisterPage() {
                         Create Account
                     </h1>
                     <p className="text-gray-600">
-                        Join Evergrow Landscaping to manage your projects
+                        Join Thurmon's Heat &amp; Air to manage your projects
                     </p>
                 </div>
 

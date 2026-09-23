@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-    title: 'Terms of Service | Evergrow Landscaping',
-    description: 'Terms of Service for Evergrow Landscaping. Read our service agreement, payment terms, and conditions for landscaping services in Arkansas and Oklahoma.',
+    title: "Terms of Service | Thurmon's Heat & Air",
+    description: "Terms of Service for Thurmon's Heat & Air. Read our service agreement, payment terms, and conditions for landscaping services in Arkansas and Oklahoma.",
 }
 
 export default function TermsPage() {
@@ -24,8 +24,8 @@ export default function TermsPage() {
 
                         <div className="bg-vibrant-gold-50 border border-vibrant-gold/30 rounded-lg p-6 mb-10">
                             <p className="text-gray-700 text-sm leading-relaxed">
-                                Please read these Terms of Service carefully before using our services. By hiring Evergrow Landscaping or using our website, you agree to be bound by these terms. If you have questions, contact us at{' '}
-                                <a href="mailto:contact@evergrowlandscaping.com" className="text-forest-green underline">contact@evergrowlandscaping.com</a>.
+                                Please read these Terms of Service carefully before using our services. By hiring Thurmon's Heat &amp; Air or using our website, you agree to be bound by these terms. If you have questions, contact us at{' '}
+                                <a href="mailto:thurmonshvac@yahoo.com" className="text-forest-green underline">thurmonshvac@yahoo.com</a>.
                             </p>
                         </div>
 
@@ -34,7 +34,7 @@ export default function TermsPage() {
                             <section>
                                 <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Services</h2>
                                 <p>
-                                    Evergrow Landscaping (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides landscaping, lawn care, and related outdoor services to residential and commercial customers in Arkansas and Oklahoma. The specific services, pricing, and schedule for your project will be outlined in a written estimate or service agreement provided to you before work begins.
+                                    Thurmon's Heat &amp; Air (&quot;Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides landscaping, lawn care, and related outdoor services to residential and commercial customers in Arkansas and Oklahoma. The specific services, pricing, and schedule for your project will be outlined in a written estimate or service agreement provided to you before work begins.
                                 </p>
                                 <p className="mt-3">
                                     We reserve the right to decline or discontinue service at our discretion, including if a property poses safety risks, access issues, or if payment obligations are not met.
@@ -104,14 +104,14 @@ export default function TermsPage() {
                                     This website is provided for informational purposes and to facilitate service inquiries. You agree not to use this site for any unlawful purpose, to attempt to gain unauthorized access to any part of the site, or to interfere with the proper operation of the site.
                                 </p>
                                 <p className="mt-3">
-                                    All content on this website — including text, images, and design — is the property of Evergrow Landscaping and may not be reproduced without written permission.
+                                    All content on this website — including text, images, and design — is the property of Thurmon's Heat &amp; Air and may not be reproduced without written permission.
                                 </p>
                             </section>
 
                             <section>
                                 <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Limitation of Liability</h2>
                                 <p>
-                                    To the maximum extent permitted by applicable law, Evergrow Landscaping&apos;s total liability for any claim arising from our services shall not exceed the amount you paid for the specific service giving rise to the claim. We are not liable for indirect, incidental, or consequential damages of any kind.
+                                    To the maximum extent permitted by applicable law, Thurmon's Heat &amp; Air&apos;s total liability for any claim arising from our services shall not exceed the amount you paid for the specific service giving rise to the claim. We are not liable for indirect, incidental, or consequential damages of any kind.
                                 </p>
                             </section>
 

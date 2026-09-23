@@ -29,13 +29,13 @@ function getContactConfirmationEmail(data: { name: string }): string {
         </div>
         <div class="content">
           <p>Hi ${escapeHtml(data.name)},</p>
-          <p>Thank you for reaching out to Evergrow Landscaping! We've received your message and our team will review it shortly.</p>
-          <p>We typically respond within <strong>24 hours</strong> during business days. If your request is urgent, you can also reach us directly at <a href="mailto:contact@evergrowlandscaping.com">contact@evergrowlandscaping.com</a>.</p>
+          <p>Thank you for reaching out to Thurmon's Heat &amp; Air! We've received your message and our team will review it shortly.</p>
+          <p>We typically respond within <strong>24 hours</strong> during business days. If your request is urgent, you can also reach us directly at <a href="mailto:thurmonshvac@yahoo.com">thurmonshvac@yahoo.com</a>.</p>
           <p>We look forward to helping you create a beautiful outdoor space!</p>
-          <p>Warm regards,<br><strong>The Evergrow Landscaping Team</strong></p>
+          <p>Warm regards,<br><strong>The Thurmon's Heat &amp; Air Team</strong></p>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong> &bull; contact@evergrowlandscaping.com</p>
+          <p><strong>Thurmon's Heat &amp; Air</strong> &bull; thurmonshvac@yahoo.com</p>
         </div>
       </div>
     </body>
@@ -114,7 +114,7 @@ function getContactNotificationEmail(data: {
           </div>
         </div>
         <div class="footer">
-          <p><strong>Evergrow Landscaping</strong></p>
+          <p><strong>Thurmon's Heat &amp; Air</strong></p>
           <p>Submitted at ${new Date().toLocaleString()}</p>
         </div>
       </div>
@@ -175,10 +175,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         }
 
         // Send email notification to business owner
-        const notificationEmail = 'Karson@evergrowlandscaping.com';
+        const notificationEmail = env.NOTIFICATION_EMAIL || 'thurmonshvac@yahoo.com';
         try {
             await sendEmail(env as any, {
-                from: 'Evergrow Landscaping <support@evergrowlandscaping.com>',
+                from: "Thurmon's Heat & Air <noreply@thurmonshvac.com>",
                 to: notificationEmail,
                 subject: `New Contact Form Submission – ${name.trim()}`,
                 html: getContactNotificationEmail({
@@ -198,9 +198,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         // Send confirmation auto-reply to customer
         try {
             await sendEmail(env as any, {
-                from: 'Evergrow Landscaping <support@evergrowlandscaping.com>',
+                from: "Thurmon's Heat & Air <noreply@thurmonshvac.com>",
                 to: email.trim(),
-                subject: 'We got your message – Evergrow Landscaping',
+                subject: "We got your message – Thurmon's Heat & Air",
                 html: getContactConfirmationEmail({ name: name.trim() }),
             });
         } catch (emailError) {
