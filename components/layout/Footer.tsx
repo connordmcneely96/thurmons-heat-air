@@ -70,6 +70,8 @@ const Footer = () => {
                             <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
                             <li><Link href="/contact" className="hover:text-white transition-colors">Contact</Link></li>
                             <li><Link href="/quote-request" className="hover:text-white transition-colors">Get a Quote</Link></li>
+                            <li><Link href="/service-agreement" className="hover:text-white transition-colors">Service Efficiency Agreement</Link></li>
+                            <li><a href={siteConfig.financingUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Apply for Financing</a></li>
                         </ul>
                     </div>
                 </div>

@@ -25,16 +25,19 @@ const sections: SitemapSection[] = [
     {
         title: 'Services',
         links: [
-            { label: 'Lawn Care & Mowing', href: '/services/lawn-care', description: 'Regular mowing, edging, and lawn maintenance' },
-            { label: 'Flower Bed Design', href: '/services/flower-beds', description: 'Custom flower bed installation and maintenance' },
-            { label: 'Spring & Fall Cleanup', href: '/services/seasonal-cleanup', description: 'Seasonal property cleanup services' },
-            { label: 'Pressure Washing', href: '/services/pressure-washing', description: 'Driveways, patios, siding, and more' },
+            { label: 'AC Repair & Service', href: '/services/lawn-care', description: 'Fast diagnosis and repair for any make or model' },
+            { label: 'Heating & Furnace', href: '/services/flower-beds', description: 'Furnace and heat pump repair, tune-ups, and replacement' },
+            { label: 'System Installation', href: '/services/seasonal-cleanup', description: 'New high-efficiency AC and heating systems' },
+            { label: 'Maintenance & Mini-Splits', href: '/services/pressure-washing', description: 'Seasonal tune-ups and ductless mini-splits' },
+            { label: 'Ductwork', href: '/services/ductwork', description: 'Duct repair, replacement, and insulation' },
+            { label: 'Ventilation', href: '/services/ventilation', description: 'Home, office, and warehouse ventilation' },
+            { label: 'Service Efficiency Agreement', href: '/service-agreement', description: 'Sign up for twice-yearly maintenance online' },
         ],
     },
     {
         title: 'Commercial Services',
         links: [
-            { label: 'Commercial Landscaping', href: '/commercial', description: 'Landscaping solutions for commercial properties' },
+            { label: 'Commercial HVAC', href: '/commercial', description: 'Rooftop units and HVAC for businesses' },
         ],
     },
     {
