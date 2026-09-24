@@ -47,6 +47,44 @@ export const siteConfig = {
     payments: ["Cash", "Check", "Visa", "MasterCard", "Discover", "American Express", "Financing"],
   },
 
+  // Synchrony online credit application (Keith's unique merchant link)
+  financingUrl: "https://www.mysynchrony.com/mmc/M9225171400",
+
+  // Service Efficiency Agreement (S.E.A.) - from the 2026 SEA flyer
+  sea: {
+    version: "2026",
+    firstUnitPrice: 189,
+    additionalUnitPrice: 100,
+    visitsPerYear: 2,
+    perks: "S.E.A. customers are not charged extra for call-out fees or overtime rates, including weekends and holidays.",
+    heating: [
+      "Inspect proper burner operation",
+      "Inspect flame sensor",
+      "Clean burner assembly, if needed",
+      "Inspect high limit switch",
+      "Inspect flame roll-out switches",
+      "Inspect furnace exhaust",
+      "Change filter(s) or wash, if washable",
+      "Check thermostat operation",
+      "Tighten electrical connections",
+      "Check combustion air motor",
+      "Check indoor blower motor amps",
+    ],
+    cooling: [
+      "Wash outdoor coil, as needed",
+      "Inspect outdoor fan blade for cracks",
+      "Tighten electrical connections",
+      "Check indoor/outdoor motor amps",
+      "Inspect electrical contactor",
+      "Check compressor capacitor",
+      "Inspect emergency condensate pan",
+      "Blow/clear out main drain",
+      "Change filter(s) or wash, if washable",
+      "Check thermostat operation",
+      "Check outdoor unit low-voltage wiring",
+    ],
+  },
+
   social: {
     facebook: "https://facebook.com/610603242366492",
     googleProfileUrl:

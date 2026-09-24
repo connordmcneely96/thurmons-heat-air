@@ -22,7 +22,7 @@ const services = [
 const whyUs = [
   { Icon: Clock, title: 'Same-Day Service', desc: 'When your AC or heat goes out, you need it fixed now, not next week. We move fast.' },
   { Icon: DollarSign, title: 'Upfront Honest Pricing', desc: 'Straight quotes before we start. No pressure, no surprise upsells, just the work you need.' },
-  { Icon: CheckCircle, title: 'Synchrony Financing', desc: 'Flexible financing through Synchrony so a new system fits your budget, not just your need.' },
+  { Icon: CheckCircle, title: 'Synchrony Financing', desc: 'Flexible financing through Synchrony so a new system fits your budget, not just your need.', href: siteConfig.financingUrl, linkText: 'Apply online' },
   { Icon: Shield, title: 'Licensed & Insured', desc: `Arkansas licensed HVAC (#${siteConfig.license}), serving El Dorado since ${siteConfig.yearEstablished}.` },
 ];
 
@@ -178,13 +178,18 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyUs.map(({ Icon, title, desc }) => (
+            {whyUs.map(({ Icon, title, desc, href, linkText }: { Icon: typeof Clock; title: string; desc: string; href?: string; linkText?: string }) => (
               <div key={title} className="group p-8 rounded-2xl bg-gray-50 hover:bg-forest-green hover:text-white transition-all duration-300 text-center">
                 <div className="w-16 h-16 mx-auto mb-6 bg-forest-green group-hover:bg-white rounded-2xl flex items-center justify-center transition-colors">
                   <Icon className="w-8 h-8 text-white group-hover:text-forest-green" />
                 </div>
                 <h3 className="text-xl font-bold text-deep-charcoal group-hover:text-white mb-3">{title}</h3>
                 <p className="text-gray-600 group-hover:text-white/75">{desc}</p>
+                {href && (
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-4 font-semibold text-forest-green group-hover:text-vibrant-gold">
+                    {linkText} <ArrowRight className="w-4 h-4 ml-1" />
+                  </a>
+                )}
               </div>
             ))}
           </div>
