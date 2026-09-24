@@ -8,7 +8,7 @@ export const siteConfig = {
   tagline: "Heating & Air Conditioning in El Dorado, AR",
   description:
     "Trusted heating and air conditioning service in El Dorado, Arkansas. AC and heating repair, new system installation, ductwork, ventilation, and mini-splits. Free estimates, financing available, and 24/7 on-call service.",
-  url: "https://thurmonshvac.com",
+  url: "https://www.thurmonshvac.com",
 
   // TODO: move off Yahoo to a domain email (see onboarding intake)
   email: "thurmonshvac@yahoo.com",
