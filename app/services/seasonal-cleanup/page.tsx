@@ -37,7 +37,7 @@ const process = [
 
 const faqs = [
   { question: 'What brands do you install?', answer: 'We install and stand behind York and Luxaire equipment, including all-in-one packaged units that are a great fit for manufactured and smaller homes.' },
-  { question: 'Do you offer financing on new systems?', answer: 'Yes. We offer flexible financing options so a new system does not have to be paid all at once.' },
+  { question: 'Do you offer financing on new systems?', answer: 'Yes, through Synchrony, so a new system does not have to be paid all at once. You can apply online using the Apply for Financing button on this page.' },
   { question: 'How much does a new system cost?', answer: 'It depends on your home size and the system you choose. We provide a free, exact written quote after an in-home assessment.' },
   { question: 'How long does an install take?', answer: 'Most residential installs are completed in a single day. We will give you a clear timeline up front.' },
 ]
@@ -68,6 +68,15 @@ export default function InstallationPage() {
             <h2 className="text-h2 font-heading text-forest-green mb-4">Comfort That Pays You Back.</h2>
             <p className="text-lg text-gray-600 mb-4">An old, oversized, or failing system wastes money every month. A right-sized, high-efficiency system keeps your home comfortable and lowers your bills.</p>
             <p className="text-lg text-gray-600">We give you a free in-home estimate, honest options, and financing that fits your budget. No high-pressure sales, just the right system for your home.</p>
+            <div className="mt-8 p-6 rounded-2xl bg-forest-green/5 border border-forest-green/20 flex flex-col sm:flex-row sm:items-center gap-4">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold text-deep-charcoal mb-1">Financing through Synchrony</h3>
+                <p className="text-gray-600">Apply online in minutes from home, and know your budget before we arrive.</p>
+              </div>
+              <a href={siteConfig.financingUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-forest-green text-white hover:bg-forest-green-700 transition-colors">
+                Apply for Financing
+              </a>
+            </div>
           </div>
         </div>
       </section>

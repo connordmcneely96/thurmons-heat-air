@@ -44,7 +44,7 @@ const showcaseItems = [
   {
     eyebrow: 'The result',
     title: 'Cleaned, Inspected, and Running Right',
-    body: 'This is a coil right after a Service Efficiency Agreement visit. With the SEA, we clean and inspect your system twice a year, in spring and fall, at no extra charge, so it never gets to the state you saw above. You stay comfortable, your bills stay lower, and small problems get caught before they become expensive ones.',
+    body: 'This is a coil right after a Service Efficiency Agreement visit. With the SEA, we clean and inspect your system twice a year, in spring and fall, so it never gets to the state you saw above. You stay comfortable, your bills stay lower, and small problems get caught before they become expensive ones.',
     image: '/api/assets/services/maintenance/coil-cleaned.jpg',
     alt: 'A freshly cleaned HVAC condenser coil with water still beading on the fins',
   },
@@ -57,7 +57,7 @@ const process = [
 ]
 
 const faqs = [
-  { question: 'What is the Service Efficiency Agreement?', answer: 'It is our maintenance plan: we clean and inspect your system twice a year, in spring and fall at no extra charge, to keep it efficient and catch small problems before they become costly repairs.' },
+  { question: 'What is the Service Efficiency Agreement?', answer: 'It is our yearly maintenance plan: two inspections a year, spring and fall, for $189 + tax for one unit and $100 + tax for each additional unit. SEA members also pay no call-out fees or overtime rates, even on weekends and holidays. You can sign up online in a few minutes.' },
   { question: 'How often should I get a tune-up?', answer: 'Twice a year is ideal, once in spring for cooling and once in fall for heating, which is exactly what the Service Efficiency Agreement covers.' },
   { question: 'What is a mini-split and do I need one?', answer: 'A ductless mini-split heats and cools a specific area without ductwork. They are great for additions, shops, and rooms that stay too hot or cold.' },
   { question: 'Will maintenance really lower my bills?', answer: 'Yes. A clean, tuned system runs more efficiently, which lowers energy use and helps prevent costly breakdowns.' },
@@ -103,10 +103,10 @@ export default function MaintenancePage() {
       <ServiceProcess steps={process} />
       <ServiceFAQ faqs={faqs} />
       <ServiceCTA
-        title="Ask About the Service Efficiency Agreement"
-        description={`Lock in spring and fall cleanings, lower bills, and fewer breakdowns. Call ${siteConfig.phone} or request a visit below.`}
-        buttonText="Get Started"
-        buttonLink="/quote-request"
+        title="Join the Service Efficiency Agreement"
+        description={`Two inspections a year, no call-out fees or overtime rates. Sign up online in a few minutes, or call ${siteConfig.phone}.`}
+        buttonText="Sign Up Online"
+        buttonLink="/service-agreement"
       />
     </main>
   )
